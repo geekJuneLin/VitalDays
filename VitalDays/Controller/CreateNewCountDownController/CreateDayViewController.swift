@@ -13,6 +13,9 @@ class CreateDayViewController: UICollectionViewController{
     let cellTopId = "cellTopId"
     let cellBottomId = "cellBottomId"
     
+    let cellIcons = ["light", "target", "repeat", "note"]
+    let cellLabels = ["种类", "目标日期", "循环提醒", "备注"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -92,11 +95,12 @@ extension CreateDayViewController{
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellTopId, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellTopId, for: indexPath) as! CreateDayTopViewCell
+            cell.iconName = cellIcons[indexPath.item]
+            cell.cellLabel = cellLabels[indexPath.item]
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellBottomId, for: indexPath)
-            cell.backgroundColor = .systemTeal
             return cell
         }
     }

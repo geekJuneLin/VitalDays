@@ -10,6 +10,22 @@ import UIKit
 
 class CreateDayTopViewCell: UICollectionViewCell{
     
+    var iconName: String?{
+        didSet{
+            if let icons = iconName{
+                icon.image = UIImage(named: icons)
+            }
+        }
+    }
+    
+    var cellLabel: String?{
+        didSet{
+            if let cellLabel = cellLabel{
+                label.text = cellLabel
+            }
+        }
+    }
+    
     let icon: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "dinosaur")
@@ -37,7 +53,7 @@ class CreateDayTopViewCell: UICollectionViewCell{
     
     let arrowIcon: UIImageView = {
         let view  = UIImageView()
-        view.image = UIImage(named: "dinosaur")
+        view.image = UIImage(named: "right-arrow")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -59,9 +75,9 @@ class CreateDayTopViewCell: UICollectionViewCell{
         
         addSubviews(icon, label, context, arrowIcon)
         
-        icon.anchors(centerY: centerYAnchor, left: leftAnchor, leftConstant: 8, widthValue: 30, heightValue: 30)
+        icon.anchors(centerY: centerYAnchor, left: leftAnchor, leftConstant: 8, widthValue: 25, heightValue: 25)
         label.anchors(centerY: centerYAnchor, left: icon.rightAnchor, leftConstant: 12)
-        arrowIcon.anchors(centerY: centerYAnchor, right: rightAnchor, rightConstant: -12, widthValue: 30, heightValue: 30)
+        arrowIcon.anchors(centerY: centerYAnchor, right: rightAnchor, rightConstant: -12, widthValue: 25, heightValue: 25)
         context.anchors(centerY: centerYAnchor, right: arrowIcon.leftAnchor, rightConstant: -12)
     }
 }

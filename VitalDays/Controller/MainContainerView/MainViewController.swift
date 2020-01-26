@@ -46,6 +46,8 @@ class MainViewController: UITabBarController {
     
     fileprivate func setupView(){
         tabBar.barTintColor = UIColor.white
+        tabBar.tintColor = .backgroundColor
+        tabBar.unselectedItemTintColor = .lightGray
         tabBar.alpha = 0.5
     }
     

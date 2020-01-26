@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E0C748323DE438800166D45 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0C748223DE438800166D45 /* CardView.swift */; };
 		8E2110DA23D849BA00106569 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110D923D849BA00106569 /* AppDelegate.swift */; };
 		8E2110DC23D849BA00106569 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110DB23D849BA00106569 /* SceneDelegate.swift */; };
 		8E2110DE23D849BA00106569 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110DD23D849BA00106569 /* MainViewController.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E0C748223DE438800166D45 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		8E2110D623D849BA00106569 /* VitalDays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VitalDays.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E2110D923D849BA00106569 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E2110DB23D849BA00106569 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,9 +110,10 @@
 		8E2110EE23D84B8A00106569 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8E9D1FE023DDA091002A2A2B /* CreateDayVCViewCell */,
+				8E0C748223DE438800166D45 /* CardView.swift */,
 				8E6B767223D9259C00CC7355 /* CardViewCell.swift */,
 				8E9D1FD723DD75D3002A2A2B /* SlideMenuTableViewCell.swift */,
+				8E9D1FE023DDA091002A2A2B /* CreateDayVCViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				8E2110F523D8546300106569 /* DayCountdownCollectionViewController.swift in Sources */,
 				8E9D1FD123DD1707002A2A2B /* SlideMenuViewController.swift in Sources */,
 				8E6B766F23D9195400CC7355 /* CreateDayViewController.swift in Sources */,
+				8E0C748323DE438800166D45 /* CardView.swift in Sources */,
 				8E9D1FE423DDA0BE002A2A2B /* CreateDayBottomViewCell.swift in Sources */,
 				8E9D1FDD23DD8332002A2A2B /* PresentTransition.swift in Sources */,
 				8E9D1FE623DDA61E002A2A2B /* UIApplication+currentKeyWindow.swift in Sources */,
