@@ -66,7 +66,6 @@ class ContainerViewController: UIViewController{
 
 extension ContainerViewController: ShowSlideMenuDelegate{
     func showSlideMenu(isDisplayed: Bool) {
-        print(isDisplayed)
         if !isDisplayed{
             configureSlideMenu()
         }

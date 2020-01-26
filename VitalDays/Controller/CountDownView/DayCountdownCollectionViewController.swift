@@ -80,16 +80,6 @@ extension DayCountdownCollectionViewController{
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
-    
-    fileprivate func setupSlideMenuView(){
-        if slideMenuVC == nil{
-            slideMenuVC = SlideMenuViewController()
-            navigationController!.view.insertSubview(slideMenuVC.view, at: 0)
-            navigationController!.addChild(slideMenuVC)
-            slideMenuVC.didMove(toParent: self)
-            print("added slide menu view")
-        }
-    }
 }
 
 // MARK: - objc functions
@@ -105,6 +95,11 @@ extension DayCountdownCollectionViewController{
     @objc
     fileprivate func handRightButtonClick(){
         print("right button clicked!")
+        let createVC = CreateDayViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let navigationVC = UINavigationController(rootViewController: createVC)
+        navigationVC.modalPresentationStyle = .custom
+        navigationVC.transitioningDelegate = self
+        present(navigationVC, animated: true, completion: nil)
     }
 }
 
@@ -130,5 +125,16 @@ extension DayCountdownCollectionViewController: UICollectionViewDelegateFlowLayo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 16
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 36, left: 0, bottom: 0, right: 0)
+    }
+}
+
+// MARK: - customized presentation animation
+extension DayCountdownCollectionViewController: UIViewControllerTransitioningDelegate{
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PresentTransition()
     }
 }
