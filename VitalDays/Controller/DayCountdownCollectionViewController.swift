@@ -12,6 +12,10 @@ class DayCountdownCollectionViewController: UICollectionViewController{
     
     let cellId = "cellId"
     
+    var slideMenuVC: SlideMenuViewController!
+    var isMenuViewDisplayed = false
+    var showSlideMenuDelegate: ShowSlideMenuDelegate?
+    
     let leftButton: UIBarButtonItem = {
         let img = UIImage(named: "menu")
         let btn = UIBarButtonItem()
@@ -37,14 +41,11 @@ class DayCountdownCollectionViewController: UICollectionViewController{
         return btn
     }()
     
-    let v = UIView()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
         setupNavigationBar()
-        setupSlideMenuView()
     }
     
     
@@ -81,6 +82,13 @@ extension DayCountdownCollectionViewController{
     }
     
     fileprivate func setupSlideMenuView(){
+        if slideMenuVC == nil{
+            slideMenuVC = SlideMenuViewController()
+            navigationController!.view.insertSubview(slideMenuVC.view, at: 0)
+            navigationController!.addChild(slideMenuVC)
+            slideMenuVC.didMove(toParent: self)
+            print("added slide menu view")
+        }
     }
 }
 
@@ -90,9 +98,8 @@ extension DayCountdownCollectionViewController{
     @objc
     fileprivate func handleLeftButtonClick(){
         print("left button clicked!")
-        UIView.animate(withDuration: 0.5) {
-            self.v.transform = CGAffineTransform(translationX: 0, y: 0)
-        }
+        showSlideMenuDelegate?.showSlideMenu(isDisplayed: isMenuViewDisplayed)
+        isMenuViewDisplayed.toggle()
     }
     
     @objc
@@ -110,9 +117,6 @@ extension DayCountdownCollectionViewController{
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = UIColor.white.withAlphaComponent(0.5)
-        cell.clipsToBounds = true
-        cell.layer.cornerRadius = 15
         return cell
     }
 }

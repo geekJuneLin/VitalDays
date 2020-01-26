@@ -10,6 +10,15 @@ import UIKit
 
 class MainViewController: UITabBarController {
     
+    var showSlideMenuDelegate: ShowSlideMenuDelegate?{
+        didSet{
+            print("did set delegate")
+            countdownVC.showSlideMenuDelegate = showSlideMenuDelegate
+        }
+    }
+    
+    var countdownVC: DayCountdownCollectionViewController!
+    
     let homeTabItem: UITabBarItem = {
        let bar = UITabBarItem()
         bar.title = "Home"
@@ -37,13 +46,13 @@ class MainViewController: UITabBarController {
     
     fileprivate func setupView(){
         tabBar.barTintColor = UIColor.white
-        tabBar.alpha = 0.35
+        tabBar.alpha = 0.5
     }
     
     fileprivate func setupTabVC(){
-        let homeVC = UINavigationController(rootViewController:
-            DayCountdownCollectionViewController(collectionViewLayout:
-                UICollectionViewFlowLayout()))
+        countdownVC = DayCountdownCollectionViewController(collectionViewLayout:
+        UICollectionViewFlowLayout())
+        let homeVC = UINavigationController(rootViewController: countdownVC)
         homeVC.tabBarItem = homeTabItem
         
         let shareVC = UINavigationController(rootViewController:

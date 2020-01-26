@@ -67,10 +67,7 @@ class CardViewCell: UICollectionViewCell{
     
     let bar: UIView = {
        let bar = UIView()
-        bar.backgroundColor = .barColor
-        bar.layer.shadowColor = UIColor.gray.cgColor
-        bar.layer.shadowOffset = .zero
-        bar.layer.shadowRadius = 5
+        bar.backgroundColor = .backgroundColor
         bar.clipsToBounds = true
         bar.layer.cornerRadius = 8
         bar.translatesAutoresizingMaskIntoConstraints = false
@@ -88,6 +85,10 @@ class CardViewCell: UICollectionViewCell{
     }
     
     fileprivate func setupViews(){
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 8
+        self.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        
         addSubviews(noteLbl, noteTypeLbl, smallTypeLbl, targetLbl, targetDayLbl, countDownLbl, countDownDays, progress)
         
         noteLbl.anchors(top: topAnchor, topConstant: 15, left: leftAnchor, leftConstant: 15)
@@ -100,7 +101,8 @@ class CardViewCell: UICollectionViewCell{
         progress.anchors(top: targetLbl.bottomAnchor, topConstant: 15, left: targetLbl.leftAnchor, right: countDownLbl.rightAnchor, heightValue: 15)
         
         progress.addSubview(bar)
-        bar.anchors(left: progress.leftAnchor,
+        bar.anchors(top: progress.topAnchor,
+                    left: progress.leftAnchor,
                     width: progress.widthAnchor,
                     widthValue: 0.4,
                     height: progress.heightAnchor,

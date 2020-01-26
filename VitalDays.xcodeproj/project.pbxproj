@@ -18,6 +18,9 @@
 		8E6B766F23D9195400CC7355 /* CreateDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B766E23D9195400CC7355 /* CreateDayViewController.swift */; };
 		8E6B767323D9259C00CC7355 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B767223D9259C00CC7355 /* CardViewCell.swift */; };
 		8E6B767523D926ED00CC7355 /* UILabel+cardViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B767423D926ED00CC7355 /* UILabel+cardViewLabel.swift */; };
+		8E9D1FD123DD1707002A2A2B /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FD023DD1707002A2A2B /* SlideMenuViewController.swift */; };
+		8E9D1FD323DD1D3F002A2A2B /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FD223DD1D3F002A2A2B /* Protocols.swift */; };
+		8E9D1FD523DD22D2002A2A2B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FD423DD22D2002A2A2B /* ContainerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		8E6B766E23D9195400CC7355 /* CreateDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayViewController.swift; sourceTree = "<group>"; };
 		8E6B767223D9259C00CC7355 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		8E6B767423D926ED00CC7355 /* UILabel+cardViewLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+cardViewLabel.swift"; sourceTree = "<group>"; };
+		8E9D1FD023DD1707002A2A2B /* SlideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
+		8E9D1FD223DD1D3F002A2A2B /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		8E9D1FD423DD22D2002A2A2B /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,9 +87,11 @@
 		8E2110ED23D84B8200106569 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8E9D1FD423DD22D2002A2A2B /* ContainerViewController.swift */,
 				8E2110DD23D849BA00106569 /* MainViewController.swift */,
 				8E2110F423D8546300106569 /* DayCountdownCollectionViewController.swift */,
-				8E6B766E23D9195400CC7355 /* CreateDayViewController.swift */,
+				8E9D1FD023DD1707002A2A2B /* SlideMenuViewController.swift */,
+				8E9D1FD623DD2C7B002A2A2B /* CreateNewCountDownController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -109,6 +117,7 @@
 				8E2110D923D849BA00106569 /* AppDelegate.swift */,
 				8E2110DB23D849BA00106569 /* SceneDelegate.swift */,
 				8E2110F623D862D000106569 /* UIVIew+Autolayout.swift */,
+				8E9D1FD223DD1D3F002A2A2B /* Protocols.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -120,6 +129,14 @@
 				8E6B767423D926ED00CC7355 /* UILabel+cardViewLabel.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8E9D1FD623DD2C7B002A2A2B /* CreateNewCountDownController */ = {
+			isa = PBXGroup;
+			children = (
+				8E6B766E23D9195400CC7355 /* CreateDayViewController.swift */,
+			);
+			path = CreateNewCountDownController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,11 +212,14 @@
 				8E2110DE23D849BA00106569 /* MainViewController.swift in Sources */,
 				8E2110DA23D849BA00106569 /* AppDelegate.swift in Sources */,
 				8E6B767323D9259C00CC7355 /* CardViewCell.swift in Sources */,
+				8E9D1FD323DD1D3F002A2A2B /* Protocols.swift in Sources */,
 				8E2110DC23D849BA00106569 /* SceneDelegate.swift in Sources */,
 				8E2110F523D8546300106569 /* DayCountdownCollectionViewController.swift in Sources */,
+				8E9D1FD123DD1707002A2A2B /* SlideMenuViewController.swift in Sources */,
 				8E6B766F23D9195400CC7355 /* CreateDayViewController.swift in Sources */,
 				8E6B767523D926ED00CC7355 /* UILabel+cardViewLabel.swift in Sources */,
 				8E2110F323D84BFD00106569 /* UIColor+StaticColors.swift in Sources */,
+				8E9D1FD523DD22D2002A2A2B /* ContainerViewController.swift in Sources */,
 				8E2110F723D862D000106569 /* UIVIew+Autolayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
