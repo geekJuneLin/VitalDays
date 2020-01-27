@@ -52,4 +52,16 @@ extension UIView{
             self.addSubview($0)
         })
     }
+    
+    func fillUpSuperView(){
+        self.anchors(top: superview?.topAnchor,
+                     bottom: superview?.bottomAnchor,
+                     left: superview?.leftAnchor,
+                     right: superview?.rightAnchor)
+    }
+    
+    func centerInSuper(){
+        self.anchors(centerX: superview?.centerXAnchor,
+                     centerY: superview?.centerYAnchor)
+    }
 }

@@ -128,4 +128,13 @@ extension CreateDayViewController: UICollectionViewDelegateFlowLayout{
             return UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
         }
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 1{
+            let calenderVC = CalendarPickerViewController()
+            let navigationVC = UINavigationController(rootViewController: calenderVC)
+            navigationVC.modalPresentationStyle = .fullScreen
+            self.present(navigationVC, animated: true, completion: nil)
+        }
+    }
 }

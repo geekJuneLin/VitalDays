@@ -51,6 +51,6 @@ class CreateDayBottomViewCell: UICollectionViewCell{
                          width: widthAnchor,
                          widthValue: 0.95,
                          height: heightAnchor,
-                         heightValue: 0.6)
+                         heightValue: 0.45)
     }
 }
