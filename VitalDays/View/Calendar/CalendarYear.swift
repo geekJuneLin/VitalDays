@@ -10,8 +10,11 @@ import UIKit
 
 class CalendarYear: UIView{
     
+    var updateDelegate: UpdateCalendarDaysDelegate?
+    
     let label: UILabel = {
         let label = UILabel()
+        label.text = "\(months[month - 1]) \(year)"
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -21,6 +24,7 @@ class CalendarYear: UIView{
     let leftBtn: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "left-arrow"), for: .normal)
+        button.addTarget(self, action: #selector(handleLeftButton), for: .touchUpInside)
         button.tintColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -29,6 +33,7 @@ class CalendarYear: UIView{
     let rightBtn: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "right-arrow"), for: .normal)
+        button.addTarget(self, action: #selector(handleRightButton), for: .touchUpInside)
         button.tintColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -61,5 +66,39 @@ class CalendarYear: UIView{
                          rightConstant: -10,
                          widthValue: 25,
                          heightValue: 25)
+    }
+}
+
+extension CalendarYear{
+    @objc
+    fileprivate func handleLeftButton(){
+        print("left button clicked")
+        
+        if month == 1 {
+            month = 12
+            year -= 1
+            label.text = "\(months[month - 1]) \(year)"
+        }else{
+            month -= 1
+            label.text = "\(months[month - 1]) \(year)"
+        }
+        
+        updateDelegate?.update()
+    }
+    
+    @objc
+    fileprivate func handleRightButton(){
+        print("right button clicked")
+        
+        if month == 12 {
+            month = 1
+            year += 1
+            label.text = "\(months[month - 1]) \(year)"
+        }else{
+            month += 1
+            label.text = "\(months[month - 1]) \(year)"
+        }
+        
+        updateDelegate?.update()
     }
 }

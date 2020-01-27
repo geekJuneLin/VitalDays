@@ -11,7 +11,6 @@ import UIKit
 class CalendarWeek: UIView{
     
     let cellId = "cellId"
-    let weeks = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()

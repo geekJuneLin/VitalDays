@@ -11,3 +11,7 @@ import UIKit
 protocol ShowSlideMenuDelegate {
     func showSlideMenu(isDisplayed: Bool)
 }
+
+protocol UpdateCalendarDaysDelegate {
+    func update()
+}

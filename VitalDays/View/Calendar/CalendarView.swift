@@ -8,6 +8,17 @@
 
 import UIKit
 
+var date = Date()
+var calendar = Calendar.current
+var day = calendar.component(.day, from: date)
+var year = calendar.component(.year, from: date)
+var month = calendar.component(.month, from: date)
+var weekdayOrdinal = calendar.component(.weekdayOrdinal, from: date)
+
+let weeks = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+let daysInMonths = [30, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+let months = ["January", "February", "March", "April", "May", "June", "July", "Augest", "September", "October", "November", "December"]
+
 class CalendarView: UIView{
     
     let yearView: CalendarYear = {
@@ -32,6 +43,7 @@ class CalendarView: UIView{
         super.init(frame: frame)
         
         setupView()
+        print("\(weekdayOrdinal) \(day) \(month) \(year)")
     }
     
     required init?(coder: NSCoder) {
@@ -39,6 +51,8 @@ class CalendarView: UIView{
     }
     
     fileprivate func setupView(){
+        yearView.updateDelegate = daysView
+        
         addSubviews(yearView, weekView, daysView)
         
         yearView.anchors(centerX: centerXAnchor,
