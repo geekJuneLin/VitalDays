@@ -11,6 +11,8 @@ import UIKit
 class CalendarDays: UIView{
     let cellId = "cellId"
     
+    private var emptyBox = Int()
+    
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -45,17 +47,44 @@ class CalendarDays: UIView{
                                height: heightAnchor,
                                heightValue: 0.9)
     }
+    
+    fileprivate func getEmptyBox() -> Int{
+        var emptyBox = Int()
+        print("original: \(weekdayOrdinal)")
+        switch weekdayOrdinal{
+        case 0:
+            emptyBox = 5
+        case 1:
+            emptyBox = 6
+        case 2:
+            emptyBox = 0
+        case 3:
+            emptyBox = 1
+        case 4:
+            emptyBox = 2
+        case 5:
+            emptyBox = 3
+        case 6:
+            emptyBox = 4
+        case 7:
+            emptyBox = 5
+        default:
+            break
+        }
+        return emptyBox
+    }
 }
 
 // MARK: - UICollectionView data source
 extension CalendarDays: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return daysInMonths[month - 1]
+        emptyBox = getEmptyBox()
+        return daysInMonths[month - 1] + emptyBox
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CalendarDaysViewCell
-        cell.label.text = "\(indexPath.item + 1)"
+        cell.label.text = (indexPath.item >= emptyBox) ? "\(indexPath.item - emptyBox + 1)" : ""
         return cell
     }
 }
@@ -72,8 +101,15 @@ extension CalendarDays: UICollectionViewDelegateFlowLayout{
     }
 }
 
+// MARK: - Update calendar delegate
 extension CalendarDays: UpdateCalendarDaysDelegate{
     func update() {
         collectionView.reloadData()
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy'-'MM'-'dd"
+//        print("Month & Year: \(month) \(year)")
+//        print("Dateformatter: \(formatter.date(from: "\(year)-\(month)-\(1)")!)")
+//        weekdayOrdinal = calendar.component(.weekdayOrdinal, from: formatter.date(from: "\(year)-\(month)-\(1)")!)
+//        print("Calendar original: \(calendar.component(.weekdayOrdinal, from: formatter.date(from: "\(year)-\(month)-\(1)")!))")
     }
 }

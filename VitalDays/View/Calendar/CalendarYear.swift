@@ -73,7 +73,6 @@ extension CalendarYear{
     @objc
     fileprivate func handleLeftButton(){
         print("left button clicked")
-        
         if month == 1 {
             month = 12
             year -= 1
@@ -83,13 +82,19 @@ extension CalendarYear{
             label.text = "\(months[month - 1]) \(year)"
         }
         
+        if(weekdayOrdinal - ((daysInMonths[month - 1]) % 7)) < 0{
+            weekdayOrdinal = 8 - ((daysInMonths[month - 1]) % 7)
+        }else{
+            weekdayOrdinal = weekdayOrdinal - ((daysInMonths[month - 1]) % 7)
+        }
+        
         updateDelegate?.update()
     }
     
     @objc
     fileprivate func handleRightButton(){
         print("right button clicked")
-        
+        weekdayOrdinal = (weekdayOrdinal + (daysInMonths[month - 1] % 7)) % 7
         if month == 12 {
             month = 1
             year += 1
