@@ -85,7 +85,15 @@ extension CalendarDays: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CalendarDaysViewCell
         cell.label.text = (indexPath.item >= emptyBox) ? "\(indexPath.item - emptyBox + 1)" : ""
-        cell.isClickable = (indexPath.item >= emptyBox)
+        if (indexPath.item - emptyBox + 1) == day &&
+            month == calendar.component(.month, from: date) &&
+            year == calendar.component(.year, from: date){
+            cell.currentBack.isHidden = false
+            print("select the current date")
+        }else{
+            cell.currentBack.isHidden = true
+            cell.isClickable = (indexPath.item >= emptyBox)
+        }
         return cell
     }
 }

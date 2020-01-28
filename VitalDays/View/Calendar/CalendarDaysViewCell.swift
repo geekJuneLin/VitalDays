@@ -24,6 +24,18 @@ class CalendarDaysViewCell: UICollectionViewCell{
         return view
     }()
     
+    let currentBack: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.currentDateColor
+        view.clipsToBounds = true
+        view.layer.borderColor = UIColor.white.cgColor
+        view.layer.borderWidth = 1
+        view.layer.cornerRadius = 15
+        view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     let label: UILabel = {
        let label = UILabel()
         label.textAlignment = .center
@@ -52,8 +64,9 @@ class CalendarDaysViewCell: UICollectionViewCell{
     
     
     fileprivate func setupView(){
-        addSubviews(roundedView, label)
+        addSubviews(currentBack, roundedView, label)
         
+        currentBack.fillUpSuperView()
         roundedView.fillUpSuperView()
         label.centerInSuper()
     }

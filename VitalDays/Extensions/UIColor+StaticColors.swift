@@ -12,4 +12,5 @@ extension UIColor{
     static var backgroundColor = UIColor(red:0.36, green:0.83, blue:0.62, alpha:1.0)
     static var cardViewColor = UIColor(red:0.80, green:0.95, blue:0.94, alpha:1.0)
     static var barColor = UIColor(red:0.73, green:0.95, blue:0.85, alpha:1.0)
+    static var currentDateColor = UIColor(red:0.73, green:0.95, blue:0.73, alpha:1.0).withAlphaComponent(0.8)
 }
