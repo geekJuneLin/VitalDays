@@ -21,7 +21,7 @@ class MyAccountViewController: UIViewController{
     
     let accountTextField: UITextField = {
        let field = UITextField()
-        let img = UIImageView(image: UIImage(named: "user"))
+        let img = UIImageView(image: UIImage(named: "customer"))
         field.placeholder = "Account"
         field.underline(color: .white)
         field.leftView = img
@@ -84,7 +84,7 @@ class MyAccountViewController: UIViewController{
         label.text = "Or login with"
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 24)
+        label.font = UIFont.systemFont(ofSize: 20)
         let view = UIView()
         view.addSubviews(bar1, bar2, label)
         label.centerInSuper()
@@ -102,10 +102,21 @@ class MyAccountViewController: UIViewController{
         return view
     }()
     
+    let signinBtn: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("Sign in", for: .normal)
+        btn.setTitleColor(.white, for: .normal)
+        btn.clipsToBounds = true
+        btn.layer.cornerRadius = 10
+        btn.backgroundColor = UIColor.white.withAlphaComponent(0.25)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
+    
     let googleBtn: UIButton = {
         let btn = UIButton(type: .system)
         btn.tintColor = .white
-        btn.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        btn.backgroundColor = UIColor.white.withAlphaComponent(0.25)
         btn.clipsToBounds = true
         btn.layer.cornerRadius = 10
         btn.setImage(UIImage(named: "google")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -118,7 +129,7 @@ class MyAccountViewController: UIViewController{
     
     let wechatBtn: UIButton = {
         let btn = UIButton(type: .system)
-        btn.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        btn.backgroundColor = UIColor.white.withAlphaComponent(0.25)
         btn.clipsToBounds = true
         btn.layer.cornerRadius = 10
         btn.tintColor = .white
@@ -141,7 +152,7 @@ class MyAccountViewController: UIViewController{
         
         view.backgroundColor = .backgroundColor
         
-        view.addSubviews(titleLabel, accountTextField, passwordTextField, forgotBtn, registerBtn, saperator, googleBtn, wechatBtn)
+        view.addSubviews(titleLabel, accountTextField, passwordTextField, forgotBtn, registerBtn, saperator, signinBtn, googleBtn, wechatBtn)
         
         titleLabel.anchors(centerX: view.centerXAnchor,
                            top: view.topAnchor,
@@ -169,9 +180,16 @@ class MyAccountViewController: UIViewController{
                             topConstant: 8,
                             right: passwordTextField.rightAnchor)
         
-        saperator.anchors(centerX: view.centerXAnchor,
+        signinBtn.anchors(centerX: view.centerXAnchor,
                           top: registerBtn.bottomAnchor,
-                          topConstant: 50,
+                          topConstant: 36,
+                          width: view.widthAnchor,
+                          widthValue: 0.7,
+                          heightValue: 45)
+        
+        saperator.anchors(centerX: view.centerXAnchor,
+                          top: signinBtn.bottomAnchor,
+                          topConstant: 36,
                           width: view.widthAnchor,
                           heightValue: 30)
         
