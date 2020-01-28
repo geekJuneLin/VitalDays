@@ -49,7 +49,6 @@ class CalendarDays: UIView{
     }
     
     fileprivate func getEmptyBox() -> Int{
-        var emptyBox = Int()
         print("original: \(weekdayOrdinal)")
         switch weekdayOrdinal{
         case 0:
@@ -79,12 +78,14 @@ class CalendarDays: UIView{
 extension CalendarDays: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         emptyBox = getEmptyBox()
+        print("empty: \(emptyBox)")
         return daysInMonths[month - 1] + emptyBox
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CalendarDaysViewCell
         cell.label.text = (indexPath.item >= emptyBox) ? "\(indexPath.item - emptyBox + 1)" : ""
+        cell.isClickable = (indexPath.item >= emptyBox)
         return cell
     }
 }
@@ -105,11 +106,5 @@ extension CalendarDays: UICollectionViewDelegateFlowLayout{
 extension CalendarDays: UpdateCalendarDaysDelegate{
     func update() {
         collectionView.reloadData()
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "yyyy'-'MM'-'dd"
-//        print("Month & Year: \(month) \(year)")
-//        print("Dateformatter: \(formatter.date(from: "\(year)-\(month)-\(1)")!)")
-//        weekdayOrdinal = calendar.component(.weekdayOrdinal, from: formatter.date(from: "\(year)-\(month)-\(1)")!)
-//        print("Calendar original: \(calendar.component(.weekdayOrdinal, from: formatter.date(from: "\(year)-\(month)-\(1)")!))")
     }
 }

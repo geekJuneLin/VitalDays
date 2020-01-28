@@ -10,6 +10,8 @@ import UIKit
 
 class CalendarDaysViewCell: UICollectionViewCell{
     
+    var isClickable = false
+    
     let roundedView: UIView = {
        let view = UIView()
         view.backgroundColor = UIColor.white.withAlphaComponent(0.1)
@@ -38,7 +40,9 @@ class CalendarDaysViewCell: UICollectionViewCell{
     
     override var isSelected: Bool{
         didSet{
-            roundedView.isHidden = !isSelected
+            if isClickable{
+                roundedView.isHidden = !isSelected
+            }
         }
     }
     
