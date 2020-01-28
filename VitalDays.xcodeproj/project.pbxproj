@@ -33,6 +33,8 @@
 		8E9D1FE223DDA0B0002A2A2B /* CreateDayTopViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FE123DDA0B0002A2A2B /* CreateDayTopViewCell.swift */; };
 		8E9D1FE423DDA0BE002A2A2B /* CreateDayBottomViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FE323DDA0BE002A2A2B /* CreateDayBottomViewCell.swift */; };
 		8E9D1FE623DDA61E002A2A2B /* UIApplication+currentKeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FE523DDA61E002A2A2B /* UIApplication+currentKeyWindow.swift */; };
+		8EC6675623E0436F003413E8 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC6675523E0436F003413E8 /* MyAccountViewController.swift */; };
+		8EC6675823E049C1003413E8 /* UITextField+underline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC6675723E049C1003413E8 /* UITextField+underline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		8E9D1FE123DDA0B0002A2A2B /* CreateDayTopViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayTopViewCell.swift; sourceTree = "<group>"; };
 		8E9D1FE323DDA0BE002A2A2B /* CreateDayBottomViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayBottomViewCell.swift; sourceTree = "<group>"; };
 		8E9D1FE523DDA61E002A2A2B /* UIApplication+currentKeyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+currentKeyWindow.swift"; sourceTree = "<group>"; };
+		8EC6675523E0436F003413E8 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
+		8EC6675723E049C1003413E8 /* UITextField+underline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+underline.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,7 @@
 			children = (
 				8E2110F223D84BFD00106569 /* UIColor+StaticColors.swift */,
 				8E6B767423D926ED00CC7355 /* UILabel+cardViewLabel.swift */,
+				8EC6675723E049C1003413E8 /* UITextField+underline.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				8E9D1FD023DD1707002A2A2B /* SlideMenuViewController.swift */,
+				8EC6675523E0436F003413E8 /* MyAccountViewController.swift */,
 			);
 			path = SlideMenuView;
 			sourceTree = "<group>";
@@ -285,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EC6675823E049C1003413E8 /* UITextField+underline.swift in Sources */,
 				8E9D1FD823DD75D3002A2A2B /* SlideMenuTableViewCell.swift in Sources */,
 				8E0C748523DE577400166D45 /* CalenderPickerViewController.swift in Sources */,
 				8E2110DE23D849BA00106569 /* MainViewController.swift in Sources */,
@@ -292,6 +299,7 @@
 				8E2110DA23D849BA00106569 /* AppDelegate.swift in Sources */,
 				8E9D1FE223DDA0B0002A2A2B /* CreateDayTopViewCell.swift in Sources */,
 				8E6B767323D9259C00CC7355 /* CardViewCell.swift in Sources */,
+				8EC6675623E0436F003413E8 /* MyAccountViewController.swift in Sources */,
 				8E9D1FD323DD1D3F002A2A2B /* Protocols.swift in Sources */,
 				8E2110DC23D849BA00106569 /* SceneDelegate.swift in Sources */,
 				8E2110F523D8546300106569 /* DayCountdownCollectionViewController.swift in Sources */,
