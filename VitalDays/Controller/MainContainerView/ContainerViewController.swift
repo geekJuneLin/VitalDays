@@ -64,6 +64,7 @@ class ContainerViewController: UIViewController{
     }
 }
 
+// MARK: - show the slide menu view
 extension ContainerViewController: ShowSlideMenuDelegate{
     func showSlideMenu(isDisplayed: Bool) {
         if !isDisplayed{

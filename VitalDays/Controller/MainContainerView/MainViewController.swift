@@ -10,6 +10,7 @@ import UIKit
 
 class MainViewController: UITabBarController {
     
+    /// pass the showSlideMenuDelegate to DayCountdownViewController
     var showSlideMenuDelegate: ShowSlideMenuDelegate?{
         didSet{
             print("did set delegate")

@@ -58,15 +58,17 @@ class DayCountdownCollectionViewController: UICollectionViewController{
         return label
     }()
     
+    private var edgePanGesture: UIScreenEdgePanGestureRecognizer?
+    private var swipeGesture: UISwipeGestureRecognizer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
         setupNoEventsViews()
         setupNavigationBar()
+        setupGestures()
     }
-    
-    
 }
 
 
@@ -111,18 +113,39 @@ extension DayCountdownCollectionViewController{
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
+    
+    fileprivate func setupGestures(){
+        // add gestures
+        edgePanGesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleEdgePanGesture))
+        swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
+        edgePanGesture!.edges = .left
+        swipeGesture?.direction = .left
+        swipeGesture!.isEnabled = false
+        collectionView.addGestureRecognizer(edgePanGesture!)
+        collectionView.addGestureRecognizer(swipeGesture!)
+    }
+    
+    /// show or hide the slide menu view
+    /// and change the enability of edgePanGesture and swipGesture according to the visibility of the slide menu view
+    fileprivate func showOrHideSlideMenu(){
+        showSlideMenuDelegate?.showSlideMenu(isDisplayed: isMenuViewDisplayed)
+        isMenuViewDisplayed.toggle()
+        edgePanGesture!.isEnabled = !isMenuViewDisplayed
+        swipeGesture!.isEnabled = isMenuViewDisplayed
+    }
 }
 
 // MARK: - objc functions
 extension DayCountdownCollectionViewController{
     
+    /// display or hide the slide menu view
     @objc
     fileprivate func handleLeftButtonClick(){
         print("left button clicked!")
-        showSlideMenuDelegate?.showSlideMenu(isDisplayed: isMenuViewDisplayed)
-        isMenuViewDisplayed.toggle()
+        showOrHideSlideMenu()
     }
     
+    /// display the create countdown view controller
     @objc
     fileprivate func handRightButtonClick(){
         print("right button clicked!")
@@ -132,6 +155,24 @@ extension DayCountdownCollectionViewController{
         navigationVC.modalPresentationStyle = .custom
         navigationVC.transitioningDelegate = self
         present(navigationVC, animated: true, completion: nil)
+    }
+    
+    /// using edge pan gesture to display the slide menu
+    @objc
+    fileprivate func handleEdgePanGesture(_ reconizer: UIScreenEdgePanGestureRecognizer){
+        if reconizer.state == .recognized{
+            print("detected the gesture")
+            showOrHideSlideMenu()
+        }
+    }
+    
+    /// using swipegesture (with left direction) to hide the slide menu
+    @objc
+    fileprivate func handleSwipeGesture(_ reconizer: UISwipeGestureRecognizer){
+        print("triggered!")
+        if reconizer.direction == .left{
+            showOrHideSlideMenu()
+        }
     }
 }
 
@@ -171,7 +212,7 @@ extension DayCountdownCollectionViewController: UIViewControllerTransitioningDel
     }
 }
 
-// MARK: - save vital days delegate
+// MARK: - save vital days event delegate
 extension DayCountdownCollectionViewController: SaveVitalDayDelegate{
     func saveVitalDay(event: String) {
         print("save the event \(event)")
