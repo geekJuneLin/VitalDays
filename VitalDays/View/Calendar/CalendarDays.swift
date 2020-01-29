@@ -11,7 +11,7 @@ import UIKit
 class CalendarDays: UIView{
     let cellId = "cellId"
     
-    private var emptyBox = Int()
+    static var emptyBox = Int()
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -26,6 +26,7 @@ class CalendarDays: UIView{
         super.init(frame: frame)
         
         setupView()
+        CalendarDays.emptyBox = CalendarDays.getEmptyBox()
     }
     
     required init?(coder: NSCoder) {
@@ -47,12 +48,20 @@ class CalendarDays: UIView{
                                height: heightAnchor,
                                heightValue: 0.9)
     }
+}
+
+// MARK: - other functions
+extension CalendarDays{
+    static func getCurrEmptyBox() -> Int{
+        return emptyBox
+    }
     
-    fileprivate func getEmptyBox() -> Int{
-        print("original: \(weekdayOrdinal)")
-        switch weekdayOrdinal{
-        case 0:
-            emptyBox = 5
+    static func setCurrEmptyBox(box: Int){
+        emptyBox = box
+    }
+    
+    static func getEmptyBox() -> Int{
+        switch weekday{
         case 1:
             emptyBox = 6
         case 2:
@@ -72,27 +81,36 @@ class CalendarDays: UIView{
         }
         return emptyBox
     }
+    
+    static func checkLeapYear() -> Bool{
+        return (year % 4) == 0 ?
+            (year % 100) == 0 ?
+                (year % 400) == 0 ?
+                    true :
+                false :
+            true :
+        false
+    }
 }
 
 // MARK: - UICollectionView data source
 extension CalendarDays: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        emptyBox = getEmptyBox()
-        print("empty: \(emptyBox)")
-        return daysInMonths[month - 1] + emptyBox
+        print("\(CalendarDays.checkLeapYear())")
+        return (!CalendarDays.checkLeapYear() && month == 2) ? 28 + CalendarDays.emptyBox : daysInMonths[month - 1] + CalendarDays.emptyBox
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CalendarDaysViewCell
-        cell.label.text = (indexPath.item >= emptyBox) ? "\(indexPath.item - emptyBox + 1)" : ""
-        if (indexPath.item - emptyBox + 1) == day &&
+        cell.label.text = (indexPath.item >= CalendarDays.emptyBox) ? "\(indexPath.item - CalendarDays.emptyBox + 1)" : ""
+        if (indexPath.item - CalendarDays.emptyBox + 1) == day &&
             month == calendar.component(.month, from: date) &&
             year == calendar.component(.year, from: date){
             cell.currentBack.isHidden = false
             print("select the current date")
         }else{
             cell.currentBack.isHidden = true
-            cell.isClickable = (indexPath.item >= emptyBox)
+            cell.isClickable = (indexPath.item >= CalendarDays.emptyBox)
         }
         return cell
     }

@@ -83,19 +83,31 @@ extension CalendarYear{
             label.text = "\(months[month - 1]) \(year)"
         }
         
-        if(weekdayOrdinal - ((daysInMonths[month - 1]) % 7)) < 0{
-            weekdayOrdinal = 8 - ((daysInMonths[month - 1]) % 7)
-        }else{
-            weekdayOrdinal = weekdayOrdinal - ((daysInMonths[month - 1]) % 7)
+        var emptyBox = Int()
+        let boxAtEnd = (7 - CalendarDays.getCurrEmptyBox()) + ((!CalendarDays.checkLeapYear() && month == 2) ? 28 : daysInMonths[month - 1])
+        if boxAtEnd > 35 {
+            emptyBox = 42 - boxAtEnd
+        }else if boxAtEnd > 25{
+            emptyBox = 35 - boxAtEnd
         }
-        
+        CalendarDays.setCurrEmptyBox(box: emptyBox)
+
         updateDelegate?.update()
     }
     
     @objc
     fileprivate func handleRightButton(){
         print("right button clicked")
-        weekdayOrdinal = (weekdayOrdinal + (daysInMonths[month - 1] % 7)) % 7
+        var emptyBox = Int()
+        let boxAtEnd = CalendarDays.getCurrEmptyBox() + ((!CalendarDays.checkLeapYear() && month == 2) ? 28 : daysInMonths[month - 1])
+        if boxAtEnd > 35 {
+            emptyBox = 7 - (42 - boxAtEnd)
+        }else if boxAtEnd > 25 {
+            emptyBox = 7 - (35 - boxAtEnd)
+        }
+        if emptyBox == 7 { emptyBox = 0 }
+        CalendarDays.setCurrEmptyBox(box: emptyBox)
+
         if month == 12 {
             month = 1
             year += 1
@@ -104,6 +116,7 @@ extension CalendarYear{
             month += 1
             label.text = "\(months[month - 1]) \(year)"
         }
+        if weekday == 0 { weekday = 7 }
         
         updateDelegate?.update()
     }

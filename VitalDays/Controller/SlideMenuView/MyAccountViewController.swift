@@ -209,6 +209,7 @@ class MyAccountViewController: UIViewController{
     }
 }
 
+// MARK: - selector functions
 extension MyAccountViewController{
     @objc
     fileprivate func showOrHide(){
