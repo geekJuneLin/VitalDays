@@ -211,9 +211,11 @@ extension CreateDayViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 4{
             return CGSize(width: collectionView.bounds.width * 0.9, height: 320)
-        }else{
-            return CGSize(width: collectionView.bounds.width, height: 70)
         }
+        if indexPath.section == 0 || indexPath.section == 2{
+            return CGSize(width: collectionView.bounds.width, height: 120)
+        }
+        return .zero
     }
     
     // size for header view

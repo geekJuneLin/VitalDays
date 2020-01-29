@@ -1,5 +1,5 @@
 //
-//  CreateDayTopTypeViewCell.swift
+//  CreateDayRepeatViewCell.swift
 //  VitalDays
 //
 //  Created by Junyu Lin on 29/01/20.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-class CreateDayTypeViewCell: UICollectionViewCell{
+class CreateDayRepeatViewCell: UICollectionViewCell{
     
-    let typePickerView: UIPickerView = {
+    let repeatPickerView: UIPickerView = {
        let view = UIPickerView()
         view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    let types = ["倒计时", "纪念日", "生日", "作业"]
+    let repeats = ["不重复", "周重复", "月重复", "年重复", "天重复"]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,33 +31,32 @@ class CreateDayTypeViewCell: UICollectionViewCell{
     }
     
     fileprivate func setupView(){
-        addSubviews(typePickerView)
+        addSubviews(repeatPickerView)
         
-        typePickerView.fillUpSuperView()
+        repeatPickerView.fillUpSuperView()
     }
     
     fileprivate func setupPickerView(){
-        typePickerView.dataSource = self
-        typePickerView.delegate = self
-        typePickerView.setValue(UIColor.white, forKey: "textColor")
+        repeatPickerView.dataSource = self
+        repeatPickerView.delegate = self
+        repeatPickerView.setValue(UIColor.white, forKey: "textColor")
     }
-    
 }
 
 // MARK: - UIPickerView data source
-extension CreateDayTypeViewCell: UIPickerViewDataSource{
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return types.count
+extension CreateDayRepeatViewCell: UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        repeats.count
     }
 }
 
 // MARK: - UIPickerView delegate
-extension CreateDayTypeViewCell: UIPickerViewDelegate{
+extension CreateDayRepeatViewCell: UIPickerViewDelegate{
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return types[row]
+        return repeats[row]
     }
 }
