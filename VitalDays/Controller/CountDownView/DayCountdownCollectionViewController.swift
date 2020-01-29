@@ -11,6 +11,7 @@ import UIKit
 class DayCountdownCollectionViewController: UICollectionViewController{
     
     let cellId = "cellId"
+    var countdownEvents = [String]()
     
     var slideMenuVC: SlideMenuViewController!
     var isMenuViewDisplayed = false
@@ -41,10 +42,27 @@ class DayCountdownCollectionViewController: UICollectionViewController{
         return btn
     }()
     
+    let noCountdownEventImg: UIImageView = {
+        let img = UIImageView(image: UIImage(named: "write-notes")?.withRenderingMode(.alwaysTemplate))
+        img.tintColor = .white
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
+    }()
+    
+    let noCountdownEventLbl: UILabel = {
+       let label = UILabel()
+        label.text = "Create your Vital Days"
+        label.textColor = .white
+        label.font = UIFont.init(name: "Courier", size: 22)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
+        setupNoEventsViews()
         setupNavigationBar()
     }
     
@@ -54,6 +72,7 @@ class DayCountdownCollectionViewController: UICollectionViewController{
 
 // MARK: - other functions
 extension DayCountdownCollectionViewController{
+
     fileprivate func setupView(){
         collectionView.backgroundColor = .backgroundColor
         
@@ -73,6 +92,18 @@ extension DayCountdownCollectionViewController{
         rightButton.target = self
         rightButton.action = #selector(handRightButtonClick)
         navigationController?.navigationBar.topItem?.rightBarButtonItem = rightButton
+    }
+    
+    fileprivate func setupNoEventsViews(){
+        collectionView.addSubviews(noCountdownEventImg, noCountdownEventLbl)
+        
+        noCountdownEventImg.anchors(centerX: collectionView.centerXAnchor,
+                                    top: collectionView.topAnchor,
+                                    topConstant: collectionView.bounds.height * 0.15)
+        
+        noCountdownEventLbl.anchors(centerX: collectionView.centerXAnchor,
+                                    top: noCountdownEventImg.bottomAnchor,
+                                    topConstant: 24)
     }
     
     fileprivate func setupNavigationBar(){
@@ -96,6 +127,7 @@ extension DayCountdownCollectionViewController{
     fileprivate func handRightButtonClick(){
         print("right button clicked!")
         let createVC = CreateDayViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        createVC.saveVitalDayDelegate = self
         let navigationVC = UINavigationController(rootViewController: createVC)
         navigationVC.modalPresentationStyle = .custom
         navigationVC.transitioningDelegate = self
@@ -107,7 +139,7 @@ extension DayCountdownCollectionViewController{
 extension DayCountdownCollectionViewController{
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return countdownEvents.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -136,5 +168,16 @@ extension DayCountdownCollectionViewController: UICollectionViewDelegateFlowLayo
 extension DayCountdownCollectionViewController: UIViewControllerTransitioningDelegate{
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return PresentTransition()
+    }
+}
+
+// MARK: - save vital days delegate
+extension DayCountdownCollectionViewController: SaveVitalDayDelegate{
+    func saveVitalDay(event: String) {
+        print("save the event \(event)")
+        noCountdownEventImg.isHidden = true
+        noCountdownEventLbl.isHidden = true
+        countdownEvents.append(event)
+        collectionView.reloadData()
     }
 }

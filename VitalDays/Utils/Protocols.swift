@@ -15,3 +15,7 @@ protocol ShowSlideMenuDelegate {
 protocol UpdateCalendarDaysDelegate {
     func update()
 }
+
+protocol SaveVitalDayDelegate {
+    func saveVitalDay(event: String)
+}

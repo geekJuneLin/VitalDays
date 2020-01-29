@@ -10,11 +10,23 @@ import UIKit
 
 class CreateDayViewController: UICollectionViewController{
     
-    let cellTopId = "cellTopId"
+    var saveVitalDayDelegate: SaveVitalDayDelegate?
+    
+    var typeItems = 0
+    var isTypeSelectViewPresented = false
+    var repeatItems = 0
+    var isRepeatSelectViewPresented = false
+    
+    let topHeaderId = "topHeaderId"
+    let cellTypeId = "cellTypeId"
+    let cellTargetId = "cellTargetId"
+    let cellRepeatId = "cellRepeatId"
+    let cellNoteId = "cellNoteId"
     let cellBottomId = "cellBottomId"
     
-    let cellIcons = ["light", "target", "repeat", "note"]
-    let cellLabels = ["种类", "目标日期", "循环提醒", "备注"]
+    let headerIcons = ["light", "target", "repeat", "note"]
+    let headerLabels = ["种类", "目标日期", "循环提醒", "备注"]
+    let headerContext = ["倒计时", "2020 - 1 - 29", "否", "宝贝回来"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +35,7 @@ class CreateDayViewController: UICollectionViewController{
         setupView()
     }
     
+    /// setup navigation view controller
     fileprivate func setupNavigationVC(){
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -52,6 +65,7 @@ class CreateDayViewController: UICollectionViewController{
         navigationController?.navigationBar.topItem?.rightBarButtonItem = rightBarBtn
     }
     
+    /// setup view
     fileprivate func setupView(){
         // setup data source and delegate
         collectionView.dataSource = self
@@ -59,49 +73,133 @@ class CreateDayViewController: UICollectionViewController{
         
         collectionView.backgroundColor = .backgroundColor
         
-        collectionView.register(CreateDayTopViewCell.self, forCellWithReuseIdentifier: cellTopId)
+        // top header view
+        collectionView.register(CreateDayTopHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: topHeaderId)
+        
+        // child cell view
+        collectionView.register(CreateDayTypeViewCell.self, forCellWithReuseIdentifier: cellTypeId)
+        collectionView.register(CreateDayRepeatViewCell.self, forCellWithReuseIdentifier: cellRepeatId)
         collectionView.register(CreateDayBottomViewCell.self, forCellWithReuseIdentifier: cellBottomId)
     }
 }
 
 // MARK: - objc selector functions
 extension CreateDayViewController{
+    
+    /// dismiss the current view controller
     @objc
     fileprivate func handleLeftButton(){
         print("left button clicked!")
         self.dismiss(animated: true, completion: nil)
     }
     
+    /// save the day
     @objc
     fileprivate func handleRightButton(){
         print("right button clicked!")
+        saveVitalDayDelegate?.saveVitalDay(event: "First Day")
+    }
+    
+    /// present the date picker view controller
+    @objc
+    fileprivate func presentDatePickerViewController(){
+        let calenderVC = CalendarPickerViewController()
+        let navigationVC = UINavigationController(rootViewController: calenderVC)
+        navigationVC.modalPresentationStyle = .fullScreen
+        self.present(navigationVC, animated: true, completion: nil)
+    }
+    
+    /// present the type select view
+    @objc
+    fileprivate func presentTypeSelectView(){
+        isTypeSelectViewPresented.toggle()
+        typeItems = isTypeSelectViewPresented ? 1 : 0
+        isTypeSelectViewPresented ? collectionView.insertItems(at: [IndexPath(row: 0, section: 0)]) : collectionView.deleteItems(at: [IndexPath(row: 0, section: 0)])
+        collectionView.reloadData()
+    }
+    
+    /// present the repeat select view
+    @objc
+    fileprivate func presentRepeatSelectView(){
+        isRepeatSelectViewPresented.toggle()
+        repeatItems = isRepeatSelectViewPresented ? 1 : 0
+        isRepeatSelectViewPresented ? collectionView.insertItems(at: [IndexPath(row: 0, section: 2)]) : collectionView.deleteItems(at: [IndexPath(row: 0, section: 2)])
+        collectionView.reloadData()
     }
 }
 
 // MARK: - UICollectionViewController data source
 extension CreateDayViewController{
     
+    // number of sections
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 5
     }
     
+    // number of items for each section
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // for type select view
         if section == 0{
-            return 4
-        }else{
+            return typeItems
+        }
+        
+        // for repeat select view
+        if section == 2{
+            return repeatItems
+        }
+        
+        // for preview cell
+        if section == 4{
             return 1
         }
+        
+        return 0
     }
     
+    // view cell at each index
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // type select view cell
         if indexPath.section == 0{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellTopId, for: indexPath) as! CreateDayTopViewCell
-            cell.iconName = cellIcons[indexPath.item]
-            cell.cellLabel = cellLabels[indexPath.item]
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellTypeId, for: indexPath)
             return cell
+        }
+        
+        //  repeat select view cell
+        if indexPath.section == 2{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellRepeatId, for: indexPath)
+            return cell
+        }
+        
+        // preview view cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellBottomId, for: indexPath)
+        return cell
+    }
+    
+    // header supplementary view for each section
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader{
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: topHeaderId, for: indexPath) as! CreateDayTopHeaderView
+                header.iconName = headerIcons[indexPath.section]
+                header.cellLabel = headerLabels[indexPath.section]
+                header.context.text = headerContext[indexPath.section]
+            
+            // TapReconizer for type select view cell
+            if indexPath.section == 0{
+                header.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentTypeSelectView)))
+            }
+            
+            // TapReconizer for repeat select view cell
+            if indexPath.section == 2{
+                header.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentRepeatSelectView)))
+            }
+            
+            // TapReconizer for date picker view controller
+            if indexPath.section == 1{
+                header.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentDatePickerViewController)))
+            }
+            return header
         }else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellBottomId, for: indexPath)
-            return cell
+            return UICollectionReusableView()
         }
     }
 }
@@ -109,32 +207,28 @@ extension CreateDayViewController{
 // MARK: - UICollectionViewDelegateFlowLayout
 extension CreateDayViewController: UICollectionViewDelegateFlowLayout{
     
+    // size for each cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == 0{
-            return CGSize(width: collectionView.bounds.width * 0.9, height: 70)
-        }else{
+        if indexPath.section == 4{
             return CGSize(width: collectionView.bounds.width * 0.9, height: 320)
+        }else{
+            return CGSize(width: collectionView.bounds.width, height: 70)
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 14
+    // size for header view
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 4 {
+            return .zero
+        }
+        return CGSize(width: collectionView.bounds.width * 0.9, height: 70)
     }
     
+    // inset for each section
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if section == 0 {
-            return UIEdgeInsets(top: 36, left: 0, bottom: 0, right: 0)
-        }else{
+        if section == 4{
             return UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
         }
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.item == 1{
-            let calenderVC = CalendarPickerViewController()
-            let navigationVC = UINavigationController(rootViewController: calenderVC)
-            navigationVC.modalPresentationStyle = .fullScreen
-            self.present(navigationVC, animated: true, completion: nil)
-        }
+        return UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
     }
 }

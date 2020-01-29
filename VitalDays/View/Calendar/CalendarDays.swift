@@ -43,6 +43,7 @@ class CalendarDays: UIView{
         addSubview(collectionView)
         
         collectionView.anchors(centerX: centerXAnchor,
+                               top: topAnchor,
                                width: widthAnchor,
                                widthValue: 0.95,
                                height: heightAnchor,

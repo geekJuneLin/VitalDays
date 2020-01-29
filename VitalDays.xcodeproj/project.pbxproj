@@ -30,11 +30,14 @@
 		8E9D1FD523DD22D2002A2A2B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FD423DD22D2002A2A2B /* ContainerViewController.swift */; };
 		8E9D1FD823DD75D3002A2A2B /* SlideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FD723DD75D3002A2A2B /* SlideMenuTableViewCell.swift */; };
 		8E9D1FDD23DD8332002A2A2B /* PresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FDC23DD8332002A2A2B /* PresentTransition.swift */; };
-		8E9D1FE223DDA0B0002A2A2B /* CreateDayTopViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FE123DDA0B0002A2A2B /* CreateDayTopViewCell.swift */; };
+		8E9D1FE223DDA0B0002A2A2B /* CreateDayTopHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FE123DDA0B0002A2A2B /* CreateDayTopHeaderView.swift */; };
 		8E9D1FE423DDA0BE002A2A2B /* CreateDayBottomViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FE323DDA0BE002A2A2B /* CreateDayBottomViewCell.swift */; };
 		8E9D1FE623DDA61E002A2A2B /* UIApplication+currentKeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FE523DDA61E002A2A2B /* UIApplication+currentKeyWindow.swift */; };
 		8EC6675623E0436F003413E8 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC6675523E0436F003413E8 /* MyAccountViewController.swift */; };
 		8EC6675823E049C1003413E8 /* UITextField+underline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC6675723E049C1003413E8 /* UITextField+underline.swift */; };
+		8ED532AD23E13CE6001A5354 /* CreateDayTypeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED532AC23E13CE6001A5354 /* CreateDayTypeViewCell.swift */; };
+		8ED532B123E13D30001A5354 /* CreateDayRepeatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED532B023E13D30001A5354 /* CreateDayRepeatViewCell.swift */; };
+		8EE65E1C23E1249900DD9980 /* VDdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE65E1B23E1249900DD9980 /* VDdate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,11 +66,14 @@
 		8E9D1FD423DD22D2002A2A2B /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		8E9D1FD723DD75D3002A2A2B /* SlideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		8E9D1FDC23DD8332002A2A2B /* PresentTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentTransition.swift; sourceTree = "<group>"; };
-		8E9D1FE123DDA0B0002A2A2B /* CreateDayTopViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayTopViewCell.swift; sourceTree = "<group>"; };
+		8E9D1FE123DDA0B0002A2A2B /* CreateDayTopHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayTopHeaderView.swift; sourceTree = "<group>"; };
 		8E9D1FE323DDA0BE002A2A2B /* CreateDayBottomViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayBottomViewCell.swift; sourceTree = "<group>"; };
 		8E9D1FE523DDA61E002A2A2B /* UIApplication+currentKeyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+currentKeyWindow.swift"; sourceTree = "<group>"; };
 		8EC6675523E0436F003413E8 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		8EC6675723E049C1003413E8 /* UITextField+underline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+underline.swift"; sourceTree = "<group>"; };
+		8ED532AC23E13CE6001A5354 /* CreateDayTypeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayTypeViewCell.swift; sourceTree = "<group>"; };
+		8ED532B023E13D30001A5354 /* CreateDayRepeatViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayRepeatViewCell.swift; sourceTree = "<group>"; };
+		8EE65E1B23E1249900DD9980 /* VDdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VDdate.swift; path = VitalDays/Extensions/VDdate.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,7 @@
 		8E2110EF23D84B9000106569 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8EE65E1B23E1249900DD9980 /* VDdate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -215,8 +222,10 @@
 		8E9D1FE023DDA091002A2A2B /* CreateDayVCViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				8E9D1FE123DDA0B0002A2A2B /* CreateDayTopViewCell.swift */,
+				8E9D1FE123DDA0B0002A2A2B /* CreateDayTopHeaderView.swift */,
 				8E9D1FE323DDA0BE002A2A2B /* CreateDayBottomViewCell.swift */,
+				8ED532AC23E13CE6001A5354 /* CreateDayTypeViewCell.swift */,
+				8ED532B023E13D30001A5354 /* CreateDayRepeatViewCell.swift */,
 			);
 			path = CreateDayVCViewCell;
 			sourceTree = "<group>";
@@ -297,19 +306,22 @@
 				8E2110DE23D849BA00106569 /* MainViewController.swift in Sources */,
 				8E0C748E23DE7F1400166D45 /* CalendarWeek.swift in Sources */,
 				8E2110DA23D849BA00106569 /* AppDelegate.swift in Sources */,
-				8E9D1FE223DDA0B0002A2A2B /* CreateDayTopViewCell.swift in Sources */,
+				8E9D1FE223DDA0B0002A2A2B /* CreateDayTopHeaderView.swift in Sources */,
 				8E6B767323D9259C00CC7355 /* CardViewCell.swift in Sources */,
+				8EE65E1C23E1249900DD9980 /* VDdate.swift in Sources */,
 				8EC6675623E0436F003413E8 /* MyAccountViewController.swift in Sources */,
 				8E9D1FD323DD1D3F002A2A2B /* Protocols.swift in Sources */,
 				8E2110DC23D849BA00106569 /* SceneDelegate.swift in Sources */,
 				8E2110F523D8546300106569 /* DayCountdownCollectionViewController.swift in Sources */,
 				8E9D1FD123DD1707002A2A2B /* SlideMenuViewController.swift in Sources */,
 				8E0C749023DE91B900166D45 /* CalendarDaysViewCell.swift in Sources */,
+				8ED532AD23E13CE6001A5354 /* CreateDayTypeViewCell.swift in Sources */,
 				8E0C748723DE5C8400166D45 /* CalendarView.swift in Sources */,
 				8E6B766F23D9195400CC7355 /* CreateDayViewController.swift in Sources */,
 				8E0C748323DE438800166D45 /* CardView.swift in Sources */,
 				8E9D1FE423DDA0BE002A2A2B /* CreateDayBottomViewCell.swift in Sources */,
 				8E9D1FDD23DD8332002A2A2B /* PresentTransition.swift in Sources */,
+				8ED532B123E13D30001A5354 /* CreateDayRepeatViewCell.swift in Sources */,
 				8E9D1FE623DDA61E002A2A2B /* UIApplication+currentKeyWindow.swift in Sources */,
 				8E0C748C23DE78F200166D45 /* CalendarDays.swift in Sources */,
 				8E0C748A23DE5EA000166D45 /* CalendarYear.swift in Sources */,
@@ -462,7 +474,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Junyu.VitalDays;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -480,7 +492,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Junyu.VitalDays;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

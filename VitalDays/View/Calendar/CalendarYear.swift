@@ -105,7 +105,7 @@ extension CalendarYear{
         }else if boxAtEnd > 25 {
             emptyBox = 7 - (35 - boxAtEnd)
         }
-        if emptyBox == 7 { emptyBox = 0 }
+        if emptyBox == 7 {emptyBox = 0 }
         CalendarDays.setCurrEmptyBox(box: emptyBox)
 
         if month == 12 {

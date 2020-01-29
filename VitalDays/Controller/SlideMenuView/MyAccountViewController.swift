@@ -156,7 +156,7 @@ class MyAccountViewController: UIViewController{
         
         titleLabel.anchors(centerX: view.centerXAnchor,
                            top: view.topAnchor,
-                           topConstant: view.bounds.height * 0.25)
+                           topConstant: view.bounds.height * 0.2)
         
         accountTextField.anchors(centerX: view.centerXAnchor,
                                  top: titleLabel.bottomAnchor,

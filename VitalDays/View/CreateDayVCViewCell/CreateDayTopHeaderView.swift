@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateDayTopViewCell: UICollectionViewCell{
+class CreateDayTopHeaderView: UICollectionReusableView{
     
     var iconName: String?{
         didSet{
@@ -44,7 +44,7 @@ class CreateDayTopViewCell: UICollectionViewCell{
     
     let context: UILabel = {
        let label = UILabel()
-        label.text = "倒计时"
+        label.text = ""
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -69,8 +69,6 @@ class CreateDayTopViewCell: UICollectionViewCell{
     }
     
     fileprivate func setupView(){
-        clipsToBounds = true
-        layer.cornerRadius = 5
         backgroundColor = UIColor.white.withAlphaComponent(0.5)
         
         addSubviews(icon, label, context, arrowIcon)
