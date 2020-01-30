@@ -27,3 +27,11 @@ protocol TypeSelectedDelegate {
 protocol RepeatSelectedDelegate {
     func selectedRepeat(type: String)
 }
+
+protocol PassDayDelegate {
+    func selectedDay(day: Int)
+}
+
+protocol PassSelectedDateDelegate {
+    func selectedDate(date: String)
+}

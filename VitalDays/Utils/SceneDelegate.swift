@@ -8,6 +8,26 @@
 
 import UIKit
 
+extension Date {
+    var weekday: Int {
+        return Calendar.current.component(.weekday, from: self)
+    }
+    var firstDayOfTheMonth: Date {
+        return Calendar.current.date(from: Calendar.current.dateComponents([.year,.month], from: self))!
+    }
+}
+extension String {
+    static var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+
+    var date: Date? {
+        return String.dateFormatter.date(from: self)
+    }
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -18,6 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScence = scene as? UIWindowScene{
             let window = UIWindow(windowScene: windowScence)
             let tabBarController = ContainerViewController()
+            weekday = ("\(year)-\(month)-\(day)".date?.firstDayOfTheMonth.weekday)!
             window.rootViewController = tabBarController
             self.window = window
             window.makeKeyAndVisible()

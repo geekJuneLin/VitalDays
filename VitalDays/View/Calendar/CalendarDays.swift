@@ -9,6 +9,10 @@
 import UIKit
 
 class CalendarDays: UIView{
+    
+    // delegate
+    var passDayDelegate: PassDayDelegate?
+    
     let cellId = "cellId"
     
     static var emptyBox = Int()
@@ -105,8 +109,8 @@ extension CalendarDays: UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CalendarDaysViewCell
         cell.label.text = (indexPath.item >= CalendarDays.emptyBox) ? "\(indexPath.item - CalendarDays.emptyBox + 1)" : ""
         if (indexPath.item - CalendarDays.emptyBox + 1) == day &&
-            month == calendar.component(.month, from: date) &&
-            year == calendar.component(.year, from: date){
+            month == Calendar.current.component(.month, from: Date()) &&
+            year == Calendar.current.component(.year, from: Date()){
             cell.currentBack.isHidden = false
             print("select the current date")
         }else{
@@ -127,10 +131,15 @@ extension CalendarDays: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 4
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        passDayDelegate?.selectedDay(day: indexPath.item - CalendarDays.emptyBox + 1)
+    }
 }
 
 // MARK: - Update calendar delegate
 extension CalendarDays: UpdateCalendarDaysDelegate{
+    /// once users switch to next or previous month update the collectionview
     func update() {
         collectionView.reloadData()
     }

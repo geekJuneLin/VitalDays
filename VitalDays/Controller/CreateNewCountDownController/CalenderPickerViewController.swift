@@ -10,6 +10,9 @@ import UIKit
 
 class CalendarPickerViewController: UIViewController{
     
+    // delegate
+    var passSelectedDateDelegate: PassSelectedDateDelegate?
+    
     let calendar: CalendarView = {
        let view = CalendarView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +78,8 @@ extension CalendarPickerViewController{
     
     @objc
     fileprivate func handleRightButton(){
-        print("right button clicked in Calendar")
+        print("right button clicked in Calendar: \(calendar.getSelectedDate())")
+        passSelectedDateDelegate?.selectedDate(date: "\(calendar.getSelectedDate())")
+        dismiss(animated: true, completion: nil)
     }
 }

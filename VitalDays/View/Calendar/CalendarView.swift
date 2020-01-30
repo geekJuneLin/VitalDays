@@ -27,12 +27,16 @@ class CalendarView: UIView{
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    private var selectedDay: Int?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         setupView()
+        selectedDay = day
         print("\(weekday) \(day) \(month) \(year)")
+        daysView.passDayDelegate = self
     }
 
     required init?(coder: NSCoder) {
@@ -61,5 +65,21 @@ class CalendarView: UIView{
                          bottom: bottomAnchor,
                          left: leftAnchor,
                          right: rightAnchor)
+    }
+}
+
+// MARK: - public function
+extension CalendarView {
+    
+    func getSelectedDate() -> String{
+        return "\(year)-\(month)-\(selectedDay!)"
+    }
+}
+
+// MARK: - delegate methods
+extension CalendarView: PassDayDelegate{
+    func selectedDay(day: Int) {
+        print("CalendarView select: \(day)")
+        selectedDay = day
     }
 }

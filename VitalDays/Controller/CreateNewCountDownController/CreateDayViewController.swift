@@ -30,6 +30,7 @@ class CreateDayViewController: UICollectionViewController{
     
     var selectedType = "选择类型"
     var selectedRepeat = "选择循环提醒"
+    var selectedTargetDate = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,6 +123,7 @@ extension CreateDayViewController{
     @objc
     fileprivate func presentDatePickerViewController(){
         let calenderVC = CalendarPickerViewController()
+        calenderVC.passSelectedDateDelegate = self
         let navigationVC = UINavigationController(rootViewController: calenderVC)
         navigationVC.modalPresentationStyle = .fullScreen
         self.present(navigationVC, animated: true, completion: nil)
@@ -131,14 +133,12 @@ extension CreateDayViewController{
     @objc
     fileprivate func presentTypeSelectView(){
         showOrHideTypeView()
-//        collectionView.reloadData()
     }
     
     /// present the repeat select view
     @objc
     fileprivate func presentRepeatSelectView(){
         showOrHideRepeatView()
-//        collectionView.reloadData()
     }
 }
 
@@ -207,6 +207,7 @@ extension CreateDayViewController{
             // TapReconizer for date picker view controller
             else if indexPath.section == 1{
                 header.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentDatePickerViewController)))
+                header.context.text = selectedTargetDate
                 return header
             }
             // TapReconizer for repeat select view cell
@@ -256,20 +257,27 @@ extension CreateDayViewController: UICollectionViewDelegateFlowLayout{
 }
 
 // MARK: - delegate methods
-extension CreateDayViewController: TypeSelectedDelegate, RepeatSelectedDelegate{
+extension CreateDayViewController: TypeSelectedDelegate, RepeatSelectedDelegate, PassSelectedDateDelegate{
     func selectedType(type: String) {
         print("create day VC: \(type)")
 
-        selectedType = type
+        
         showOrHideTypeView()
+        selectedType = type
         collectionView.reloadSections(IndexSet(integer: 0))
     }
     
     func selectedRepeat(type: String) {
         print("create day VC: \(type)")
         
-        selectedRepeat = type
+        
         showOrHideRepeatView()
+        selectedRepeat = type
         collectionView.reloadSections(IndexSet(integer: 2))
+    }
+    
+    func selectedDate(date: String) {
+        selectedTargetDate = date
+        collectionView.reloadSections(IndexSet(integer: 1))
     }
 }
