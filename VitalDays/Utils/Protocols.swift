@@ -33,5 +33,9 @@ protocol PassDayDelegate {
 }
 
 protocol PassSelectedDateDelegate {
-    func selectedDate(date: String)
+    func selectedDate(date: VDdate)
+}
+
+protocol PassTextFieldValueDelegate {
+    func textFieldValue(value: String)
 }

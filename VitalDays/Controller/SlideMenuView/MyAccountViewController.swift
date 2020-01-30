@@ -23,6 +23,7 @@ class MyAccountViewController: UIViewController{
        let field = UITextField()
         let img = UIImageView(image: UIImage(named: "customer"))
         field.placeholder = "Account"
+        field.attributedPlaceholder = NSAttributedString(string: field.placeholder!, attributes: [.foregroundColor:UIColor.white])
         field.underline(color: .white)
         field.leftView = img
         field.leftViewMode = .always
@@ -42,6 +43,7 @@ class MyAccountViewController: UIViewController{
        let field = UITextField()
         let img = UIImageView(image: UIImage(named: "lock"))
         field.placeholder = "Password"
+        field.attributedPlaceholder = NSAttributedString(string: field.placeholder!, attributes: [.foregroundColor:UIColor.white])
         field.underline(color: .white)
         field.isSecureTextEntry = true
         field.rightViewMode = .always

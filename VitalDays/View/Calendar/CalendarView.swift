@@ -71,8 +71,8 @@ class CalendarView: UIView{
 // MARK: - public function
 extension CalendarView {
     
-    func getSelectedDate() -> String{
-        return "\(year)-\(month)-\(selectedDay!)"
+    func getSelectedDate() -> VDdate{
+        return VDdate(day: selectedDay!, month: month, year: year)
     }
 }
 

@@ -109,8 +109,8 @@ extension CalendarDays: UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CalendarDaysViewCell
         cell.label.text = (indexPath.item >= CalendarDays.emptyBox) ? "\(indexPath.item - CalendarDays.emptyBox + 1)" : ""
         if (indexPath.item - CalendarDays.emptyBox + 1) == day &&
-            month == Calendar.current.component(.month, from: Date()) &&
-            year == Calendar.current.component(.year, from: Date()){
+            month == calendar.component(.month, from: date) &&
+            year == calendar.component(.year, from: date){
             cell.currentBack.isHidden = false
             print("select the current date")
         }else{

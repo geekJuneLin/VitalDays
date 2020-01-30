@@ -17,7 +17,7 @@ enum NoteType: Int{
 
 struct Event{
     var note: String
-    var noteType: NoteType
+    var noteType: String
     var targetDate: String
     var leftDays: Int
 }

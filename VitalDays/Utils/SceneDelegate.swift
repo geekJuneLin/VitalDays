@@ -20,6 +20,7 @@ extension String {
     static var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.timeZone = NSTimeZone(abbreviation: "GMT+0:00") as TimeZone?
         return formatter
     }()
 

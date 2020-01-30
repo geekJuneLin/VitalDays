@@ -18,3 +18,9 @@ var weekday = calendar.component(.weekday, from: date)
 let weeks = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 let daysInMonths = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 let months = ["January", "February", "March", "April", "May", "June", "July", "Augest", "September", "October", "November", "December"]
+
+struct VDdate {
+    var day: Int
+    var month: Int
+    var year: Int
+}

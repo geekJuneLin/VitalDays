@@ -79,7 +79,7 @@ extension CalendarPickerViewController{
     @objc
     fileprivate func handleRightButton(){
         print("right button clicked in Calendar: \(calendar.getSelectedDate())")
-        passSelectedDateDelegate?.selectedDate(date: "\(calendar.getSelectedDate())")
+        passSelectedDateDelegate?.selectedDate(date: calendar.getSelectedDate())
         dismiss(animated: true, completion: nil)
     }
 }

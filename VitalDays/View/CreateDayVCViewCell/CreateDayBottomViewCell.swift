@@ -10,6 +10,18 @@ import UIKit
 
 class CreateDayBottomViewCell: UICollectionViewCell{
     
+    var event: Event?{
+        didSet{
+            if let event = event {
+                cardView.noteLbl.text = event.note
+                cardView.noteTypeLbl.text = event.noteType
+                cardView.smallTypeLbl.text = " \(event.noteType) "
+                cardView.targetDayLbl.text = event.targetDate
+                cardView.countDownDays.text = "\(event.leftDays)"
+            }
+        }
+    }
+    
     let cellLabel: UILabel = {
       let label = UILabel()
         label.textColor = .white

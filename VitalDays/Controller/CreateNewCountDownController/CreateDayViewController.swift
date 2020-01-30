@@ -26,11 +26,13 @@ class CreateDayViewController: UICollectionViewController{
     let cellBottomId = "cellBottomId"
     
     let headerIcons = ["light", "target", "repeat", "note"]
-    let headerLabels = ["种类", "目标日期", "循环提醒", "备注"]
+    let headerLabels = ["种类", "目标日期", "循环提醒", "备注:"]
     
     var selectedType = "选择类型"
     var selectedRepeat = "选择循环提醒"
     var selectedTargetDate = ""
+    var noteTextFieldValue = ""
+    var daysLeft = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +77,7 @@ class CreateDayViewController: UICollectionViewController{
         collectionView.dataSource = self
         collectionView.delegate = self
         
+        collectionView.isScrollEnabled = false
         collectionView.backgroundColor = .backgroundColor
         
         // top header view
@@ -187,7 +190,11 @@ extension CreateDayViewController{
         }
         
         // preview view cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellBottomId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellBottomId, for: indexPath) as! CreateDayBottomViewCell
+        cell.event = Event(note: noteTextFieldValue == "" ? "备注" : noteTextFieldValue,
+                           noteType: selectedType,
+                           targetDate: selectedTargetDate,
+                           leftDays: daysLeft)
         return cell
     }
     
@@ -216,7 +223,11 @@ extension CreateDayViewController{
                 header.context.text = selectedRepeat
                 return header
             }
-            
+            else if indexPath.section == 3{
+                header.context.isHidden = true
+                header.contextTextField.isHidden = false
+                header.textFieldPassDelegate = self
+            }
             return header
             
         }else{
@@ -257,14 +268,16 @@ extension CreateDayViewController: UICollectionViewDelegateFlowLayout{
 }
 
 // MARK: - delegate methods
-extension CreateDayViewController: TypeSelectedDelegate, RepeatSelectedDelegate, PassSelectedDateDelegate{
+extension CreateDayViewController: TypeSelectedDelegate, RepeatSelectedDelegate, PassSelectedDateDelegate, PassTextFieldValueDelegate{
     func selectedType(type: String) {
         print("create day VC: \(type)")
 
         
         showOrHideTypeView()
         selectedType = type
+        collectionView.reloadSections(IndexSet(integer: 4))
         collectionView.reloadSections(IndexSet(integer: 0))
+        
     }
     
     func selectedRepeat(type: String) {
@@ -276,8 +289,18 @@ extension CreateDayViewController: TypeSelectedDelegate, RepeatSelectedDelegate,
         collectionView.reloadSections(IndexSet(integer: 2))
     }
     
-    func selectedDate(date: String) {
-        selectedTargetDate = date
+    func selectedDate(date: VDdate) {
+        print("date: \(date), \(Date()), \("\(date.year)-\(date.month)-\(date.day)".date!)")
+        selectedTargetDate = "\(date.year)-\(date.month)-\(date.day)"
+        daysLeft = calendar.dateComponents([.day, .hour],
+                                           from: Date(),
+                                           to: "\(date.year)-\(date.month)-\(date.day)".date!).day!
+        collectionView.reloadSections(IndexSet(integer: 4))
         collectionView.reloadSections(IndexSet(integer: 1))
+    }
+    
+    func textFieldValue(value: String) {
+        noteTextFieldValue = value
+        collectionView.reloadSections(IndexSet(integer: 4))
     }
 }
