@@ -10,6 +10,8 @@ import UIKit
 
 class CreateDayTypeViewCell: UICollectionViewCell{
     
+    var selectedTypeDelegate: TypeSelectedDelegate?
+    
     let typePickerView: UIPickerView = {
        let view = UIPickerView()
         view.backgroundColor = .clear
@@ -59,5 +61,10 @@ extension CreateDayTypeViewCell: UIPickerViewDataSource{
 extension CreateDayTypeViewCell: UIPickerViewDelegate{
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return types[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("type selected: \(types[row])")
+        selectedTypeDelegate?.selectedType(type: types[row])
     }
 }

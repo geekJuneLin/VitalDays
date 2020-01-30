@@ -25,6 +25,7 @@
 		8E6B766F23D9195400CC7355 /* CreateDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B766E23D9195400CC7355 /* CreateDayViewController.swift */; };
 		8E6B767323D9259C00CC7355 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B767223D9259C00CC7355 /* CardViewCell.swift */; };
 		8E6B767523D926ED00CC7355 /* UILabel+cardViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B767423D926ED00CC7355 /* UILabel+cardViewLabel.swift */; };
+		8E71D2DE23E24FFA00F6F3B2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71D2DD23E24FFA00F6F3B2 /* Event.swift */; };
 		8E9D1FD123DD1707002A2A2B /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FD023DD1707002A2A2B /* SlideMenuViewController.swift */; };
 		8E9D1FD323DD1D3F002A2A2B /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FD223DD1D3F002A2A2B /* Protocols.swift */; };
 		8E9D1FD523DD22D2002A2A2B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FD423DD22D2002A2A2B /* ContainerViewController.swift */; };
@@ -61,6 +62,7 @@
 		8E6B766E23D9195400CC7355 /* CreateDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayViewController.swift; sourceTree = "<group>"; };
 		8E6B767223D9259C00CC7355 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		8E6B767423D926ED00CC7355 /* UILabel+cardViewLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+cardViewLabel.swift"; sourceTree = "<group>"; };
+		8E71D2DD23E24FFA00F6F3B2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Event.swift; path = VitalDays/View/CreateDayVCViewCell/Event.swift; sourceTree = SOURCE_ROOT; };
 		8E9D1FD023DD1707002A2A2B /* SlideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
 		8E9D1FD223DD1D3F002A2A2B /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		8E9D1FD423DD22D2002A2A2B /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				8EE65E1B23E1249900DD9980 /* VDdate.swift */,
+				8E71D2DD23E24FFA00F6F3B2 /* Event.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				8E9D1FD823DD75D3002A2A2B /* SlideMenuTableViewCell.swift in Sources */,
 				8E0C748523DE577400166D45 /* CalenderPickerViewController.swift in Sources */,
 				8E2110DE23D849BA00106569 /* MainViewController.swift in Sources */,
+				8E71D2DE23E24FFA00F6F3B2 /* Event.swift in Sources */,
 				8E0C748E23DE7F1400166D45 /* CalendarWeek.swift in Sources */,
 				8E2110DA23D849BA00106569 /* AppDelegate.swift in Sources */,
 				8E9D1FE223DDA0B0002A2A2B /* CreateDayTopHeaderView.swift in Sources */,

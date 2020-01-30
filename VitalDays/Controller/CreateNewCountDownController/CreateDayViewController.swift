@@ -10,6 +10,7 @@ import UIKit
 
 class CreateDayViewController: UICollectionViewController{
     
+    // delegates
     var saveVitalDayDelegate: SaveVitalDayDelegate?
     
     var typeItems = 0
@@ -26,7 +27,9 @@ class CreateDayViewController: UICollectionViewController{
     
     let headerIcons = ["light", "target", "repeat", "note"]
     let headerLabels = ["种类", "目标日期", "循环提醒", "备注"]
-    let headerContext = ["倒计时", "2020 - 1 - 29", "否", "宝贝回来"]
+    
+    var selectedType = "选择类型"
+    var selectedRepeat = "选择循环提醒"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +86,21 @@ class CreateDayViewController: UICollectionViewController{
     }
 }
 
+// MARK: - other functions
+extension CreateDayViewController{
+    fileprivate func showOrHideTypeView(){
+        isTypeSelectViewPresented.toggle()
+        typeItems = isTypeSelectViewPresented ? 1 : 0
+        isTypeSelectViewPresented ? collectionView.insertItems(at: [IndexPath(row: 0, section: 0)]) : collectionView.deleteItems(at: [IndexPath(row: 0, section: 0)])
+    }
+    
+    fileprivate func showOrHideRepeatView(){
+        isRepeatSelectViewPresented.toggle()
+        repeatItems = isRepeatSelectViewPresented ? 1 : 0
+        isRepeatSelectViewPresented ? collectionView.insertItems(at: [IndexPath(row: 0, section: 2)]) : collectionView.deleteItems(at: [IndexPath(row: 0, section: 2)])
+    }
+}
+
 // MARK: - objc selector functions
 extension CreateDayViewController{
     
@@ -112,19 +130,15 @@ extension CreateDayViewController{
     /// present the type select view
     @objc
     fileprivate func presentTypeSelectView(){
-        isTypeSelectViewPresented.toggle()
-        typeItems = isTypeSelectViewPresented ? 1 : 0
-        isTypeSelectViewPresented ? collectionView.insertItems(at: [IndexPath(row: 0, section: 0)]) : collectionView.deleteItems(at: [IndexPath(row: 0, section: 0)])
-        collectionView.reloadData()
+        showOrHideTypeView()
+//        collectionView.reloadData()
     }
     
     /// present the repeat select view
     @objc
     fileprivate func presentRepeatSelectView(){
-        isRepeatSelectViewPresented.toggle()
-        repeatItems = isRepeatSelectViewPresented ? 1 : 0
-        isRepeatSelectViewPresented ? collectionView.insertItems(at: [IndexPath(row: 0, section: 2)]) : collectionView.deleteItems(at: [IndexPath(row: 0, section: 2)])
-        collectionView.reloadData()
+        showOrHideRepeatView()
+//        collectionView.reloadData()
     }
 }
 
@@ -160,13 +174,15 @@ extension CreateDayViewController{
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // type select view cell
         if indexPath.section == 0{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellTypeId, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellTypeId, for: indexPath) as! CreateDayTypeViewCell
+            cell.selectedTypeDelegate = self
             return cell
         }
         
         //  repeat select view cell
         if indexPath.section == 2{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellRepeatId, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellRepeatId, for: indexPath) as! CreateDayRepeatViewCell
+            cell.selectedRepeatDelegate = self
             return cell
         }
         
@@ -181,23 +197,27 @@ extension CreateDayViewController{
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: topHeaderId, for: indexPath) as! CreateDayTopHeaderView
                 header.iconName = headerIcons[indexPath.section]
                 header.cellLabel = headerLabels[indexPath.section]
-                header.context.text = headerContext[indexPath.section]
             
             // TapReconizer for type select view cell
             if indexPath.section == 0{
                 header.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentTypeSelectView)))
+                header.context.text = selectedType
+                return header
             }
-            
-            // TapReconizer for repeat select view cell
-            if indexPath.section == 2{
-                header.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentRepeatSelectView)))
-            }
-            
             // TapReconizer for date picker view controller
-            if indexPath.section == 1{
+            else if indexPath.section == 1{
                 header.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentDatePickerViewController)))
+                return header
             }
+            // TapReconizer for repeat select view cell
+            else if indexPath.section == 2{
+                header.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentRepeatSelectView)))
+                header.context.text = selectedRepeat
+                return header
+            }
+            
             return header
+            
         }else{
             return UICollectionReusableView()
         }
@@ -232,5 +252,24 @@ extension CreateDayViewController: UICollectionViewDelegateFlowLayout{
             return UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
         }
         return UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
+    }
+}
+
+// MARK: - delegate methods
+extension CreateDayViewController: TypeSelectedDelegate, RepeatSelectedDelegate{
+    func selectedType(type: String) {
+        print("create day VC: \(type)")
+
+        selectedType = type
+        showOrHideTypeView()
+        collectionView.reloadSections(IndexSet(integer: 0))
+    }
+    
+    func selectedRepeat(type: String) {
+        print("create day VC: \(type)")
+        
+        selectedRepeat = type
+        showOrHideRepeatView()
+        collectionView.reloadSections(IndexSet(integer: 2))
     }
 }

@@ -10,6 +10,8 @@ import UIKit
 
 class CreateDayRepeatViewCell: UICollectionViewCell{
     
+    var selectedRepeatDelegate: RepeatSelectedDelegate?
+    
     let repeatPickerView: UIPickerView = {
        let view = UIPickerView()
         view.backgroundColor = .clear
@@ -58,5 +60,9 @@ extension CreateDayRepeatViewCell: UIPickerViewDataSource{
 extension CreateDayRepeatViewCell: UIPickerViewDelegate{
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return repeats[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedRepeatDelegate?.selectedRepeat(type: repeats[row])
     }
 }

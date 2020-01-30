@@ -19,3 +19,11 @@ protocol UpdateCalendarDaysDelegate {
 protocol SaveVitalDayDelegate {
     func saveVitalDay(event: String)
 }
+
+protocol TypeSelectedDelegate {
+    func selectedType(type: String)
+}
+
+protocol RepeatSelectedDelegate {
+    func selectedRepeat(type: String)
+}
