@@ -27,6 +27,13 @@ extension String {
     var date: Date? {
         return String.dateFormatter.date(from: self)
     }
+    
+    var selectedDate: Date?{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.timeZone = NSTimeZone(abbreviation: "GMT+0:00") as TimeZone?
+        return formatter.date(from: self)
+    }
 }
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

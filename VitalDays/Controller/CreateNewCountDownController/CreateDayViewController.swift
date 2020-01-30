@@ -17,6 +17,7 @@ class CreateDayViewController: UICollectionViewController{
     var isTypeSelectViewPresented = false
     var repeatItems = 0
     var isRepeatSelectViewPresented = false
+    var isTyping = false
     
     let topHeaderId = "topHeaderId"
     let cellTypeId = "cellTypeId"
@@ -73,6 +74,9 @@ class CreateDayViewController: UICollectionViewController{
     
     /// setup view
     fileprivate func setupView(){
+        // add tap gesture
+        collectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapGesture)))
+        
         // setup data source and delegate
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -142,6 +146,12 @@ extension CreateDayViewController{
     @objc
     fileprivate func presentRepeatSelectView(){
         showOrHideRepeatView()
+    }
+    
+    @objc
+    fileprivate func handleTapGesture(){
+        print("tapped!")
+        if !view.isFirstResponder { print("here we go!"); view.endEditing(true) }
     }
 }
 
@@ -283,18 +293,17 @@ extension CreateDayViewController: TypeSelectedDelegate, RepeatSelectedDelegate,
     func selectedRepeat(type: String) {
         print("create day VC: \(type)")
         
-        
         showOrHideRepeatView()
         selectedRepeat = type
         collectionView.reloadSections(IndexSet(integer: 2))
     }
     
     func selectedDate(date: VDdate) {
-        print("date: \(date), \(Date()), \("\(date.year)-\(date.month)-\(date.day)".date!)")
+        print("date: \(date), \(Date()), \("\(date.year)-\(date.month)-\(date.day)".selectedDate!)")
         selectedTargetDate = "\(date.year)-\(date.month)-\(date.day)"
         daysLeft = calendar.dateComponents([.day, .hour],
                                            from: Date(),
-                                           to: "\(date.year)-\(date.month)-\(date.day)".date!).day!
+                                           to: "\(date.year)-\(date.month)-\(date.day)".selectedDate!).day!
         collectionView.reloadSections(IndexSet(integer: 4))
         collectionView.reloadSections(IndexSet(integer: 1))
     }
