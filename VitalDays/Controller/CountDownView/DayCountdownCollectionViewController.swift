@@ -11,7 +11,7 @@ import UIKit
 class DayCountdownCollectionViewController: UICollectionViewController{
     
     let cellId = "cellId"
-    var countdownEvents = [String]()
+    var countdownEvents = [Event]()
     
     var slideMenuVC: SlideMenuViewController!
     var isMenuViewDisplayed = false
@@ -184,7 +184,8 @@ extension DayCountdownCollectionViewController{
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CardViewCell
+        cell.event = countdownEvents[indexPath.item]
         return cell
     }
 }
@@ -214,7 +215,7 @@ extension DayCountdownCollectionViewController: UIViewControllerTransitioningDel
 
 // MARK: - save vital days event delegate
 extension DayCountdownCollectionViewController: SaveVitalDayDelegate{
-    func saveVitalDay(event: String) {
+    func saveVitalDay(event: Event) {
         print("save the event \(event)")
         noCountdownEventImg.isHidden = true
         noCountdownEventLbl.isHidden = true

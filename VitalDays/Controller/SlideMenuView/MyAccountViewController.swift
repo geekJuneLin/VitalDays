@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MyAccountViewController: UIViewController{
     
@@ -111,6 +112,7 @@ class MyAccountViewController: UIViewController{
         btn.clipsToBounds = true
         btn.layer.cornerRadius = 10
         btn.backgroundColor = UIColor.white.withAlphaComponent(0.25)
+        btn.addTarget(self, action: #selector(sigin), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
@@ -142,6 +144,23 @@ class MyAccountViewController: UIViewController{
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
+    
+    var handle:  AuthStateDidChangeListenerHandle?
+    var user: User?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
+            
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -222,6 +241,25 @@ extension MyAccountViewController{
     }
     
     @objc
+    fileprivate func sigin(){
+        print("sigin btn pressed!")
+        if accountTextField.text != nil && passwordTextField.text != nil{
+            Auth.auth().signIn(withEmail: accountTextField.text!, password: passwordTextField.text!) { [weak self] authResult, error in
+              guard let strongSelf = self else { return }
+                if error != nil{
+                    Utils.shard.showError("sigin with errors: \(String(describing: error))", strongSelf)
+                }else{
+                    strongSelf.user = Auth.auth().currentUser
+                    
+                    if let user = strongSelf.user{
+                        Utils.shard.showError("signed in successfully with \(user.email!)", strongSelf)
+                    }
+                }
+            }
+        }
+    }
+    
+    @objc
     fileprivate func forgotPassword(){
         print("forgot btn clicked")
     }
@@ -229,6 +267,10 @@ extension MyAccountViewController{
     @objc
     fileprivate func registerAccount(){
         print("register btn clicked")
+        let registerVC = UIStoryboard(name: "RegisterViewControllerStoryboard", bundle: nil)
+        let vc = registerVC.instantiateViewController(withIdentifier: "RegisterVC")
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
     
     @objc

@@ -8,13 +8,6 @@
 
 import Foundation
 
-enum NoteType: Int{
-    case 倒计时
-    case 纪念日
-    case 生日
-    case 作业
-}
-
 struct Event{
     var note: String
     var noteType: String

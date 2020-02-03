@@ -123,7 +123,11 @@ extension CreateDayViewController{
     @objc
     fileprivate func handleRightButton(){
         print("right button clicked!")
-        saveVitalDayDelegate?.saveVitalDay(event: "First Day")
+        saveVitalDayDelegate?.saveVitalDay(event: Event(note: noteTextFieldValue,
+                                                        noteType: selectedType,
+                                                        targetDate: selectedTargetDate,
+                                                        leftDays: daysLeft))
+        self.dismiss(animated: true, completion: nil)
     }
     
     /// present the date picker view controller
@@ -301,9 +305,9 @@ extension CreateDayViewController: TypeSelectedDelegate, RepeatSelectedDelegate,
     func selectedDate(date: VDdate) {
         print("date: \(date), \(Date()), \("\(date.year)-\(date.month)-\(date.day)".selectedDate!)")
         selectedTargetDate = "\(date.year)-\(date.month)-\(date.day)"
-        daysLeft = calendar.dateComponents([.day, .hour],
+        daysLeft = calendar.dateComponents([.day],
                                            from: Date(),
-                                           to: "\(date.year)-\(date.month)-\(date.day)".selectedDate!).day!
+                                           to: "\(date.year)-\(date.month)-\(date.day)".selectedDate!).day! + 1
         collectionView.reloadSections(IndexSet(integer: 4))
         collectionView.reloadSections(IndexSet(integer: 1))
     }

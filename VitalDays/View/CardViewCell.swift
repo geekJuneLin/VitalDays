@@ -10,6 +10,14 @@ import UIKit
 
 class CardViewCell: UICollectionViewCell{
     
+    var event: Event?{
+        didSet{
+            if let event = event {
+                cardView.event = event
+            }
+        }
+    }
+    
     let cardView: CardView = {
         let view = CardView()
         view.translatesAutoresizingMaskIntoConstraints = false

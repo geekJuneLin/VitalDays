@@ -7,34 +7,7 @@
 //
 
 import UIKit
-
-extension Date {
-    var weekday: Int {
-        return Calendar.current.component(.weekday, from: self)
-    }
-    var firstDayOfTheMonth: Date {
-        return Calendar.current.date(from: Calendar.current.dateComponents([.year,.month], from: self))!
-    }
-}
-extension String {
-    static var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        formatter.timeZone = NSTimeZone(abbreviation: "GMT+0:00") as TimeZone?
-        return formatter
-    }()
-
-    var date: Date? {
-        return String.dateFormatter.date(from: self)
-    }
-    
-    var selectedDate: Date?{
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        formatter.timeZone = NSTimeZone(abbreviation: "GMT+0:00") as TimeZone?
-        return formatter.date(from: self)
-    }
-}
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -51,6 +24,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
+        
+        // Firebase Auth
+        FirebaseApp.configure()
         
         guard let _ = (scene as? UIWindowScene) else { return }
     }

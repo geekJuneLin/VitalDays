@@ -10,6 +10,18 @@ import UIKit
 
 class CardView: UIView{
     
+    var event: Event? {
+        didSet{
+            if let event = event {
+                noteLbl.text = event.note
+                noteTypeLbl.text = event.noteType
+                smallTypeLbl.text = " \(event.noteType) "
+                targetDayLbl.text = event.targetDate
+                countDownDays.text = "\(event.leftDays)"
+            }
+        }
+    }
+    
     let noteLbl: CardViewLabel = {
        let label = CardViewLabel()
         label.setTextWithFont(text: "WWDC", font: UIFont.init(name: "Arial", size: 20)!)

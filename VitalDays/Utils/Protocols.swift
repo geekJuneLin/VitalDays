@@ -17,7 +17,7 @@ protocol UpdateCalendarDaysDelegate {
 }
 
 protocol SaveVitalDayDelegate {
-    func saveVitalDay(event: String)
+    func saveVitalDay(event: Event)
 }
 
 protocol TypeSelectedDelegate {

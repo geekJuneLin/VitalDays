@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -26,6 +26,10 @@
 		8E6B767323D9259C00CC7355 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B767223D9259C00CC7355 /* CardViewCell.swift */; };
 		8E6B767523D926ED00CC7355 /* UILabel+cardViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B767423D926ED00CC7355 /* UILabel+cardViewLabel.swift */; };
 		8E71D2DE23E24FFA00F6F3B2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71D2DD23E24FFA00F6F3B2 /* Event.swift */; };
+		8E72EE2523E78E1B00D7054A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72EE2423E78E1B00D7054A /* RegisterViewController.swift */; };
+		8E72EE2723E7930500D7054A /* RegisterViewControllerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E72EE2623E7930500D7054A /* RegisterViewControllerStoryboard.storyboard */; };
+		8E72EE2923E7A67A00D7054A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72EE2823E7A67A00D7054A /* Utils.swift */; };
+		8E7FDE7023E6A85D00DB7D77 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E7FDE6F23E6A85D00DB7D77 /* GoogleService-Info.plist */; };
 		8E9D1FD123DD1707002A2A2B /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FD023DD1707002A2A2B /* SlideMenuViewController.swift */; };
 		8E9D1FD323DD1D3F002A2A2B /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FD223DD1D3F002A2A2B /* Protocols.swift */; };
 		8E9D1FD523DD22D2002A2A2B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FD423DD22D2002A2A2B /* ContainerViewController.swift */; };
@@ -39,9 +43,12 @@
 		8ED532AD23E13CE6001A5354 /* CreateDayTypeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED532AC23E13CE6001A5354 /* CreateDayTypeViewCell.swift */; };
 		8ED532B123E13D30001A5354 /* CreateDayRepeatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED532B023E13D30001A5354 /* CreateDayRepeatViewCell.swift */; };
 		8EE65E1C23E1249900DD9980 /* VDdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE65E1B23E1249900DD9980 /* VDdate.swift */; };
+		CC51EFC6241CF311D92A486A /* Pods_VitalDays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A88B930083BB613292FBC02F /* Pods_VitalDays.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03AFD9F5E1423DE629C46F10 /* Pods-VitalDays.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitalDays.debug.xcconfig"; path = "Target Support Files/Pods-VitalDays/Pods-VitalDays.debug.xcconfig"; sourceTree = "<group>"; };
+		083172973040D07BD5A33C35 /* Pods-VitalDays.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitalDays.release.xcconfig"; path = "Target Support Files/Pods-VitalDays/Pods-VitalDays.release.xcconfig"; sourceTree = "<group>"; };
 		8E0C748223DE438800166D45 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		8E0C748423DE577400166D45 /* CalenderPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderPickerViewController.swift; sourceTree = "<group>"; };
 		8E0C748623DE5C8400166D45 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -63,6 +70,10 @@
 		8E6B767223D9259C00CC7355 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		8E6B767423D926ED00CC7355 /* UILabel+cardViewLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+cardViewLabel.swift"; sourceTree = "<group>"; };
 		8E71D2DD23E24FFA00F6F3B2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Event.swift; path = VitalDays/View/CreateDayVCViewCell/Event.swift; sourceTree = SOURCE_ROOT; };
+		8E72EE2423E78E1B00D7054A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		8E72EE2623E7930500D7054A /* RegisterViewControllerStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterViewControllerStoryboard.storyboard; sourceTree = "<group>"; };
+		8E72EE2823E7A67A00D7054A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		8E7FDE6F23E6A85D00DB7D77 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Flutter/projects/vital_days/ios/Runner/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E9D1FD023DD1707002A2A2B /* SlideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
 		8E9D1FD223DD1D3F002A2A2B /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		8E9D1FD423DD22D2002A2A2B /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +87,7 @@
 		8ED532AC23E13CE6001A5354 /* CreateDayTypeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayTypeViewCell.swift; sourceTree = "<group>"; };
 		8ED532B023E13D30001A5354 /* CreateDayRepeatViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayRepeatViewCell.swift; sourceTree = "<group>"; };
 		8EE65E1B23E1249900DD9980 /* VDdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VDdate.swift; path = VitalDays/Extensions/VDdate.swift; sourceTree = SOURCE_ROOT; };
+		A88B930083BB613292FBC02F /* Pods_VitalDays.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VitalDays.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +95,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC51EFC6241CF311D92A486A /* Pods_VitalDays.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19F13FF2349CAC7A9B21F7BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A88B930083BB613292FBC02F /* Pods_VitalDays.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8E0C748823DE5C8800166D45 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +127,8 @@
 			children = (
 				8E2110D823D849BA00106569 /* VitalDays */,
 				8E2110D723D849BA00106569 /* Products */,
+				90F685C321D3A1E74CE026FE /* Pods */,
+				19F13FF2349CAC7A9B21F7BF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +151,7 @@
 				8E2110E223D849BF00106569 /* Assets.xcassets */,
 				8E2110E423D849BF00106569 /* LaunchScreen.storyboard */,
 				8E2110E723D849BF00106569 /* Info.plist */,
+				8E7FDE6F23E6A85D00DB7D77 /* GoogleService-Info.plist */,
 			);
 			path = VitalDays;
 			sourceTree = "<group>";
@@ -173,6 +197,7 @@
 				8E9D1FD223DD1D3F002A2A2B /* Protocols.swift */,
 				8E9D1FDC23DD8332002A2A2B /* PresentTransition.swift */,
 				8E9D1FE523DDA61E002A2A2B /* UIApplication+currentKeyWindow.swift */,
+				8E72EE2823E7A67A00D7054A /* Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -201,6 +226,8 @@
 			children = (
 				8E9D1FD023DD1707002A2A2B /* SlideMenuViewController.swift */,
 				8EC6675523E0436F003413E8 /* MyAccountViewController.swift */,
+				8E72EE2423E78E1B00D7054A /* RegisterViewController.swift */,
+				8E72EE2623E7930500D7054A /* RegisterViewControllerStoryboard.storyboard */,
 			);
 			path = SlideMenuView;
 			sourceTree = "<group>";
@@ -233,6 +260,15 @@
 			path = CreateDayVCViewCell;
 			sourceTree = "<group>";
 		};
+		90F685C321D3A1E74CE026FE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				03AFD9F5E1423DE629C46F10 /* Pods-VitalDays.debug.xcconfig */,
+				083172973040D07BD5A33C35 /* Pods-VitalDays.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -240,9 +276,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E2110EA23D849BF00106569 /* Build configuration list for PBXNativeTarget "VitalDays" */;
 			buildPhases = (
+				837BF674DB69C6DF0B48167A /* [CP] Check Pods Manifest.lock */,
 				8E2110D223D849BA00106569 /* Sources */,
 				8E2110D323D849BA00106569 /* Frameworks */,
 				8E2110D423D849BA00106569 /* Resources */,
+				CA5AEB1EA31E9AF0115F2501 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -293,10 +331,54 @@
 			files = (
 				8E2110E623D849BF00106569 /* LaunchScreen.storyboard in Resources */,
 				8E2110E323D849BF00106569 /* Assets.xcassets in Resources */,
+				8E7FDE7023E6A85D00DB7D77 /* GoogleService-Info.plist in Resources */,
+				8E72EE2723E7930500D7054A /* RegisterViewControllerStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		837BF674DB69C6DF0B48167A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VitalDays-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA5AEB1EA31E9AF0115F2501 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VitalDays/Pods-VitalDays-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VitalDays/Pods-VitalDays-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VitalDays/Pods-VitalDays-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8E2110D223D849BA00106569 /* Sources */ = {
@@ -324,7 +406,9 @@
 				8E6B766F23D9195400CC7355 /* CreateDayViewController.swift in Sources */,
 				8E0C748323DE438800166D45 /* CardView.swift in Sources */,
 				8E9D1FE423DDA0BE002A2A2B /* CreateDayBottomViewCell.swift in Sources */,
+				8E72EE2523E78E1B00D7054A /* RegisterViewController.swift in Sources */,
 				8E9D1FDD23DD8332002A2A2B /* PresentTransition.swift in Sources */,
+				8E72EE2923E7A67A00D7054A /* Utils.swift in Sources */,
 				8ED532B123E13D30001A5354 /* CreateDayRepeatViewCell.swift in Sources */,
 				8E9D1FE623DDA61E002A2A2B /* UIApplication+currentKeyWindow.swift in Sources */,
 				8E0C748C23DE78F200166D45 /* CalendarDays.swift in Sources */,
@@ -466,6 +550,7 @@
 		};
 		8E2110EB23D849BF00106569 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03AFD9F5E1423DE629C46F10 /* Pods-VitalDays.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -484,6 +569,7 @@
 		};
 		8E2110EC23D849BF00106569 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 083172973040D07BD5A33C35 /* Pods-VitalDays.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
