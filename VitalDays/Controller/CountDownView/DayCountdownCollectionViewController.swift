@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class DayCountdownCollectionViewController: UICollectionViewController{
     
@@ -16,6 +17,9 @@ class DayCountdownCollectionViewController: UICollectionViewController{
     var slideMenuVC: SlideMenuViewController!
     var isMenuViewDisplayed = false
     var showSlideMenuDelegate: ShowSlideMenuDelegate?
+    
+    // firebase
+    var ref = Database.database().reference().child("Events")
     
     let leftButton: UIBarButtonItem = {
         let img = UIImage(named: "menu")
@@ -60,6 +64,12 @@ class DayCountdownCollectionViewController: UICollectionViewController{
     
     private var edgePanGesture: UIScreenEdgePanGestureRecognizer?
     private var swipeGesture: UISwipeGestureRecognizer?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        addObserverForRetrievingData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,6 +142,35 @@ extension DayCountdownCollectionViewController{
         isMenuViewDisplayed.toggle()
         edgePanGesture!.isEnabled = !isMenuViewDisplayed
         swipeGesture!.isEnabled = isMenuViewDisplayed
+    }
+    
+    fileprivate func addObserverForRetrievingData(){
+        ref.observe(.value) { (snapshot) in
+//            print(snapshot.value)
+            if !snapshot.exists() { return }
+            print(snapshot)
+            
+            if snapshot.childrenCount > 0{
+                self.noCountdownEventImg.isHidden = true
+                self.noCountdownEventLbl.isHidden = true
+            }
+            
+            if self.countdownEvents.count > 0{
+                self.countdownEvents.removeAll()
+            }
+            
+            for child in snapshot.children{
+                if let snapshot = child as? DataSnapshot,
+                    let value = snapshot.value as? NSDictionary{
+                    self.countdownEvents.append(Event(note: value["note"] as? String ?? "",
+                                                 noteType: value["noteType"] as? String ?? "",
+                                                 targetDate: value["targetDate"] as? String ?? "",
+                                                 leftDays: value["leftDays"] as? Int ?? 0))
+                }
+            }
+            
+            self.collectionView.reloadData()
+        }
     }
 }
 

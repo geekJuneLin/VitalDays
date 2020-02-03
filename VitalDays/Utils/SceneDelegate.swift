@@ -25,9 +25,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.makeKeyAndVisible()
         }
         
-        // Firebase Auth
-        FirebaseApp.configure()
-        
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 

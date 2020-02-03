@@ -13,6 +13,7 @@ class RegisterViewController: UIViewController{
     
     @IBOutlet weak var closeBtn: UIButton!
     @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet weak var continueBtn: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confimPasswordTextField: UITextField!
@@ -27,7 +28,11 @@ class RegisterViewController: UIViewController{
     fileprivate func setupCustomization(){
         registerBtn.clipsToBounds = true
         registerBtn.backgroundColor = UIColor.white.withAlphaComponent(0.25)
-        registerBtn.layer.cornerRadius = 8
+        registerBtn.layer.cornerRadius = 20
+        
+        continueBtn.clipsToBounds = true
+        continueBtn.backgroundColor = UIColor.white.withAlphaComponent(0.25)
+        continueBtn.layer.cornerRadius = 20
         
         emailTextField.textColor = .white
         passwordTextField.textColor = .white
@@ -41,6 +46,10 @@ class RegisterViewController: UIViewController{
     @IBAction func closeBtnPressed(_ sender: Any) {
         print("close btn pressed!")
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func continueBtnPressed(_ sender: Any) {
+        print("continue btn pressed!")
     }
     
     /// handle register button pressed

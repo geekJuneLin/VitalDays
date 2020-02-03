@@ -92,9 +92,23 @@
                                     <action selector="registerBtnPressed:" destination="fRY-ZF-SEa" eventType="touchUpInside" id="8Jn-6U-Q5g"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBK-8r-y76">
+                                <rect key="frame" x="39" y="549" width="336" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="iTg-ij-2ip"/>
+                                </constraints>
+                                <state key="normal" title="Continue without account">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="continueBtnPressed:" destination="fRY-ZF-SEa" eventType="touchUpInside" id="qcK-7V-in8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.35999999999999999" green="0.82999999999999996" blue="0.62" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="oBK-8r-y76" firstAttribute="top" secondItem="AaH-jM-4Sj" secondAttribute="bottom" constant="20" id="1wG-4s-wqR"/>
+                            <constraint firstItem="oBK-8r-y76" firstAttribute="centerX" secondItem="0Wu-6P-kPG" secondAttribute="centerX" id="5ef-O4-bat"/>
                             <constraint firstItem="abK-6v-xoj" firstAttribute="centerX" secondItem="0Wu-6P-kPG" secondAttribute="centerX" id="DPs-o6-jIf"/>
                             <constraint firstItem="jQV-1O-BO8" firstAttribute="leading" secondItem="2Fq-PB-IgR" secondAttribute="leading" constant="15" id="Jnf-Mu-8KQ"/>
                             <constraint firstItem="AaH-jM-4Sj" firstAttribute="leading" secondItem="jQV-1O-BO8" secondAttribute="leading" constant="24" id="StD-pD-x29"/>
@@ -102,6 +116,7 @@
                             <constraint firstItem="Mod-Ss-Pmb" firstAttribute="top" secondItem="2Fq-PB-IgR" secondAttribute="top" id="VrR-3I-fDG"/>
                             <constraint firstItem="2Fq-PB-IgR" firstAttribute="trailing" secondItem="jQV-1O-BO8" secondAttribute="trailing" constant="15" id="d9V-IK-mDJ"/>
                             <constraint firstItem="AaH-jM-4Sj" firstAttribute="centerX" secondItem="0Wu-6P-kPG" secondAttribute="centerX" id="qwC-37-hMN"/>
+                            <constraint firstItem="oBK-8r-y76" firstAttribute="leading" secondItem="AaH-jM-4Sj" secondAttribute="leading" id="r4I-Cl-Kcu"/>
                             <constraint firstItem="2Fq-PB-IgR" firstAttribute="trailing" secondItem="Mod-Ss-Pmb" secondAttribute="trailing" constant="20" id="tUx-ad-lOn"/>
                             <constraint firstItem="jQV-1O-BO8" firstAttribute="top" secondItem="abK-6v-xoj" secondAttribute="bottom" constant="55" id="uGj-EV-QhE"/>
                             <constraint firstItem="jQV-1O-BO8" firstAttribute="centerX" secondItem="0Wu-6P-kPG" secondAttribute="centerX" id="uey-UX-kgb"/>
@@ -113,6 +128,7 @@
                     <connections>
                         <outlet property="closeBtn" destination="Mod-Ss-Pmb" id="caq-cW-SEr"/>
                         <outlet property="confimPasswordTextField" destination="8hW-Gt-hY7" id="kYk-yC-Qhz"/>
+                        <outlet property="continueBtn" destination="oBK-8r-y76" id="Hyq-Fm-whj"/>
                         <outlet property="emailTextField" destination="BfZ-2K-qGh" id="IAu-eY-6H0"/>
                         <outlet property="nameTextField" destination="hrh-U2-tvz" id="5SZ-dv-QZ8"/>
                         <outlet property="passwordTextField" destination="2Ji-J6-ebk" id="Foz-Od-TcQ"/>

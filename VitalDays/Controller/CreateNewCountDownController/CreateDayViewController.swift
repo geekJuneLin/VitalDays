@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CreateDayViewController: UICollectionViewController{
     
@@ -35,11 +36,18 @@ class CreateDayViewController: UICollectionViewController{
     var noteTextFieldValue = ""
     var daysLeft = 0
     
+    var ref: DatabaseReference!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationVC()
         setupView()
+        setupDBRef()
+    }
+    
+    fileprivate func setupDBRef(){
+        ref = Database.database().reference()
     }
     
     /// setup navigation view controller
@@ -76,6 +84,9 @@ class CreateDayViewController: UICollectionViewController{
     fileprivate func setupView(){
         // add tap gesture
         collectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapGesture)))
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleEdgePanGesture))
+        edgePan.edges = .left
+        collectionView.addGestureRecognizer(edgePan)
         
         // setup data source and delegate
         collectionView.dataSource = self
@@ -107,10 +118,24 @@ extension CreateDayViewController{
         repeatItems = isRepeatSelectViewPresented ? 1 : 0
         isRepeatSelectViewPresented ? collectionView.insertItems(at: [IndexPath(row: 0, section: 2)]) : collectionView.deleteItems(at: [IndexPath(row: 0, section: 2)])
     }
+    
+    fileprivate func saveEventOntoFirebase(_ event: Event){
+        ref.child("Events").child("\(event.note)").setValue(["leftDays":event.leftDays,
+                                                      "note":event.note,
+                                                      "noteType":event.noteType,
+                                                      "targetDate":event.targetDate])
+    }
 }
 
 // MARK: - objc selector functions
 extension CreateDayViewController{
+    
+    @objc
+    fileprivate func handleEdgePanGesture(_ reconizer: UIScreenEdgePanGestureRecognizer){
+        if reconizer.state == .recognized{
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     
     /// dismiss the current view controller
     @objc
@@ -123,10 +148,12 @@ extension CreateDayViewController{
     @objc
     fileprivate func handleRightButton(){
         print("right button clicked!")
-        saveVitalDayDelegate?.saveVitalDay(event: Event(note: noteTextFieldValue,
-                                                        noteType: selectedType,
-                                                        targetDate: selectedTargetDate,
-                                                        leftDays: daysLeft))
+        let event = Event(note: noteTextFieldValue,
+        noteType: selectedType,
+        targetDate: selectedTargetDate,
+        leftDays: daysLeft)
+        saveVitalDayDelegate?.saveVitalDay(event: event)
+        saveEventOntoFirebase(event)
         self.dismiss(animated: true, completion: nil)
     }
     
