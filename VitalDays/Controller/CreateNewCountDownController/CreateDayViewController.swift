@@ -120,10 +120,12 @@ extension CreateDayViewController{
     }
     
     fileprivate func saveEventOntoFirebase(_ event: Event){
-        ref.child("Events").child("\(event.note)").setValue(["leftDays":event.leftDays,
-                                                      "note":event.note,
-                                                      "noteType":event.noteType,
-                                                      "targetDate":event.targetDate])
+        if let uid = Auth.auth().currentUser?.uid{
+            ref.child("Events").child("\(uid)").childByAutoId().setValue(["leftDays":event.leftDays,
+                                                                 "note":event.note,
+                                                                 "noteType":event.noteType,
+                                                                 "targetDate":event.targetDate])
+        }
     }
 }
 

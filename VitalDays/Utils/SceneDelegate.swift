@@ -31,6 +31,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 let vc = registerVC.instantiateViewController(withIdentifier: "RegisterVC")
                 window.rootViewController = vc
                 UserDefaults.standard.set(true, forKey: "launchedBefore")
+                
+                // sign out the Auth user
+                do{
+                    try Auth.auth().signOut()
+                }catch{
+                    print("sign out failed...")
+                }
             }
             
             weekday = ("\(year)-\(month)-\(day)".date?.firstDayOfTheMonth.weekday)!

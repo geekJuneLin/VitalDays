@@ -26,6 +26,7 @@
 		8E6B767323D9259C00CC7355 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B767223D9259C00CC7355 /* CardViewCell.swift */; };
 		8E6B767523D926ED00CC7355 /* UILabel+cardViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B767423D926ED00CC7355 /* UILabel+cardViewLabel.swift */; };
 		8E71D2DE23E24FFA00F6F3B2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71D2DD23E24FFA00F6F3B2 /* Event.swift */; };
+		8E72A11B23EA244100B01541 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72A11A23EA244100B01541 /* UserInfoViewController.swift */; };
 		8E72EE2523E78E1B00D7054A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72EE2423E78E1B00D7054A /* RegisterViewController.swift */; };
 		8E72EE2723E7930500D7054A /* RegisterViewControllerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E72EE2623E7930500D7054A /* RegisterViewControllerStoryboard.storyboard */; };
 		8E72EE2923E7A67A00D7054A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72EE2823E7A67A00D7054A /* Utils.swift */; };
@@ -70,6 +71,7 @@
 		8E6B767223D9259C00CC7355 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		8E6B767423D926ED00CC7355 /* UILabel+cardViewLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+cardViewLabel.swift"; sourceTree = "<group>"; };
 		8E71D2DD23E24FFA00F6F3B2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Event.swift; path = VitalDays/View/CreateDayVCViewCell/Event.swift; sourceTree = SOURCE_ROOT; };
+		8E72A11A23EA244100B01541 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		8E72EE2423E78E1B00D7054A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		8E72EE2623E7930500D7054A /* RegisterViewControllerStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterViewControllerStoryboard.storyboard; sourceTree = "<group>"; };
 		8E72EE2823E7A67A00D7054A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				8E9D1FD023DD1707002A2A2B /* SlideMenuViewController.swift */,
+				8E72A11A23EA244100B01541 /* UserInfoViewController.swift */,
 			);
 			path = SlideMenuView;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				8E2110F523D8546300106569 /* DayCountdownCollectionViewController.swift in Sources */,
 				8E9D1FD123DD1707002A2A2B /* SlideMenuViewController.swift in Sources */,
 				8E0C749023DE91B900166D45 /* CalendarDaysViewCell.swift in Sources */,
+				8E72A11B23EA244100B01541 /* UserInfoViewController.swift in Sources */,
 				8ED532AD23E13CE6001A5354 /* CreateDayTypeViewCell.swift in Sources */,
 				8E0C748723DE5C8400166D45 /* CalendarView.swift in Sources */,
 				8E6B766F23D9195400CC7355 /* CreateDayViewController.swift in Sources */,

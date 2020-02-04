@@ -148,14 +148,6 @@ class LoginViewController: UIViewController{
     var handle:  AuthStateDidChangeListenerHandle?
     var user: User?
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
-            
-        })
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -165,7 +157,23 @@ class LoginViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkSignedInStatus()
         setupView()
+    }
+    
+    fileprivate func checkSignedInStatus(){
+        handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
+            if user != nil{
+                print("already signed in")
+                // present main VC directly
+                let mainVC = ContainerViewController()
+                self.view.window?.rootViewController = mainVC
+                self.view.window?.makeKeyAndVisible()
+            }else{
+                print("not signed in yet")
+                // keep staying on current VC
+            }
+        })
     }
     
     fileprivate func setupView(){

@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
 
 class RegisterViewController: UIViewController{
     
@@ -80,9 +81,19 @@ class RegisterViewController: UIViewController{
                                 }
                                 
                                 print("register successfully!")
-                                self?.dismiss(animated: true, completion: nil)
+                                
+                                // save the user info
+                                if result != nil{
+                                    let ref = Database.database().reference()
+                                    ref.child("Users").child(result!.user.uid).setValue(["email": self!.emailTextField.text!,
+                                                                                         "name": self!.nameTextField.text!])
+                                    let mainVC = ContainerViewController()
+                                    self?.view.window?.rootViewController = mainVC
+                                    self?.view.window?.makeKeyAndVisible()
+                                }else{
+                                    print("saving user data with errors")
+                                }
         }
-        // TODO: - save locally
     }
     
     /// check if all the textfields are filled out and whether the passwords are the same and satisfy the criteria
