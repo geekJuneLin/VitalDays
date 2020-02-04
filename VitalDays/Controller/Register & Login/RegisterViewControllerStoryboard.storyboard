@@ -74,7 +74,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AaH-jM-4Sj">
-                                <rect key="frame" x="39" y="489" width="336" height="40"/>
+                                <rect key="frame" x="39" y="539" width="336" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="87C-7h-A4O"/>
                                 </constraints>
@@ -93,7 +93,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBK-8r-y76">
-                                <rect key="frame" x="39" y="549" width="336" height="40"/>
+                                <rect key="frame" x="39" y="599" width="336" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="iTg-ij-2ip"/>
                                 </constraints>
@@ -104,24 +104,39 @@
                                     <action selector="continueBtnPressed:" destination="fRY-ZF-SEa" eventType="touchUpInside" id="qcK-7V-in8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJ2-Kg-7Xt">
+                                <rect key="frame" x="39" y="479" width="336" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="LyB-hA-SZa"/>
+                                </constraints>
+                                <state key="normal" title="Sign in">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInBtnPressed:" destination="fRY-ZF-SEa" eventType="touchUpInside" id="11F-kv-GTU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.35999999999999999" green="0.82999999999999996" blue="0.62" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="oBK-8r-y76" firstAttribute="top" secondItem="AaH-jM-4Sj" secondAttribute="bottom" constant="20" id="1wG-4s-wqR"/>
+                            <constraint firstItem="TJ2-Kg-7Xt" firstAttribute="top" secondItem="jQV-1O-BO8" secondAttribute="bottom" constant="20" id="2oB-b6-7BW"/>
                             <constraint firstItem="oBK-8r-y76" firstAttribute="centerX" secondItem="0Wu-6P-kPG" secondAttribute="centerX" id="5ef-O4-bat"/>
                             <constraint firstItem="abK-6v-xoj" firstAttribute="centerX" secondItem="0Wu-6P-kPG" secondAttribute="centerX" id="DPs-o6-jIf"/>
+                            <constraint firstItem="TJ2-Kg-7Xt" firstAttribute="centerX" secondItem="0Wu-6P-kPG" secondAttribute="centerX" id="FP9-dO-pnG"/>
                             <constraint firstItem="jQV-1O-BO8" firstAttribute="leading" secondItem="2Fq-PB-IgR" secondAttribute="leading" constant="15" id="Jnf-Mu-8KQ"/>
                             <constraint firstItem="AaH-jM-4Sj" firstAttribute="leading" secondItem="jQV-1O-BO8" secondAttribute="leading" constant="24" id="StD-pD-x29"/>
                             <constraint firstItem="abK-6v-xoj" firstAttribute="top" secondItem="Mod-Ss-Pmb" secondAttribute="bottom" constant="110" id="Tft-vA-3un"/>
                             <constraint firstItem="Mod-Ss-Pmb" firstAttribute="top" secondItem="2Fq-PB-IgR" secondAttribute="top" id="VrR-3I-fDG"/>
+                            <constraint firstItem="TJ2-Kg-7Xt" firstAttribute="leading" secondItem="jQV-1O-BO8" secondAttribute="leading" constant="24" id="W2X-KY-w6v"/>
                             <constraint firstItem="2Fq-PB-IgR" firstAttribute="trailing" secondItem="jQV-1O-BO8" secondAttribute="trailing" constant="15" id="d9V-IK-mDJ"/>
+                            <constraint firstItem="AaH-jM-4Sj" firstAttribute="top" secondItem="TJ2-Kg-7Xt" secondAttribute="bottom" constant="20" id="jtE-gm-XE9"/>
                             <constraint firstItem="AaH-jM-4Sj" firstAttribute="centerX" secondItem="0Wu-6P-kPG" secondAttribute="centerX" id="qwC-37-hMN"/>
                             <constraint firstItem="oBK-8r-y76" firstAttribute="leading" secondItem="AaH-jM-4Sj" secondAttribute="leading" id="r4I-Cl-Kcu"/>
                             <constraint firstItem="2Fq-PB-IgR" firstAttribute="trailing" secondItem="Mod-Ss-Pmb" secondAttribute="trailing" constant="20" id="tUx-ad-lOn"/>
                             <constraint firstItem="jQV-1O-BO8" firstAttribute="top" secondItem="abK-6v-xoj" secondAttribute="bottom" constant="55" id="uGj-EV-QhE"/>
                             <constraint firstItem="jQV-1O-BO8" firstAttribute="centerX" secondItem="0Wu-6P-kPG" secondAttribute="centerX" id="uey-UX-kgb"/>
                             <constraint firstItem="2Fq-PB-IgR" firstAttribute="trailing" secondItem="jQV-1O-BO8" secondAttribute="trailing" constant="15" id="wSs-E6-WBX"/>
-                            <constraint firstItem="AaH-jM-4Sj" firstAttribute="top" secondItem="jQV-1O-BO8" secondAttribute="bottom" constant="30" id="yeI-3i-WAt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Fq-PB-IgR"/>
                     </view>
@@ -133,6 +148,7 @@
                         <outlet property="nameTextField" destination="hrh-U2-tvz" id="5SZ-dv-QZ8"/>
                         <outlet property="passwordTextField" destination="2Ji-J6-ebk" id="Foz-Od-TcQ"/>
                         <outlet property="registerBtn" destination="AaH-jM-4Sj" id="C0t-sd-TX2"/>
+                        <outlet property="signInBtn" destination="TJ2-Kg-7Xt" id="lWV-wT-LCO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lxX-eP-vkU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

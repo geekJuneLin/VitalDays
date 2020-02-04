@@ -18,9 +18,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if let windowScence = scene as? UIWindowScene{
             let window = UIWindow(windowScene: windowScence)
-            let tabBarController = ContainerViewController()
+            
+            // detect whether this is the first fime launch this app
+            let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+            if launchedBefore{
+                // launched before then present the login VC
+                let signInVC = LoginViewController()
+                window.rootViewController = signInVC
+            }else{
+                // otherwise present the register page
+                let registerVC = UIStoryboard(name: "RegisterViewControllerStoryboard", bundle: nil)
+                let vc = registerVC.instantiateViewController(withIdentifier: "RegisterVC")
+                window.rootViewController = vc
+                UserDefaults.standard.set(true, forKey: "launchedBefore")
+            }
+            
             weekday = ("\(year)-\(month)-\(day)".date?.firstDayOfTheMonth.weekday)!
-            window.rootViewController = tabBarController
             self.window = window
             window.makeKeyAndVisible()
         }

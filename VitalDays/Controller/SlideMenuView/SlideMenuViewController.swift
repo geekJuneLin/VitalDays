@@ -107,7 +107,7 @@ extension SlideMenuViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.item == 0 {
             print("select my account")
-            present(MyAccountViewController(), animated: true, completion: nil)
+            present(LoginViewController(), animated: true, completion: nil)
         }
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class MyAccountViewController: UIViewController{
+class LoginViewController: UIViewController{
     
     let titleLabel: UILabel = {
        let label = UILabel()
@@ -231,7 +231,7 @@ class MyAccountViewController: UIViewController{
 }
 
 // MARK: - selector functions
-extension MyAccountViewController{
+extension LoginViewController{
     @objc
     fileprivate func showOrHide(){
         passwordTextField.isSecureTextEntry.toggle()
@@ -252,11 +252,20 @@ extension MyAccountViewController{
                     strongSelf.user = Auth.auth().currentUser
                     
                     if let user = strongSelf.user{
-                        Utils.shard.showError("signed in successfully with \(user.email!)", strongSelf)
+//                        Utils.shard.showError("signed in successfully with \(user.email!)", strongSelf)
+//                        self?.dismiss(animated: true, completion: {
+//
+//                        })
+                        self!.transitionToCountdownVC()
                     }
                 }
             }
         }
+    }
+    
+    fileprivate func transitionToCountdownVC(){
+        self.view.window?.rootViewController = ContainerViewController()
+        self.view.window?.makeKeyAndVisible()
     }
     
     @objc

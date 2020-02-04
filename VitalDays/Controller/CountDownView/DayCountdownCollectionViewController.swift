@@ -19,7 +19,7 @@ class DayCountdownCollectionViewController: UICollectionViewController{
     var showSlideMenuDelegate: ShowSlideMenuDelegate?
     
     // firebase
-    var ref = Database.database().reference().child("Events")
+    var ref = Database.database().reference()
     
     let leftButton: UIBarButtonItem = {
         let img = UIImage(named: "menu")
@@ -89,7 +89,6 @@ extension DayCountdownCollectionViewController{
         collectionView.backgroundColor = .backgroundColor
         
         // set up data source and delegate
-        collectionView.dataSource = self
         collectionView.delegate = self
         
         // collectionView register cell or header or footer
@@ -144,33 +143,38 @@ extension DayCountdownCollectionViewController{
         swipeGesture!.isEnabled = isMenuViewDisplayed
     }
     
+    /// add observer to retrieve data from firebase
     fileprivate func addObserverForRetrievingData(){
-        ref.observe(.value) { (snapshot) in
-//            print(snapshot.value)
-            if !snapshot.exists() { return }
-            print(snapshot)
-            
-            if snapshot.childrenCount > 0{
-                self.noCountdownEventImg.isHidden = true
-                self.noCountdownEventLbl.isHidden = true
-            }
-            
-            if self.countdownEvents.count > 0{
-                self.countdownEvents.removeAll()
-            }
-            
-            for child in snapshot.children{
-                if let snapshot = child as? DataSnapshot,
-                    let value = snapshot.value as? NSDictionary{
-                    self.countdownEvents.append(Event(note: value["note"] as? String ?? "",
-                                                 noteType: value["noteType"] as? String ?? "",
-                                                 targetDate: value["targetDate"] as? String ?? "",
-                                                 leftDays: value["leftDays"] as? Int ?? 0))
-                }
-            }
-            
-            self.collectionView.reloadData()
-        }
+//        if let userEmail = Auth.auth().currentUser?.email{
+//            print("current user: \(userEmail)")
+//            ref = ref.child(userEmail)
+//            
+//            ref.observe(.value) { (snapshot) in
+//                if !snapshot.exists() { return }
+//                print(snapshot)
+//                
+//                if snapshot.childrenCount > 0{
+//                    self.noCountdownEventImg.isHidden = true
+//                    self.noCountdownEventLbl.isHidden = true
+//                }
+//                
+//                if self.countdownEvents.count > 0{
+//                    self.countdownEvents.removeAll()
+//                }
+//                
+//                for child in snapshot.children{
+//                    if let snapshot = child as? DataSnapshot,
+//                        let value = snapshot.value as? NSDictionary{
+//                        self.countdownEvents.append(Event(note: value["note"] as? String ?? "",
+//                                                     noteType: value["noteType"] as? String ?? "",
+//                                                     targetDate: value["targetDate"] as? String ?? "",
+//                                                     leftDays: value["leftDays"] as? Int ?? 0))
+//                    }
+//                }
+//                
+//                self.collectionView.reloadData()
+//            }
+//        }
     }
 }
 

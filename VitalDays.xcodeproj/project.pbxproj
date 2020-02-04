@@ -38,7 +38,7 @@
 		8E9D1FE223DDA0B0002A2A2B /* CreateDayTopHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FE123DDA0B0002A2A2B /* CreateDayTopHeaderView.swift */; };
 		8E9D1FE423DDA0BE002A2A2B /* CreateDayBottomViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FE323DDA0BE002A2A2B /* CreateDayBottomViewCell.swift */; };
 		8E9D1FE623DDA61E002A2A2B /* UIApplication+currentKeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FE523DDA61E002A2A2B /* UIApplication+currentKeyWindow.swift */; };
-		8EC6675623E0436F003413E8 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC6675523E0436F003413E8 /* MyAccountViewController.swift */; };
+		8EC6675623E0436F003413E8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC6675523E0436F003413E8 /* LoginViewController.swift */; };
 		8EC6675823E049C1003413E8 /* UITextField+underline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC6675723E049C1003413E8 /* UITextField+underline.swift */; };
 		8ED532AD23E13CE6001A5354 /* CreateDayTypeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED532AC23E13CE6001A5354 /* CreateDayTypeViewCell.swift */; };
 		8ED532B123E13D30001A5354 /* CreateDayRepeatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED532B023E13D30001A5354 /* CreateDayRepeatViewCell.swift */; };
@@ -82,7 +82,7 @@
 		8E9D1FE123DDA0B0002A2A2B /* CreateDayTopHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayTopHeaderView.swift; sourceTree = "<group>"; };
 		8E9D1FE323DDA0BE002A2A2B /* CreateDayBottomViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayBottomViewCell.swift; sourceTree = "<group>"; };
 		8E9D1FE523DDA61E002A2A2B /* UIApplication+currentKeyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+currentKeyWindow.swift"; sourceTree = "<group>"; };
-		8EC6675523E0436F003413E8 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
+		8EC6675523E0436F003413E8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8EC6675723E049C1003413E8 /* UITextField+underline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+underline.swift"; sourceTree = "<group>"; };
 		8ED532AC23E13CE6001A5354 /* CreateDayTypeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayTypeViewCell.swift; sourceTree = "<group>"; };
 		8ED532B023E13D30001A5354 /* CreateDayRepeatViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayRepeatViewCell.swift; sourceTree = "<group>"; };
@@ -159,6 +159,7 @@
 		8E2110ED23D84B8200106569 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8E72A11923EA1BF200B01541 /* Register & Login */,
 				8E9D1FDB23DD8020002A2A2B /* CountDownView */,
 				8E9D1FDA23DD8007002A2A2B /* MainContainerView */,
 				8E9D1FD923DD7FE6002A2A2B /* SlideMenuView */,
@@ -212,6 +213,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		8E72A11923EA1BF200B01541 /* Register & Login */ = {
+			isa = PBXGroup;
+			children = (
+				8EC6675523E0436F003413E8 /* LoginViewController.swift */,
+				8E72EE2423E78E1B00D7054A /* RegisterViewController.swift */,
+				8E72EE2623E7930500D7054A /* RegisterViewControllerStoryboard.storyboard */,
+			);
+			path = "Register & Login";
+			sourceTree = "<group>";
+		};
 		8E9D1FD623DD2C7B002A2A2B /* CreateNewCountDownController */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,9 +236,6 @@
 			isa = PBXGroup;
 			children = (
 				8E9D1FD023DD1707002A2A2B /* SlideMenuViewController.swift */,
-				8EC6675523E0436F003413E8 /* MyAccountViewController.swift */,
-				8E72EE2423E78E1B00D7054A /* RegisterViewController.swift */,
-				8E72EE2623E7930500D7054A /* RegisterViewControllerStoryboard.storyboard */,
 			);
 			path = SlideMenuView;
 			sourceTree = "<group>";
@@ -395,7 +403,7 @@
 				8E9D1FE223DDA0B0002A2A2B /* CreateDayTopHeaderView.swift in Sources */,
 				8E6B767323D9259C00CC7355 /* CardViewCell.swift in Sources */,
 				8EE65E1C23E1249900DD9980 /* VDdate.swift in Sources */,
-				8EC6675623E0436F003413E8 /* MyAccountViewController.swift in Sources */,
+				8EC6675623E0436F003413E8 /* LoginViewController.swift in Sources */,
 				8E9D1FD323DD1D3F002A2A2B /* Protocols.swift in Sources */,
 				8E2110DC23D849BA00106569 /* SceneDelegate.swift in Sources */,
 				8E2110F523D8546300106569 /* DayCountdownCollectionViewController.swift in Sources */,
