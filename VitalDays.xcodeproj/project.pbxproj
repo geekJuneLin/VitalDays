@@ -22,6 +22,7 @@
 		8E2110F323D84BFD00106569 /* UIColor+StaticColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F223D84BFD00106569 /* UIColor+StaticColors.swift */; };
 		8E2110F523D8546300106569 /* DayCountdownCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F423D8546300106569 /* DayCountdownCollectionViewController.swift */; };
 		8E2110F723D862D000106569 /* UIVIew+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F623D862D000106569 /* UIVIew+Autolayout.swift */; };
+		8E3FBED123EA7F2C00FE9797 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E3FBED023EA7F2C00FE9797 /* GoogleService-Info.plist */; };
 		8E6B766F23D9195400CC7355 /* CreateDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B766E23D9195400CC7355 /* CreateDayViewController.swift */; };
 		8E6B767323D9259C00CC7355 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B767223D9259C00CC7355 /* CardViewCell.swift */; };
 		8E6B767523D926ED00CC7355 /* UILabel+cardViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B767423D926ED00CC7355 /* UILabel+cardViewLabel.swift */; };
@@ -30,7 +31,8 @@
 		8E72EE2523E78E1B00D7054A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72EE2423E78E1B00D7054A /* RegisterViewController.swift */; };
 		8E72EE2723E7930500D7054A /* RegisterViewControllerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E72EE2623E7930500D7054A /* RegisterViewControllerStoryboard.storyboard */; };
 		8E72EE2923E7A67A00D7054A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72EE2823E7A67A00D7054A /* Utils.swift */; };
-		8E7FDE7023E6A85D00DB7D77 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E7FDE6F23E6A85D00DB7D77 /* GoogleService-Info.plist */; };
+		8E97488A23EB64E300D04129 /* UserInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E97488923EB64E300D04129 /* UserInfoViewCell.swift */; };
+		8E97488C23EB6B7600D04129 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E97488B23EB6B7600D04129 /* User.swift */; };
 		8E9D1FD123DD1707002A2A2B /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FD023DD1707002A2A2B /* SlideMenuViewController.swift */; };
 		8E9D1FD323DD1D3F002A2A2B /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FD223DD1D3F002A2A2B /* Protocols.swift */; };
 		8E9D1FD523DD22D2002A2A2B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FD423DD22D2002A2A2B /* ContainerViewController.swift */; };
@@ -67,6 +69,7 @@
 		8E2110F223D84BFD00106569 /* UIColor+StaticColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+StaticColors.swift"; sourceTree = "<group>"; };
 		8E2110F423D8546300106569 /* DayCountdownCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCountdownCollectionViewController.swift; sourceTree = "<group>"; };
 		8E2110F623D862D000106569 /* UIVIew+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Autolayout.swift"; sourceTree = "<group>"; };
+		8E3FBED023EA7F2C00FE9797 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E6B766E23D9195400CC7355 /* CreateDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayViewController.swift; sourceTree = "<group>"; };
 		8E6B767223D9259C00CC7355 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		8E6B767423D926ED00CC7355 /* UILabel+cardViewLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+cardViewLabel.swift"; sourceTree = "<group>"; };
@@ -75,7 +78,8 @@
 		8E72EE2423E78E1B00D7054A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		8E72EE2623E7930500D7054A /* RegisterViewControllerStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterViewControllerStoryboard.storyboard; sourceTree = "<group>"; };
 		8E72EE2823E7A67A00D7054A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		8E7FDE6F23E6A85D00DB7D77 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Flutter/projects/vital_days/ios/Runner/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8E97488923EB64E300D04129 /* UserInfoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewCell.swift; sourceTree = "<group>"; };
+		8E97488B23EB6B7600D04129 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = VitalDays/View/UserInfo/User.swift; sourceTree = SOURCE_ROOT; };
 		8E9D1FD023DD1707002A2A2B /* SlideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
 		8E9D1FD223DD1D3F002A2A2B /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		8E9D1FD423DD22D2002A2A2B /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -153,7 +157,7 @@
 				8E2110E223D849BF00106569 /* Assets.xcassets */,
 				8E2110E423D849BF00106569 /* LaunchScreen.storyboard */,
 				8E2110E723D849BF00106569 /* Info.plist */,
-				8E7FDE6F23E6A85D00DB7D77 /* GoogleService-Info.plist */,
+				8E3FBED023EA7F2C00FE9797 /* GoogleService-Info.plist */,
 			);
 			path = VitalDays;
 			sourceTree = "<group>";
@@ -173,11 +177,12 @@
 		8E2110EE23D84B8A00106569 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8E0C748823DE5C8800166D45 /* Calendar */,
+				8E9D1FE023DDA091002A2A2B /* CreateDayVCViewCell */,
+				8E97488823EB64B300D04129 /* UserInfo */,
 				8E0C748223DE438800166D45 /* CardView.swift */,
 				8E9D1FD723DD75D3002A2A2B /* SlideMenuTableViewCell.swift */,
 				8E6B767223D9259C00CC7355 /* CardViewCell.swift */,
-				8E9D1FE023DDA091002A2A2B /* CreateDayVCViewCell */,
-				8E0C748823DE5C8800166D45 /* Calendar */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 			children = (
 				8EE65E1B23E1249900DD9980 /* VDdate.swift */,
 				8E71D2DD23E24FFA00F6F3B2 /* Event.swift */,
+				8E97488B23EB6B7600D04129 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -223,6 +229,14 @@
 				8E72EE2623E7930500D7054A /* RegisterViewControllerStoryboard.storyboard */,
 			);
 			path = "Register & Login";
+			sourceTree = "<group>";
+		};
+		8E97488823EB64B300D04129 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				8E97488923EB64E300D04129 /* UserInfoViewCell.swift */,
+			);
+			path = UserInfo;
 			sourceTree = "<group>";
 		};
 		8E9D1FD623DD2C7B002A2A2B /* CreateNewCountDownController */ = {
@@ -342,7 +356,7 @@
 			files = (
 				8E2110E623D849BF00106569 /* LaunchScreen.storyboard in Resources */,
 				8E2110E323D849BF00106569 /* Assets.xcassets in Resources */,
-				8E7FDE7023E6A85D00DB7D77 /* GoogleService-Info.plist in Resources */,
+				8E3FBED123EA7F2C00FE9797 /* GoogleService-Info.plist in Resources */,
 				8E72EE2723E7930500D7054A /* RegisterViewControllerStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +421,7 @@
 				8E6B767323D9259C00CC7355 /* CardViewCell.swift in Sources */,
 				8EE65E1C23E1249900DD9980 /* VDdate.swift in Sources */,
 				8EC6675623E0436F003413E8 /* LoginViewController.swift in Sources */,
+				8E97488A23EB64E300D04129 /* UserInfoViewCell.swift in Sources */,
 				8E9D1FD323DD1D3F002A2A2B /* Protocols.swift in Sources */,
 				8E2110DC23D849BA00106569 /* SceneDelegate.swift in Sources */,
 				8E2110F523D8546300106569 /* DayCountdownCollectionViewController.swift in Sources */,
@@ -428,6 +443,7 @@
 				8E6B767523D926ED00CC7355 /* UILabel+cardViewLabel.swift in Sources */,
 				8E2110F323D84BFD00106569 /* UIColor+StaticColors.swift in Sources */,
 				8E9D1FD523DD22D2002A2A2B /* ContainerViewController.swift in Sources */,
+				8E97488C23EB6B7600D04129 /* User.swift in Sources */,
 				8E2110F723D862D000106569 /* UIVIew+Autolayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

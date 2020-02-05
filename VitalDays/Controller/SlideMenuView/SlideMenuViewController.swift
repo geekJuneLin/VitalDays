@@ -107,13 +107,12 @@ extension SlideMenuViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.item == 0 {
-            print("select my account")
             // check if the user current signed in
             if Auth.auth().currentUser != nil{
-                print("My account signed in")
+                print("My account: signed in")
                 present(UserInfoViewController(), animated: true, completion: nil)
             }else{
-                print("My account not signed in")
+                print("My account: not signed in")
                 present(LoginViewController(), animated: true, completion: nil)
             }
         }

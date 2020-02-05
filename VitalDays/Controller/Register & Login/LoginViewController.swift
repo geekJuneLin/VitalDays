@@ -146,7 +146,7 @@ class LoginViewController: UIViewController{
     }()
     
     var handle:  AuthStateDidChangeListenerHandle?
-    var user: User?
+    var user: Firebase.User?
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
