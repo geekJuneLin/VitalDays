@@ -165,10 +165,19 @@ extension DayCountdownCollectionViewController{
                 for child in snapshot.children{
                     if let snapshot = child as? DataSnapshot,
                         let value = snapshot.value as? NSDictionary{
+                        // recalculate the left days
+                        let leftDays = self.recalculateLeftDays(targetDate: value["targetDate"] as! String)
+                        
+                        // update it onto the database if the left days need to be changed
+                        if leftDays != value["leftDays"] as! Int{
+                            self.updateOntoDB(leftDays: leftDays, childPath: (child as! DataSnapshot).key)
+                        }
+                        
+                        // display it on the screen
                         self.countdownEvents.append(Event(note: value["note"] as? String ?? "",
                                                      noteType: value["noteType"] as? String ?? "",
                                                      targetDate: value["targetDate"] as? String ?? "",
-                                                     leftDays: value["leftDays"] as? Int ?? 0))
+                                                     leftDays: leftDays))
                     }
                 }
 
@@ -177,6 +186,23 @@ extension DayCountdownCollectionViewController{
         }else{
             print("couldn't get the uid")
         }
+    }
+    
+    /// calculate how many days are still left according to today's date
+    /// - Parameter targetDate: the target date was set when the event was created before
+    fileprivate func recalculateLeftDays(targetDate: String) -> Int{
+        var leftDays = 0
+        leftDays = calendar.dateComponents([.day], from: Date(), to: targetDate.selectedDate!).day!
+        
+        return leftDays
+    }
+    
+    /// update the new left days onto database
+    /// - Parameters:
+    ///   - leftDays: the newly calculated left days
+    ///   - childPath: the child path to update the value
+    fileprivate func updateOntoDB(leftDays: Int, childPath: String){
+        ref.child(childPath).updateChildValues(["leftDays": leftDays])
     }
 }
 

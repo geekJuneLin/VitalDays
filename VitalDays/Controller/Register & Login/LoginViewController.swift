@@ -117,6 +117,18 @@ class LoginViewController: UIViewController{
         return btn
     }()
     
+    let continueBtn: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("Continue without account", for: .normal)
+        btn.setTitleColor(.white, for: .normal)
+        btn.clipsToBounds = true
+        btn.layer.cornerRadius = 10
+        btn.backgroundColor = UIColor.white.withAlphaComponent(0.25)
+        btn.addTarget(self, action: #selector(continueWithoutAccount), for: .touchUpInside)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
+    
     let googleBtn: UIButton = {
         let btn = UIButton(type: .system)
         btn.tintColor = .white
@@ -181,7 +193,7 @@ class LoginViewController: UIViewController{
         
         view.backgroundColor = .backgroundColor
         
-        view.addSubviews(titleLabel, accountTextField, passwordTextField, forgotBtn, registerBtn, saperator, signinBtn, googleBtn, wechatBtn)
+        view.addSubviews(titleLabel, accountTextField, passwordTextField, forgotBtn, registerBtn, saperator, signinBtn, continueBtn, googleBtn, wechatBtn)
         
         titleLabel.anchors(centerX: view.centerXAnchor,
                            top: view.topAnchor,
@@ -216,8 +228,15 @@ class LoginViewController: UIViewController{
                           widthValue: 0.7,
                           heightValue: 45)
         
+        continueBtn.anchors(centerX: view.centerXAnchor,
+                            top: signinBtn.bottomAnchor,
+                            topConstant: 8,
+                            width: view.widthAnchor,
+                            widthValue: 0.7,
+                            heightValue: 45)
+        
         saperator.anchors(centerX: view.centerXAnchor,
-                          top: signinBtn.bottomAnchor,
+                          top: continueBtn.bottomAnchor,
                           topConstant: 36,
                           width: view.widthAnchor,
                           heightValue: 30)
@@ -251,7 +270,7 @@ extension LoginViewController{
     @objc
     fileprivate func sigin(){
         print("sigin btn pressed!")
-        if accountTextField.text != nil && passwordTextField.text != nil{
+        if accountTextField.text != "" && passwordTextField.text != ""{
             Auth.auth().signIn(withEmail: accountTextField.text!, password: passwordTextField.text!) { [weak self] authResult, error in
               guard let strongSelf = self else { return }
                 if error != nil{
@@ -268,7 +287,18 @@ extension LoginViewController{
                     }
                 }
             }
+        }else{
+            Utils.shard.showError("Please enter the account and password!", self)
+            return
         }
+    }
+    
+    @objc
+    fileprivate func continueWithoutAccount(){
+        print("continue btn pressed!")
+        
+        self.view.window?.rootViewController = ContainerViewController()
+        self.view.window?.makeKeyAndVisible()
     }
     
     fileprivate func transitionToCountdownVC(){
