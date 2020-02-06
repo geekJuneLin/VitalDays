@@ -23,6 +23,7 @@ class LoginViewController: UIViewController{
     let accountTextField: UITextField = {
        let field = UITextField()
         let img = UIImageView(image: UIImage(named: "customer"))
+        field.textColor = .white
         field.placeholder = "Account"
         field.attributedPlaceholder = NSAttributedString(string: field.placeholder!, attributes: [.foregroundColor:UIColor.white])
         field.underline(color: .white)
@@ -43,6 +44,7 @@ class LoginViewController: UIViewController{
     let passwordTextField: UITextField = {
        let field = UITextField()
         let img = UIImageView(image: UIImage(named: "lock"))
+        field.textColor = .white
         field.placeholder = "Password"
         field.attributedPlaceholder = NSAttributedString(string: field.placeholder!, attributes: [.foregroundColor:UIColor.white])
         field.underline(color: .white)
@@ -158,7 +160,6 @@ class LoginViewController: UIViewController{
     }()
     
     var handle:  AuthStateDidChangeListenerHandle?
-    var user: Firebase.User?
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -276,15 +277,8 @@ extension LoginViewController{
                 if error != nil{
                     Utils.shard.showError("sigin with errors: \(String(describing: error))", strongSelf)
                 }else{
-                    strongSelf.user = Auth.auth().currentUser
-                    
-                    if let user = strongSelf.user{
-//                        Utils.shard.showError("signed in successfully with \(user.email!)", strongSelf)
-//                        self?.dismiss(animated: true, completion: {
-//
-//                        })
-                        self!.transitionToCountdownVC()
-                    }
+                    // sign in successfully
+                    self!.transitionToCountdownVC()
                 }
             }
         }else{
