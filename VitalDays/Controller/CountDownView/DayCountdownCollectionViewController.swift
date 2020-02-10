@@ -79,16 +79,24 @@ class DayCountdownCollectionViewController: UICollectionViewController{
         setupNoEventsViews()
         setupNavigationBar()
         setupGestures()
-        
-        // notification test
+    }
+}
+
+
+// MARK: - other functions
+extension DayCountdownCollectionViewController{
+    
+    fileprivate func configureNotification(eventName: String, daysLeft: Int, targetDate: String){
         let content = UNMutableNotificationContent()
-        content.title = "Vital Days Reminder"
-        content.subtitle = "From Vital Days"
-        content.body = "Your vital days 20 days to go"
+        content.title = "距离\(eventName)， 剩余\(daysLeft)天"
+        content.body = "目标日：\(targetDate)"
         content.sound = UNNotificationSound.default
-        content.badge = 1
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        var dateComponents = DateComponents()
+        dateComponents.hour = 9
+        dateComponents.minute = 00
+
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         let request = UNNotificationRequest(identifier: "Local Notification", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request) { (err) in
@@ -99,11 +107,6 @@ class DayCountdownCollectionViewController: UICollectionViewController{
             }
         }
     }
-}
-
-
-// MARK: - other functions
-extension DayCountdownCollectionViewController{
 
     fileprivate func setupView(){
         collectionView.backgroundColor = .backgroundColor
@@ -181,10 +184,21 @@ extension DayCountdownCollectionViewController{
                 if self.countdownEvents.count > 0{
                     self.countdownEvents.removeAll()
                 }
-
+                
+                var closestDay = Int.max
+                var targetDate = ""
+                var title = ""
+                
                 for child in snapshot.children{
                     if let snapshot = child as? DataSnapshot,
                         let value = snapshot.value as? NSDictionary{
+                        // check if the current event is the closest day
+                        if (value["leftDays"] as! Int) < closestDay {
+                            closestDay = value["leftDays"] as! Int
+                            targetDate = value["targetDate"] as! String
+                            title = value["note"] as! String
+                        }
+                        
                         // recalculate the left days
                         let leftDays = self.recalculateLeftDays(targetDate: value["targetDate"] as! String)
                         
@@ -202,6 +216,8 @@ extension DayCountdownCollectionViewController{
                 }
 
                 self.collectionView.reloadData()
+                
+                self.configureNotification(eventName: title, daysLeft: closestDay - 1, targetDate: targetDate)
             }
         }else{
             print("couldn't get the uid")
