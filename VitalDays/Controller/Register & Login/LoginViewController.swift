@@ -159,34 +159,15 @@ class LoginViewController: UIViewController{
         return btn
     }()
     
-    var handle:  AuthStateDidChangeListenerHandle?
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkSignedInStatus()
         setupView()
-    }
-    
-    fileprivate func checkSignedInStatus(){
-        handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
-            if user != nil{
-                print("already signed in")
-                // present main VC directly
-                let mainVC = ContainerViewController()
-                self.view.window?.rootViewController = mainVC
-                self.view.window?.makeKeyAndVisible()
-            }else{
-                print("not signed in yet")
-                // keep staying on current VC
-            }
-        })
+        setupGesture()
     }
     
     fileprivate func setupView(){
@@ -256,10 +237,19 @@ class LoginViewController: UIViewController{
                           widthValue: 0.35,
                           heightValue: 40)
     }
+    
+    fileprivate func setupGesture(){
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapGesture)))
+    }
 }
 
 // MARK: - selector functions
 extension LoginViewController{
+    @objc
+    fileprivate func handleTapGesture(){
+        view.endEditing(true)
+    }
+    
     @objc
     fileprivate func showOrHide(){
         passwordTextField.isSecureTextEntry.toggle()

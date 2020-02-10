@@ -25,6 +25,7 @@ class RegisterViewController: UIViewController{
         super.viewDidLoad()
         
         setupCustomization()
+        setupGesture()
     }
     
     fileprivate func setupCustomization(){
@@ -128,5 +129,14 @@ class RegisterViewController: UIViewController{
         print("finished validating")
         
         return true
+    }
+    
+    fileprivate func setupGesture(){
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapGesture)))
+    }
+    
+    @objc
+    fileprivate func handleTapGesture(){
+        view.endEditing(true)
     }
 }

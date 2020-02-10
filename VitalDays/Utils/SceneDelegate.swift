@@ -12,7 +12,7 @@ import Firebase
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var handle:  AuthStateDidChangeListenerHandle?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -22,9 +22,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // detect whether this is the first fime launch this app
             let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
             if launchedBefore{
-                // launched before then present the login VC
-                let signInVC = LoginViewController()
-                window.rootViewController = signInVC
+                // if launched before, then check if the user logged in
+                handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
+                    if user != nil{
+                        print("already signed in")
+                        let mainVC = ContainerViewController()
+                        window.rootViewController = mainVC
+                    }else{
+                        let signInVC = LoginViewController()
+                        window.rootViewController = signInVC
+                    }
+                })
             }else{
                 // otherwise present the register page
                 let registerVC = UIStoryboard(name: "RegisterViewControllerStoryboard", bundle: nil)
@@ -37,6 +45,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     try Auth.auth().signOut()
                 }catch{
                     print("sign out failed...")
+                }
+            }
+            
+            // ask for notification permission
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound
+                , .badge]) { (granted, err) in
+                if granted{
+                    print("permission granted")
+                }else{
+                    print("permission denied")
                 }
             }
             
@@ -75,7 +93,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
 

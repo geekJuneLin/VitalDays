@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import UserNotifications
 
 class DayCountdownCollectionViewController: UICollectionViewController{
     
@@ -78,6 +79,25 @@ class DayCountdownCollectionViewController: UICollectionViewController{
         setupNoEventsViews()
         setupNavigationBar()
         setupGestures()
+        
+        // notification test
+        let content = UNMutableNotificationContent()
+        content.title = "Vital Days Reminder"
+        content.subtitle = "From Vital Days"
+        content.body = "Your vital days 20 days to go"
+        content.sound = UNNotificationSound.default
+        content.badge = 1
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier: "Local Notification", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { (err) in
+            if let err = err{
+                print("adding trigger with errors \(err)")
+            }else{
+                print("completed")
+            }
+        }
     }
 }
 
@@ -192,7 +212,7 @@ extension DayCountdownCollectionViewController{
     /// - Parameter targetDate: the target date was set when the event was created before
     fileprivate func recalculateLeftDays(targetDate: String) -> Int{
         var leftDays = 0
-        leftDays = calendar.dateComponents([.day], from: Date(), to: targetDate.selectedDate!).day!
+        leftDays = calendar.dateComponents([.day], from: Date(), to: targetDate.selectedDate!).day! + 1
         
         return leftDays
     }
