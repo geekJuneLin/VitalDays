@@ -26,6 +26,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
                     if user != nil{
                         print("already signed in")
+                        
+                        // save the uid for widget extension fetching the event details
+                        let defaults = UserDefaults(suiteName: "group.sharingForVitalDaysWidgetExt")
+                        defaults?.set(user!.uid, forKey: "uid")
+                        
+                        // present the main vc
                         let mainVC = ContainerViewController()
                         window.rootViewController = mainVC
                     }else{

@@ -267,6 +267,10 @@ extension LoginViewController{
                 if error != nil{
                     Utils.shard.showError("sigin with errors: \(String(describing: error))", strongSelf)
                 }else{
+                    // save the uid for widget extension fetching the event details
+                    let defaults = UserDefaults(suiteName: "group.sharingForVitalDaysWidgetExt")
+                    defaults?.set(authResult?.user.uid, forKey: "uid")
+                    
                     // sign in successfully
                     self!.transitionToCountdownVC()
                 }

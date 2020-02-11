@@ -22,7 +22,6 @@
 		8E2110F323D84BFD00106569 /* UIColor+StaticColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F223D84BFD00106569 /* UIColor+StaticColors.swift */; };
 		8E2110F523D8546300106569 /* DayCountdownCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F423D8546300106569 /* DayCountdownCollectionViewController.swift */; };
 		8E2110F723D862D000106569 /* UIVIew+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F623D862D000106569 /* UIVIew+Autolayout.swift */; };
-		8E3FBED123EA7F2C00FE9797 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E3FBED023EA7F2C00FE9797 /* GoogleService-Info.plist */; };
 		8E41C9A923F21795008E0519 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E41C9A823F21795008E0519 /* NotificationCenter.framework */; };
 		8E41C9AC23F21795008E0519 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E41C9AB23F21795008E0519 /* TodayViewController.swift */; };
 		8E41C9AF23F21795008E0519 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E41C9AD23F21795008E0519 /* MainInterface.storyboard */; };
@@ -32,6 +31,9 @@
 		8E41C9BD23F22E88008E0519 /* EventViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E41C9BC23F22E88008E0519 /* EventViewCell.swift */; };
 		8E41C9BE23F22F4F008E0519 /* UIVIew+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F623D862D000106569 /* UIVIew+Autolayout.swift */; };
 		8E41C9BF23F23347008E0519 /* UIColor+StaticColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F223D84BFD00106569 /* UIColor+StaticColors.swift */; };
+		8E41C9E323F24514008E0519 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E41C9E223F24514008E0519 /* GoogleService-Info.plist */; };
+		8E41C9E523F24C1F008E0519 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E41C9E423F24C1F008E0519 /* GoogleService-Info.plist */; };
+		8E63C8A423F25CF2005F16DD /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71D2DD23E24FFA00F6F3B2 /* Event.swift */; };
 		8E6B766F23D9195400CC7355 /* CreateDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B766E23D9195400CC7355 /* CreateDayViewController.swift */; };
 		8E6B767323D9259C00CC7355 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B767223D9259C00CC7355 /* CardViewCell.swift */; };
 		8E6B767523D926ED00CC7355 /* UILabel+cardViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B767423D926ED00CC7355 /* UILabel+cardViewLabel.swift */; };
@@ -55,6 +57,7 @@
 		8ED532AD23E13CE6001A5354 /* CreateDayTypeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED532AC23E13CE6001A5354 /* CreateDayTypeViewCell.swift */; };
 		8ED532B123E13D30001A5354 /* CreateDayRepeatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED532B023E13D30001A5354 /* CreateDayRepeatViewCell.swift */; };
 		8EE65E1C23E1249900DD9980 /* VDdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE65E1B23E1249900DD9980 /* VDdate.swift */; };
+		B9942C434C0083E9FEC6BC7C /* Pods_Vital_Days.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2741E692E9A0DFD0687D7D8B /* Pods_Vital_Days.framework */; };
 		CC51EFC6241CF311D92A486A /* Pods_VitalDays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A88B930083BB613292FBC02F /* Pods_VitalDays.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +88,8 @@
 /* Begin PBXFileReference section */
 		03AFD9F5E1423DE629C46F10 /* Pods-VitalDays.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitalDays.debug.xcconfig"; path = "Target Support Files/Pods-VitalDays/Pods-VitalDays.debug.xcconfig"; sourceTree = "<group>"; };
 		083172973040D07BD5A33C35 /* Pods-VitalDays.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitalDays.release.xcconfig"; path = "Target Support Files/Pods-VitalDays/Pods-VitalDays.release.xcconfig"; sourceTree = "<group>"; };
+		2741E692E9A0DFD0687D7D8B /* Pods_Vital_Days.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vital_Days.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DE9CF01BA94BCEA5B67DA67 /* Pods-Vital Days.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vital Days.debug.xcconfig"; path = "Target Support Files/Pods-Vital Days/Pods-Vital Days.debug.xcconfig"; sourceTree = "<group>"; };
 		8E0C748223DE438800166D45 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		8E0C748423DE577400166D45 /* CalenderPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderPickerViewController.swift; sourceTree = "<group>"; };
 		8E0C748623DE5C8400166D45 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -102,7 +107,6 @@
 		8E2110F223D84BFD00106569 /* UIColor+StaticColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+StaticColors.swift"; sourceTree = "<group>"; };
 		8E2110F423D8546300106569 /* DayCountdownCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCountdownCollectionViewController.swift; sourceTree = "<group>"; };
 		8E2110F623D862D000106569 /* UIVIew+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Autolayout.swift"; sourceTree = "<group>"; };
-		8E3FBED023EA7F2C00FE9797 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E41C9A723F21795008E0519 /* Vital Days.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Vital Days.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E41C9A823F21795008E0519 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		8E41C9AB23F21795008E0519 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +115,17 @@
 		8E41C9BA23F22C1A008E0519 /* VitalDays.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VitalDays.entitlements; sourceTree = "<group>"; };
 		8E41C9BB23F22C97008E0519 /* Vital Days.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Vital Days.entitlements"; sourceTree = "<group>"; };
 		8E41C9BC23F22E88008E0519 /* EventViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewCell.swift; sourceTree = "<group>"; };
+		8E41C9C223F241E6008E0519 /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E41C9C623F241F7008E0519 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E41C9C923F241FA008E0519 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E41C9CE23F2437F008E0519 /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E41C9CF23F2437F008E0519 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E41C9D023F2437F008E0519 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E41C9D123F2437F008E0519 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E41C9DB23F243E6008E0519 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E41C9DE23F24481008E0519 /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E41C9E223F24514008E0519 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../.Trash/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8E41C9E423F24C1F008E0519 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../.Trash/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E6B766E23D9195400CC7355 /* CreateDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayViewController.swift; sourceTree = "<group>"; };
 		8E6B767223D9259C00CC7355 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		8E6B767423D926ED00CC7355 /* UILabel+cardViewLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+cardViewLabel.swift"; sourceTree = "<group>"; };
@@ -135,6 +150,7 @@
 		8ED532B023E13D30001A5354 /* CreateDayRepeatViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayRepeatViewCell.swift; sourceTree = "<group>"; };
 		8EE65E1B23E1249900DD9980 /* VDdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VDdate.swift; path = VitalDays/Extensions/VDdate.swift; sourceTree = SOURCE_ROOT; };
 		A88B930083BB613292FBC02F /* Pods_VitalDays.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VitalDays.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5C61CC825F898627E2DB70A /* Pods-Vital Days.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vital Days.release.xcconfig"; path = "Target Support Files/Pods-Vital Days/Pods-Vital Days.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E41C9A923F21795008E0519 /* NotificationCenter.framework in Frameworks */,
+				B9942C434C0083E9FEC6BC7C /* Pods_Vital_Days.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,8 +177,18 @@
 		19F13FF2349CAC7A9B21F7BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8E41C9DE23F24481008E0519 /* FirebaseAuth.framework */,
+				8E41C9DB23F243E6008E0519 /* FirebaseCoreDiagnostics.framework */,
+				8E41C9CE23F2437F008E0519 /* FirebaseAuth.framework */,
+				8E41C9CF23F2437F008E0519 /* FirebaseCore.framework */,
+				8E41C9D023F2437F008E0519 /* FirebaseCoreDiagnostics.framework */,
+				8E41C9D123F2437F008E0519 /* FirebaseDatabase.framework */,
+				8E41C9C923F241FA008E0519 /* FirebaseDatabase.framework */,
+				8E41C9C623F241F7008E0519 /* FirebaseCore.framework */,
+				8E41C9C223F241E6008E0519 /* FirebaseAuth.framework */,
 				A88B930083BB613292FBC02F /* Pods_VitalDays.framework */,
 				8E41C9A823F21795008E0519 /* NotificationCenter.framework */,
+				2741E692E9A0DFD0687D7D8B /* Pods_Vital_Days.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -210,7 +237,7 @@
 				8E2110E223D849BF00106569 /* Assets.xcassets */,
 				8E2110E423D849BF00106569 /* LaunchScreen.storyboard */,
 				8E2110E723D849BF00106569 /* Info.plist */,
-				8E3FBED023EA7F2C00FE9797 /* GoogleService-Info.plist */,
+				8E41C9E223F24514008E0519 /* GoogleService-Info.plist */,
 			);
 			path = VitalDays;
 			sourceTree = "<group>";
@@ -282,6 +309,7 @@
 				8E41C9BC23F22E88008E0519 /* EventViewCell.swift */,
 				8E41C9AD23F21795008E0519 /* MainInterface.storyboard */,
 				8E41C9B023F21795008E0519 /* Info.plist */,
+				8E41C9E423F24C1F008E0519 /* GoogleService-Info.plist */,
 			);
 			path = "Vital Days";
 			sourceTree = "<group>";
@@ -355,6 +383,8 @@
 			children = (
 				03AFD9F5E1423DE629C46F10 /* Pods-VitalDays.debug.xcconfig */,
 				083172973040D07BD5A33C35 /* Pods-VitalDays.release.xcconfig */,
+				8DE9CF01BA94BCEA5B67DA67 /* Pods-Vital Days.debug.xcconfig */,
+				F5C61CC825F898627E2DB70A /* Pods-Vital Days.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -387,6 +417,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E41C9B723F21795008E0519 /* Build configuration list for PBXNativeTarget "Vital Days" */;
 			buildPhases = (
+				5D81DFEF21426967BD2FA1E2 /* [CP] Check Pods Manifest.lock */,
 				8E41C9A323F21795008E0519 /* Sources */,
 				8E41C9A423F21795008E0519 /* Frameworks */,
 				8E41C9A523F21795008E0519 /* Resources */,
@@ -444,8 +475,8 @@
 			files = (
 				8E2110E623D849BF00106569 /* LaunchScreen.storyboard in Resources */,
 				8E41C9B823F21C44008E0519 /* MainInterface.storyboard in Resources */,
+				8E41C9E323F24514008E0519 /* GoogleService-Info.plist in Resources */,
 				8E2110E323D849BF00106569 /* Assets.xcassets in Resources */,
-				8E3FBED123EA7F2C00FE9797 /* GoogleService-Info.plist in Resources */,
 				8E72EE2723E7930500D7054A /* RegisterViewControllerStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,12 +487,35 @@
 			files = (
 				8E41C9B923F21F1D008E0519 /* Assets.xcassets in Resources */,
 				8E41C9AF23F21795008E0519 /* MainInterface.storyboard in Resources */,
+				8E41C9E523F24C1F008E0519 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5D81DFEF21426967BD2FA1E2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Vital Days-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		837BF674DB69C6DF0B48167A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -554,6 +608,7 @@
 				8E41C9BD23F22E88008E0519 /* EventViewCell.swift in Sources */,
 				8E41C9BE23F22F4F008E0519 /* UIVIew+Autolayout.swift in Sources */,
 				8E41C9BF23F23347008E0519 /* UIColor+StaticColors.swift in Sources */,
+				8E63C8A423F25CF2005F16DD /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,6 +766,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A385T794G4;
 				INFOPLIST_FILE = VitalDays/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -732,6 +788,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A385T794G4;
 				INFOPLIST_FILE = VitalDays/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -745,11 +802,13 @@
 		};
 		8E41C9B523F21795008E0519 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DE9CF01BA94BCEA5B67DA67 /* Pods-Vital Days.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Vital Days/Vital Days.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A385T794G4;
 				INFOPLIST_FILE = "Vital Days/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -759,17 +818,19 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		8E41C9B623F21795008E0519 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5C61CC825F898627E2DB70A /* Pods-Vital Days.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Vital Days/Vital Days.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A385T794G4;
 				INFOPLIST_FILE = "Vital Days/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -779,7 +840,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

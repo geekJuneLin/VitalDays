@@ -8,11 +8,18 @@
 
 import UIKit
 import NotificationCenter
+import Firebase
 
 class TodayViewController: UIViewController {
         
     let cellId = "cellId"
-    @IBOutlet weak var countdownCollectionView: UICollectionView!
+    var events = [Event]()
+    let countdownCollectionView: UICollectionView = {
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        cv.backgroundColor = .backgroundColor
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        return cv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +29,50 @@ class TodayViewController: UIViewController {
     }
     
     fileprivate func setupViews(){
+        // add collection view
+        view.addSubviews(countdownCollectionView)
+        
+        countdownCollectionView.anchors(centerX: view.centerXAnchor,
+                                        centerY: view.centerYAnchor,
+                                        top: view.topAnchor,
+                                        topConstant: 8,
+                                        bottom: view.bottomAnchor,
+                                        bottomConstant: 8,
+                                        left: view.leftAnchor,
+                                        leftConstant: 8,
+                                        right: view.rightAnchor,
+                                        rightConstant: 8)
+        
+        FirebaseApp.configure()
+        
+        // get the signed in user's uid
+        let defaults = UserDefaults(suiteName: "group.sharingForVitalDaysWidgetExt")
+        if let uid = defaults?.string(forKey: "uid"){
+            let ref = Database.database().reference().child("Events").child(uid)
+            ref.observe(.value) { (snapshot) in
+                if !snapshot.exists() { return }
+                print(snapshot)
+                
+                for child in snapshot.children {
+                    if let snapshot = child as? DataSnapshot,
+                        let value = snapshot.value as? NSDictionary{
+                        self.events.append(Event(note: value["note"] as! String,
+                                             noteType: value["noteType"] as! String,
+                                             targetDate: value["targetDate"] as! String,
+                                             leftDays: value["leftDays"] as! Int))
+                    }
+                }
+                
+                // refresh the data in the collectionView
+                self.countdownCollectionView.reloadData()
+            }
+        }else{
+            print("there is no uid found")
+        }
+        
+        print("completed")
+        
+        
         // set the widget to be expandable
         self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
         
@@ -38,12 +89,13 @@ class TodayViewController: UIViewController {
 // MARK: - UICollectionView data source
 extension TodayViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return events.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! EventViewCell
         cell.backgroundColor = .cardViewColor
+        cell.event = events[indexPath.item]
         return cell
     }
 }
@@ -76,7 +128,7 @@ extension TodayViewController: NCWidgetProviding{
         if activeDisplayMode == .compact{
             self.preferredContentSize = maxSize
         } else if activeDisplayMode == .expanded{
-            self.preferredContentSize = CGSize(width: maxSize.width, height: 250)
+            self.preferredContentSize = CGSize(width: maxSize.width, height: CGFloat(70 * events.count))
         }
     }
 }

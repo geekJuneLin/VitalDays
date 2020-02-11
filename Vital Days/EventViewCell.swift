@@ -10,6 +10,17 @@ import UIKit
 
 class EventViewCell: UICollectionViewCell{
     
+    var event: Event? {
+        didSet{
+            if let event = event {
+                noteType.text = " \(event.noteType) "
+                note.text = event.note
+                targetDate.text = event.targetDate
+                dayLeft.text = "\(event.leftDays)"
+            }
+        }
+    }
+    
     let noteType: UILabel = {
        let label = UILabel()
         label.text = " 倒计时 "
@@ -17,7 +28,7 @@ class EventViewCell: UICollectionViewCell{
         label.textColor = .white
         label.backgroundColor = .systemTeal
         label.clipsToBounds = true
-        label.layer.cornerRadius = 5
+        label.layer.cornerRadius = 4
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
