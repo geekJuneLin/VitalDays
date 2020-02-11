@@ -43,35 +43,11 @@ class TodayViewController: UIViewController {
                                         right: view.rightAnchor,
                                         rightConstant: 8)
         
+        // configure the firebase
         FirebaseApp.configure()
         
         // get the signed in user's uid
-        let defaults = UserDefaults(suiteName: "group.sharingForVitalDaysWidgetExt")
-        if let uid = defaults?.string(forKey: "uid"){
-            let ref = Database.database().reference().child("Events").child(uid)
-            ref.observe(.value) { (snapshot) in
-                if !snapshot.exists() { return }
-                print(snapshot)
-                
-                for child in snapshot.children {
-                    if let snapshot = child as? DataSnapshot,
-                        let value = snapshot.value as? NSDictionary{
-                        self.events.append(Event(note: value["note"] as! String,
-                                             noteType: value["noteType"] as! String,
-                                             targetDate: value["targetDate"] as! String,
-                                             leftDays: value["leftDays"] as! Int))
-                    }
-                }
-                
-                // refresh the data in the collectionView
-                self.countdownCollectionView.reloadData()
-            }
-        }else{
-            print("there is no uid found")
-        }
-        
-        print("completed")
-        
+        getUIDAndFetchData()
         
         // set the widget to be expandable
         self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
@@ -83,6 +59,37 @@ class TodayViewController: UIViewController {
         countdownCollectionView.dataSource = self
         countdownCollectionView.delegate = self
         countdownCollectionView.register(EventViewCell.self, forCellWithReuseIdentifier: cellId)
+    }
+    
+    fileprivate func getUIDAndFetchData(){
+        let defaults = UserDefaults(suiteName: "group.sharingForVitalDaysWidgetExt")
+        if let uid = defaults?.string(forKey: "uid"){
+            let ref = Database.database().reference().child("Events").child(uid)
+            ref.observe(.value) { (snapshot) in
+                if !snapshot.exists() { return }
+                print(snapshot)
+                
+                // clear all the events stored in the array before
+                if self.events.count > 0 {
+                    self.events.removeAll()
+                }
+                
+                for child in snapshot.children {
+                    if let snapshot = child as? DataSnapshot,
+                        let value = snapshot.value as? NSDictionary{
+                        self.events.append(Event(note: value["note"] as! String,
+                                                 noteType: value["noteType"] as! String,
+                                                 targetDate: value["targetDate"] as! String,
+                                                 leftDays: value["leftDays"] as! Int))
+                    }
+                }
+                
+                // refresh the data in the collectionView
+                self.countdownCollectionView.reloadData()
+            }
+        }else{
+            print("there is no uid found")
+        }
     }
 }
 
