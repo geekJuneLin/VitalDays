@@ -37,11 +37,11 @@ class TodayViewController: UIViewController {
                                         top: view.topAnchor,
                                         topConstant: 8,
                                         bottom: view.bottomAnchor,
-                                        bottomConstant: 8,
+                                        bottomConstant: -8,
                                         left: view.leftAnchor,
                                         leftConstant: 8,
                                         right: view.rightAnchor,
-                                        rightConstant: 8)
+                                        rightConstant: -8)
         
         // configure the firebase
         FirebaseApp.configure()
