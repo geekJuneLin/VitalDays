@@ -86,6 +86,11 @@ class DayCountdownCollectionViewController: UICollectionViewController{
 // MARK: - other functions
 extension DayCountdownCollectionViewController{
     
+    /// create the notification in terms of the countdown event
+    /// - Parameters:
+    ///   - eventName: the event name needed to display
+    ///   - daysLeft: how many days left
+    ///   - targetDate: the target date to be displayed
     fileprivate func configureNotification(eventName: String, daysLeft: Int, targetDate: String){
         let content = UNMutableNotificationContent()
         content.title = "距离\(eventName)， 剩余\(daysLeft)天"

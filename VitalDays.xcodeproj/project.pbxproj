@@ -23,6 +23,15 @@
 		8E2110F523D8546300106569 /* DayCountdownCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F423D8546300106569 /* DayCountdownCollectionViewController.swift */; };
 		8E2110F723D862D000106569 /* UIVIew+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F623D862D000106569 /* UIVIew+Autolayout.swift */; };
 		8E3FBED123EA7F2C00FE9797 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E3FBED023EA7F2C00FE9797 /* GoogleService-Info.plist */; };
+		8E41C9A923F21795008E0519 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E41C9A823F21795008E0519 /* NotificationCenter.framework */; };
+		8E41C9AC23F21795008E0519 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E41C9AB23F21795008E0519 /* TodayViewController.swift */; };
+		8E41C9AF23F21795008E0519 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E41C9AD23F21795008E0519 /* MainInterface.storyboard */; };
+		8E41C9B323F21795008E0519 /* Vital Days.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8E41C9A723F21795008E0519 /* Vital Days.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8E41C9B823F21C44008E0519 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E41C9AD23F21795008E0519 /* MainInterface.storyboard */; };
+		8E41C9B923F21F1D008E0519 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E2110E223D849BF00106569 /* Assets.xcassets */; };
+		8E41C9BD23F22E88008E0519 /* EventViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E41C9BC23F22E88008E0519 /* EventViewCell.swift */; };
+		8E41C9BE23F22F4F008E0519 /* UIVIew+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F623D862D000106569 /* UIVIew+Autolayout.swift */; };
+		8E41C9BF23F23347008E0519 /* UIColor+StaticColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F223D84BFD00106569 /* UIColor+StaticColors.swift */; };
 		8E6B766F23D9195400CC7355 /* CreateDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B766E23D9195400CC7355 /* CreateDayViewController.swift */; };
 		8E6B767323D9259C00CC7355 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B767223D9259C00CC7355 /* CardViewCell.swift */; };
 		8E6B767523D926ED00CC7355 /* UILabel+cardViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B767423D926ED00CC7355 /* UILabel+cardViewLabel.swift */; };
@@ -49,6 +58,30 @@
 		CC51EFC6241CF311D92A486A /* Pods_VitalDays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A88B930083BB613292FBC02F /* Pods_VitalDays.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8E41C9B123F21795008E0519 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E2110CE23D849BA00106569 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E41C9A623F21795008E0519;
+			remoteInfo = "Vital Days";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8E41C9B423F21795008E0519 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8E41C9B323F21795008E0519 /* Vital Days.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		03AFD9F5E1423DE629C46F10 /* Pods-VitalDays.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitalDays.debug.xcconfig"; path = "Target Support Files/Pods-VitalDays/Pods-VitalDays.debug.xcconfig"; sourceTree = "<group>"; };
 		083172973040D07BD5A33C35 /* Pods-VitalDays.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitalDays.release.xcconfig"; path = "Target Support Files/Pods-VitalDays/Pods-VitalDays.release.xcconfig"; sourceTree = "<group>"; };
@@ -70,6 +103,14 @@
 		8E2110F423D8546300106569 /* DayCountdownCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCountdownCollectionViewController.swift; sourceTree = "<group>"; };
 		8E2110F623D862D000106569 /* UIVIew+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Autolayout.swift"; sourceTree = "<group>"; };
 		8E3FBED023EA7F2C00FE9797 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8E41C9A723F21795008E0519 /* Vital Days.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Vital Days.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E41C9A823F21795008E0519 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		8E41C9AB23F21795008E0519 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		8E41C9AE23F21795008E0519 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		8E41C9B023F21795008E0519 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E41C9BA23F22C1A008E0519 /* VitalDays.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VitalDays.entitlements; sourceTree = "<group>"; };
+		8E41C9BB23F22C97008E0519 /* Vital Days.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Vital Days.entitlements"; sourceTree = "<group>"; };
+		8E41C9BC23F22E88008E0519 /* EventViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewCell.swift; sourceTree = "<group>"; };
 		8E6B766E23D9195400CC7355 /* CreateDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayViewController.swift; sourceTree = "<group>"; };
 		8E6B767223D9259C00CC7355 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		8E6B767423D926ED00CC7355 /* UILabel+cardViewLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+cardViewLabel.swift"; sourceTree = "<group>"; };
@@ -105,6 +146,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8E41C9A423F21795008E0519 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E41C9A923F21795008E0519 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -112,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				A88B930083BB613292FBC02F /* Pods_VitalDays.framework */,
+				8E41C9A823F21795008E0519 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -132,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				8E2110D823D849BA00106569 /* VitalDays */,
+				8E41C9AA23F21795008E0519 /* Vital Days */,
 				8E2110D723D849BA00106569 /* Products */,
 				90F685C321D3A1E74CE026FE /* Pods */,
 				19F13FF2349CAC7A9B21F7BF /* Frameworks */,
@@ -142,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				8E2110D623D849BA00106569 /* VitalDays.app */,
+				8E41C9A723F21795008E0519 /* Vital Days.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,6 +201,7 @@
 		8E2110D823D849BA00106569 /* VitalDays */ = {
 			isa = PBXGroup;
 			children = (
+				8E41C9BA23F22C1A008E0519 /* VitalDays.entitlements */,
 				8E2110F123D84BD500106569 /* Extensions */,
 				8E2110F023D84B9500106569 /* Utils */,
 				8E2110EF23D84B9000106569 /* Model */,
@@ -202,7 +255,6 @@
 			children = (
 				8E2110D923D849BA00106569 /* AppDelegate.swift */,
 				8E2110DB23D849BA00106569 /* SceneDelegate.swift */,
-				8E2110F623D862D000106569 /* UIVIew+Autolayout.swift */,
 				8E9D1FD223DD1D3F002A2A2B /* Protocols.swift */,
 				8E9D1FDC23DD8332002A2A2B /* PresentTransition.swift */,
 				8E9D1FE523DDA61E002A2A2B /* UIApplication+currentKeyWindow.swift */,
@@ -214,11 +266,24 @@
 		8E2110F123D84BD500106569 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8E2110F623D862D000106569 /* UIVIew+Autolayout.swift */,
 				8E2110F223D84BFD00106569 /* UIColor+StaticColors.swift */,
 				8E6B767423D926ED00CC7355 /* UILabel+cardViewLabel.swift */,
 				8EC6675723E049C1003413E8 /* UITextField+underline.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8E41C9AA23F21795008E0519 /* Vital Days */ = {
+			isa = PBXGroup;
+			children = (
+				8E41C9BB23F22C97008E0519 /* Vital Days.entitlements */,
+				8E41C9AB23F21795008E0519 /* TodayViewController.swift */,
+				8E41C9BC23F22E88008E0519 /* EventViewCell.swift */,
+				8E41C9AD23F21795008E0519 /* MainInterface.storyboard */,
+				8E41C9B023F21795008E0519 /* Info.plist */,
+			);
+			path = "Vital Days";
 			sourceTree = "<group>";
 		};
 		8E72A11923EA1BF200B01541 /* Register & Login */ = {
@@ -306,15 +371,34 @@
 				8E2110D323D849BA00106569 /* Frameworks */,
 				8E2110D423D849BA00106569 /* Resources */,
 				CA5AEB1EA31E9AF0115F2501 /* [CP] Embed Pods Frameworks */,
+				8E41C9B423F21795008E0519 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8E41C9B223F21795008E0519 /* PBXTargetDependency */,
 			);
 			name = VitalDays;
 			productName = VitalDays;
 			productReference = 8E2110D623D849BA00106569 /* VitalDays.app */;
 			productType = "com.apple.product-type.application";
+		};
+		8E41C9A623F21795008E0519 /* Vital Days */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E41C9B723F21795008E0519 /* Build configuration list for PBXNativeTarget "Vital Days" */;
+			buildPhases = (
+				8E41C9A323F21795008E0519 /* Sources */,
+				8E41C9A423F21795008E0519 /* Frameworks */,
+				8E41C9A523F21795008E0519 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Vital Days";
+			productName = "Vital Days";
+			productReference = 8E41C9A723F21795008E0519 /* Vital Days.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -327,6 +411,9 @@
 				ORGANIZATIONNAME = "Junyu Lin";
 				TargetAttributes = {
 					8E2110D523D849BA00106569 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					8E41C9A623F21795008E0519 = {
 						CreatedOnToolsVersion = 11.3;
 					};
 				};
@@ -345,6 +432,7 @@
 			projectRoot = "";
 			targets = (
 				8E2110D523D849BA00106569 /* VitalDays */,
+				8E41C9A623F21795008E0519 /* Vital Days */,
 			);
 		};
 /* End PBXProject section */
@@ -355,9 +443,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E2110E623D849BF00106569 /* LaunchScreen.storyboard in Resources */,
+				8E41C9B823F21C44008E0519 /* MainInterface.storyboard in Resources */,
 				8E2110E323D849BF00106569 /* Assets.xcassets in Resources */,
 				8E3FBED123EA7F2C00FE9797 /* GoogleService-Info.plist in Resources */,
 				8E72EE2723E7930500D7054A /* RegisterViewControllerStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E41C9A523F21795008E0519 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E41C9B923F21F1D008E0519 /* Assets.xcassets in Resources */,
+				8E41C9AF23F21795008E0519 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,7 +546,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8E41C9A323F21795008E0519 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E41C9AC23F21795008E0519 /* TodayViewController.swift in Sources */,
+				8E41C9BD23F22E88008E0519 /* EventViewCell.swift in Sources */,
+				8E41C9BE23F22F4F008E0519 /* UIVIew+Autolayout.swift in Sources */,
+				8E41C9BF23F23347008E0519 /* UIColor+StaticColors.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8E41C9B223F21795008E0519 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8E41C9A623F21795008E0519 /* Vital Days */;
+			targetProxy = 8E41C9B123F21795008E0519 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8E2110E423D849BF00106569 /* LaunchScreen.storyboard */ = {
@@ -457,6 +574,14 @@
 				8E2110E523D849BF00106569 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		8E41C9AD23F21795008E0519 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E41C9AE23F21795008E0519 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -580,7 +705,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 03AFD9F5E1423DE629C46F10 /* Pods-VitalDays.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = VitalDays/VitalDays.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A385T794G4;
 				INFOPLIST_FILE = VitalDays/Info.plist;
@@ -599,7 +726,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 083172973040D07BD5A33C35 /* Pods-VitalDays.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = VitalDays/VitalDays.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A385T794G4;
 				INFOPLIST_FILE = VitalDays/Info.plist;
@@ -611,6 +740,46 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		8E41C9B523F21795008E0519 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Vital Days/Vital Days.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A385T794G4;
+				INFOPLIST_FILE = "Vital Days/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Junyu.VitalDays.Vital-Days";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8E41C9B623F21795008E0519 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Vital Days/Vital Days.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A385T794G4;
+				INFOPLIST_FILE = "Vital Days/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Junyu.VitalDays.Vital-Days";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -631,6 +800,15 @@
 			buildConfigurations = (
 				8E2110EB23D849BF00106569 /* Debug */,
 				8E2110EC23D849BF00106569 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E41C9B723F21795008E0519 /* Build configuration list for PBXNativeTarget "Vital Days" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E41C9B523F21795008E0519 /* Debug */,
+				8E41C9B623F21795008E0519 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
