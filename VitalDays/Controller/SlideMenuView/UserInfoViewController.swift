@@ -13,6 +13,7 @@ import Firebase
 class UserInfoViewController: UIViewController{
     
     let cellId = "cellId"
+    let cellTitle = ["名字", "邮箱"]
     
     @objc private var user: User?{
         didSet{
@@ -58,7 +59,6 @@ class UserInfoViewController: UIViewController{
         super.viewWillAppear(animated)
         
         addObservers()
-        fetchTheUserInfo()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -80,19 +80,7 @@ class UserInfoViewController: UIViewController{
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "name"{
-            let cell = infoCollectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! UserInfoViewCell
-            cell.name.text = "\(change?[.newKey] as! String)"
-            infoCollectionView.reloadData()
-            print("\(change?[.newKey] as! String)")
-        }
-        
-        if keyPath == "email"{
-//            let cell = infoCollectionView.cellForItem(at: IndexPath(item: 1, section: 0)) as! UserInfoViewCell
-//            cell.name.text = "\(change?[.newKey] as! String)"
-//            infoCollectionView.reloadData()
-            print("\(change?[.newKey] as! String)")
-        }
+        infoCollectionView.reloadData()
     }
     
     fileprivate func setupCollectionView(){
@@ -165,14 +153,18 @@ extension UserInfoViewController{
 
 // MARK: - UICollectionView data source
 extension UserInfoViewController: UICollectionViewDataSource{
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return cellTitle.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserInfoViewCell
-        cell.backgroundColor = .systemYellow
-        cell.name.text = user!.name
+        cell.nameLbl.text = cellTitle[indexPath.item]
+        cell.name.text = indexPath.item == 0 ? user!.name : user!.email
         return cell
     }
 }
@@ -185,5 +177,9 @@ extension UserInfoViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        fetchTheUserInfo()
     }
 }

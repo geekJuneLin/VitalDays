@@ -165,10 +165,9 @@ extension CreateDayViewController{
         leftDays: daysLeft,
         initialDays: daysLeft)
         
-        saveVitalDayDelegate?.saveVitalDay(event: event)
-        
         // check if all the fields are filled
         if checkFields(){
+            saveVitalDayDelegate?.saveVitalDay(event: event)
             saveEventOntoFirebase(event)
         }else{
             Utils.shard.showError(title: "Fields not filled!", "Please make sure all the fields are filled", self)

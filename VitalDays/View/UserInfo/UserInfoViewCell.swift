@@ -37,6 +37,8 @@ class UserInfoViewCell: UICollectionViewCell{
     }
     
     fileprivate func setupView(){
+        backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        
         addSubviews(nameLbl, name)
         
         nameLbl.anchors(centerY: centerYAnchor,
