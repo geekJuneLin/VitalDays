@@ -78,7 +78,7 @@ class RegisterViewController: UIViewController{
                                password: confimPasswordTextField.text!) { [weak self] (result, error) in
                                 guard let weakSelf = self else{return}
                                 if error != nil {
-                                    Utils.shard.showError("Register account getting error: \(String(describing: error))", weakSelf)
+                                    Utils.shard.showError(title: "Registration failed!", "Register account getting error: \(String(describing: error))", weakSelf)
                                 }
                                 
                                 print("register successfully!")
@@ -104,13 +104,13 @@ class RegisterViewController: UIViewController{
         confimPasswordTextField.text == "" ||
             nameTextField.text == ""{
             print("please enter details first!")
-            Utils.shard.showError("please enter all the details first", self)
+            Utils.shard.showError(title: "Fields not filled!", "please enter all the details first", self)
             return false
         }
         
         if passwordTextField.text != confimPasswordTextField.text {
             print("confirmed password is not the same")
-            Utils.shard.showError("passwords are not the same", self)
+            Utils.shard.showError(title: "Confirmed password is not the same!", "passwords are not the same", self)
             return false
         }
         
@@ -122,7 +122,7 @@ class RegisterViewController: UIViewController{
     /// validate the password
     fileprivate func validatePassword() -> Bool{
         guard NSPredicate(format: "SELF MATCHES %@", "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$").evaluate(with: passwordTextField.text?.trimmingCharacters(in: CharacterSet.whitespaces)) else{
-            Utils.shard.showError("Password should contain minimum 8 characters at least 1 alphabet and 1 number", self)
+            Utils.shard.showError(title: "Password format error!", "Password should contain minimum 8 characters at least 1 alphabet and 1 number", self)
             print("password does't satisfy the criteria")
             return false
         }

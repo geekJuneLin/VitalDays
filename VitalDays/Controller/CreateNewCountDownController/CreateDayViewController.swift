@@ -129,6 +129,13 @@ extension CreateDayViewController{
         }
         // TODO: - save data locally
     }
+    
+    fileprivate func checkFields() -> Bool{
+        return selectedType != "选择类型" &&
+        selectedRepeat != "选择循环提醒" &&
+        selectedTargetDate != "" &&
+        noteTextFieldValue != "" ? true : false
+    }
 }
 
 // MARK: - objc selector functions
@@ -157,8 +164,17 @@ extension CreateDayViewController{
         targetDate: selectedTargetDate,
         leftDays: daysLeft,
         initialDays: daysLeft)
+        
         saveVitalDayDelegate?.saveVitalDay(event: event)
-        saveEventOntoFirebase(event)
+        
+        // check if all the fields are filled
+        if checkFields(){
+            saveEventOntoFirebase(event)
+        }else{
+            Utils.shard.showError(title: "Fields not filled!", "Please make sure all the fields are filled", self)
+            return
+        }
+        
         self.dismiss(animated: true, completion: nil)
     }
     

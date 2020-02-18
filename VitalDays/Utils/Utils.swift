@@ -12,8 +12,8 @@ class Utils{
     
     static var shard: Utils = Utils()
     
-    func showError(_ error: String, _ vc: UIViewController){
-        let alert = UIAlertController(title: "Getting error", message: error, preferredStyle: .alert)
+    func showError(title: String, _ error: String, _ vc: UIViewController){
+        let alert = UIAlertController(title: title, message: error, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         vc.present(alert, animated: true, completion: nil)
     }

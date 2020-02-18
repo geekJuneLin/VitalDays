@@ -265,7 +265,7 @@ extension LoginViewController{
             Auth.auth().signIn(withEmail: accountTextField.text!, password: passwordTextField.text!) { [weak self] authResult, error in
               guard let strongSelf = self else { return }
                 if error != nil{
-                    Utils.shard.showError("sigin with errors: \(String(describing: error))", strongSelf)
+                    Utils.shard.showError(title: "Sign in failed!", "sigin with errors: \(String(describing: error))", strongSelf)
                 }else{
                     // save the uid for widget extension fetching the event details
                     let defaults = UserDefaults(suiteName: "group.sharingForVitalDaysWidgetExt")
@@ -276,7 +276,7 @@ extension LoginViewController{
                 }
             }
         }else{
-            Utils.shard.showError("Please enter the account and password!", self)
+            Utils.shard.showError(title: "Invalid account or password!", "Please enter the account and password!", self)
             return
         }
     }
