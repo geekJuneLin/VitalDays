@@ -124,7 +124,8 @@ extension CreateDayViewController{
             ref.child("Events").child("\(uid)").childByAutoId().setValue(["leftDays":event.leftDays,
                                                                  "note":event.note,
                                                                  "noteType":event.noteType,
-                                                                 "targetDate":event.targetDate])
+                                                                 "targetDate":event.targetDate,
+                                                                 "initialLeft":event.initialDays])
         }
         // TODO: - save data locally
     }
@@ -154,7 +155,8 @@ extension CreateDayViewController{
         let event = Event(note: noteTextFieldValue,
         noteType: selectedType,
         targetDate: selectedTargetDate,
-        leftDays: daysLeft)
+        leftDays: daysLeft,
+        initialDays: daysLeft)
         saveVitalDayDelegate?.saveVitalDay(event: event)
         saveEventOntoFirebase(event)
         self.dismiss(animated: true, completion: nil)
@@ -238,7 +240,8 @@ extension CreateDayViewController{
         cell.event = Event(note: noteTextFieldValue == "" ? "备注" : noteTextFieldValue,
                            noteType: selectedType,
                            targetDate: selectedTargetDate,
-                           leftDays: daysLeft)
+                           leftDays: daysLeft,
+                           initialDays: daysLeft)
         return cell
     }
     

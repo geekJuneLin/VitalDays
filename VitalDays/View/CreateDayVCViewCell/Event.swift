@@ -13,4 +13,5 @@ struct Event{
     var noteType: String
     var targetDate: String
     var leftDays: Int
+    var initialDays: Int
 }

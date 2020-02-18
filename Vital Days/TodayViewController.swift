@@ -80,7 +80,8 @@ class TodayViewController: UIViewController {
                         self.events.append(Event(note: value["note"] as! String,
                                                  noteType: value["noteType"] as! String,
                                                  targetDate: value["targetDate"] as! String,
-                                                 leftDays: value["leftDays"] as! Int))
+                                                 leftDays: value["leftDays"] as! Int,
+                                                 initialDays: value["initialLeft"] as! Int))
                     }
                 }
                 

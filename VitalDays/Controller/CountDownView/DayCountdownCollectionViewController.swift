@@ -216,7 +216,8 @@ extension DayCountdownCollectionViewController{
                         self.countdownEvents.append(Event(note: value["note"] as? String ?? "",
                                                      noteType: value["noteType"] as? String ?? "",
                                                      targetDate: value["targetDate"] as? String ?? "",
-                                                     leftDays: leftDays))
+                                                     leftDays: leftDays,
+                                                     initialDays: value["initialLeft"] as! Int))
                     }
                 }
 

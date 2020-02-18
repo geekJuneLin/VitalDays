@@ -18,6 +18,12 @@ class CardView: UIView{
                 smallTypeLbl.text = " \(event.noteType) "
                 targetDayLbl.text = event.targetDate
                 countDownDays.text = "\(event.leftDays)"
+            
+                let progressVal = (event.initialDays - event.leftDays) <= 0 ? 0 : CGFloat(event.initialDays - event.leftDays) / CGFloat(event.initialDays)
+                bar.widthAnchor.constraint(equalTo: progress.widthAnchor,
+                                           multiplier: CGFloat(progressVal))
+                                            .isActive = true
+                self.layoutIfNeeded()
             }
         }
     }
@@ -112,8 +118,6 @@ class CardView: UIView{
         progress.addSubview(bar)
         bar.anchors(top: progress.topAnchor,
                     left: progress.leftAnchor,
-                    width: progress.widthAnchor,
-                    widthValue: 0.4,
                     height: progress.heightAnchor,
                     heightValue: 1)
     }
