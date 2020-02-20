@@ -45,6 +45,9 @@ class SlideMenuViewController: UIViewController{
         return view
     }()
     
+    // firebase storage ref
+    var ref = Storage.storage().reference()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,6 +66,9 @@ class SlideMenuViewController: UIViewController{
                         leftConstant: 45,
                         widthValue: 60,
                         heightValue: 60)
+        
+        // check if current users has set avator image before
+        fetchAvatar()
         
         bar.anchors(centerX: iconImg.centerXAnchor,
                     top: iconImg.bottomAnchor,
@@ -90,8 +96,37 @@ class SlideMenuViewController: UIViewController{
     }
 }
 
-// MARK: - objc functions
+// MARK: - other functions
 extension SlideMenuViewController{
+    
+    /// fetch the avatar image of the current user
+    fileprivate func fetchAvatar(){
+        Utils.shard.fetchAvatar(imageView: iconImg)
+    }
+    
+    /// upload the selected image onto firebase storage
+    /// - Parameter img: the selected image needs to be uploaded
+    fileprivate func uploadImage(img: UIImage){
+        let imgData = img.jpegData(compressionQuality: 0.8)! as NSData
+        
+        if let uid = Auth.auth().currentUser?.uid {
+            let metaData = StorageMetadata()
+            metaData.contentType = "image/jpg"
+            ref.child("Avatars").child(uid).putData(imgData as Data, metadata: metaData) { (metaData, err) in
+                if let err = err{
+                    print(err.localizedDescription)
+                    return
+                }else{
+                    print("uploaded successfully!")
+                }
+            }
+        }else{
+            print("no current user found!")
+        }
+        
+    }
+    
+    
     /// present the images picker view controller
     @objc
     fileprivate func handleTapGesture(){
@@ -144,6 +179,9 @@ extension SlideMenuViewController: UIImagePickerControllerDelegate, UINavigation
         if let image = info[.editedImage] as? UIImage{
             // set the avator image
             iconImg.image = image
+            
+            // upload image onto firebase
+            uploadImage(img: image)
             
             // dismiss current VC
             dismiss(animated: true, completion: nil)

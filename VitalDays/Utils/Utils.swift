@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class Utils{
     
@@ -16,6 +17,24 @@ class Utils{
         let alert = UIAlertController(title: title, message: error, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         vc.present(alert, animated: true, completion: nil)
+    }
+    
+    func fetchAvatar(imageView: UIImageView){
+        let ref = Storage.storage().reference()
+        if let uid = Auth.auth().currentUser?.uid{
+            ref.child("Avatars").child(uid).getData(maxSize: 1 * 1024 * 1024) { (data, err) in
+                if let err = err{
+                    print(err.localizedDescription)
+                    return
+                }else{
+                    if let data = data{
+                        imageView.image = UIImage(data: data)
+                    }else{
+                        print("no data found!")
+                    }
+                }
+            }
+        }
     }
 }
 

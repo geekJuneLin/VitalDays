@@ -59,6 +59,7 @@ class UserInfoViewController: UIViewController{
         super.viewWillAppear(animated)
         
         addObservers()
+        fetchAvatar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -148,6 +149,11 @@ extension UserInfoViewController{
                 }
             }
         }
+    }
+    
+    /// fetch the avatar image of the current logged in user
+    fileprivate func fetchAvatar(){
+        Utils.shard.fetchAvatar(imageView: avator)
     }
 }
 
