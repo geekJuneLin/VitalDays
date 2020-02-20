@@ -75,6 +75,10 @@ class SlideMenuViewController: UIViewController{
                           topConstant: 20,
                           widthValue: 150,
                           heightValue: view.bounds.height * 0.6)
+        
+        // gesture reconizer
+        iconImg.isUserInteractionEnabled = true
+        iconImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapGesture)))
     }
     
     fileprivate func setupTableViewDelegate(){
@@ -83,6 +87,21 @@ class SlideMenuViewController: UIViewController{
         tableView.rowHeight = 90
         
         tableView.register(SlideMenuTableViewCell.self, forCellReuseIdentifier: cellId)
+    }
+}
+
+// MARK: - objc functions
+extension SlideMenuViewController{
+    /// present the images picker view controller
+    @objc
+    fileprivate func handleTapGesture(){
+        print("icon pressed!")
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .savedPhotosAlbum
+        
+        self.present(imagePicker, animated: true, completion: nil)
     }
 }
 
@@ -115,6 +134,19 @@ extension SlideMenuViewController: UITableViewDelegate{
                 print("My account: not signed in")
                 present(LoginViewController(), animated: true, completion: nil)
             }
+        }
+    }
+}
+
+// MARK: - UIImagePickerController delegate
+extension SlideMenuViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.editedImage] as? UIImage{
+            // set the avator image
+            iconImg.image = image
+            
+            // dismiss current VC
+            dismiss(animated: true, completion: nil)
         }
     }
 }
