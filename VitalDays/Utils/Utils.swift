@@ -22,15 +22,32 @@ class Utils{
     func fetchAvatar(imageView: UIImageView){
         let ref = Storage.storage().reference()
         if let uid = Auth.auth().currentUser?.uid{
-            ref.child("Avatars").child(uid).getData(maxSize: 1 * 1024 * 1024) { (data, err) in
-                if let err = err{
-                    print(err.localizedDescription)
-                    return
-                }else{
-                    if let data = data{
-                        imageView.image = UIImage(data: data)
+            // try load image from local storage first
+            let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let archiveURL = docDir.appendingPathComponent("\(uid).jpg")
+            
+            if let image = UIImage(contentsOfFile: archiveURL.path){
+                imageView.image = image
+            }else{
+                // try to fetch the avatar from firebase storage
+                ref.child("Avatars").child(uid).getData(maxSize: 1 * 1024 * 1024) { (data, err) in
+                    if let err = err{
+                        print(err.localizedDescription)
+                        return
                     }else{
-                        print("no data found!")
+                        if let data = data{
+                            let image = UIImage(data: data)
+                            imageView.image = image
+                            
+                            // save the avatar to local storage
+                            do{
+                                try image!.jpegData(compressionQuality: 1)!.write(to: archiveURL)
+                            }catch{
+                                print("saving avatar with errors!")
+                            }
+                        }else{
+                            print("no data found!")
+                        }
                     }
                 }
             }
