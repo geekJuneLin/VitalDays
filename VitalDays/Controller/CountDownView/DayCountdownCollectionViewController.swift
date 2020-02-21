@@ -116,6 +116,13 @@ extension DayCountdownCollectionViewController{
     fileprivate func setupView(){
         collectionView.backgroundColor = .backgroundColor
         
+        // set up the long press gesture reconizer
+        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        lpgr.minimumPressDuration = 0.5
+        lpgr.delaysTouchesBegan = true
+        lpgr.delegate = self
+        collectionView.addGestureRecognizer(lpgr)
+        
         // set up data source and delegate
         collectionView.delegate = self
         
@@ -251,6 +258,24 @@ extension DayCountdownCollectionViewController{
 // MARK: - objc functions
 extension DayCountdownCollectionViewController{
     
+    @objc
+    fileprivate func handleLongPress(reconizer: UILongPressGestureRecognizer){
+        if reconizer.state != UIGestureRecognizer.State.ended{
+            return
+        }
+        
+        let p = reconizer.location(in: collectionView)
+        let indexPath = collectionView.indexPathForItem(at: p)
+        
+        if let index = indexPath{
+            var cell = collectionView.cellForItem(at: index) as! CardViewCell
+            cell.shake()
+            print("long pressed the \(index.item) item")
+        }else{
+            print("no cell found!")
+        }
+    }
+    
     /// display or hide the slide menu view
     @objc
     fileprivate func handleLeftButtonClick(){
@@ -335,4 +360,8 @@ extension DayCountdownCollectionViewController: SaveVitalDayDelegate{
         countdownEvents.append(event)
         collectionView.reloadData()
     }
+}
+
+extension DayCountdownCollectionViewController: UIGestureRecognizerDelegate{
+    
 }
