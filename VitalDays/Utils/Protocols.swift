@@ -39,3 +39,7 @@ protocol PassSelectedDateDelegate {
 protocol PassTextFieldValueDelegate {
     func textFieldValue(value: String)
 }
+
+protocol ShareEventDelegate{
+    func presentShareOptions()
+}

@@ -10,6 +10,8 @@ import UIKit
 
 class EventDetailsViewCell: UICollectionViewCell{
     
+    var shareDelegate: ShareEventDelegate?
+    
     var event: Event? {
         didSet{
             if let event = event {
@@ -73,5 +75,6 @@ class EventDetailsViewCell: UICollectionViewCell{
     @objc
     fileprivate func handleShareBtnClick(){
         print("share btn pressed!")
+        shareDelegate?.presentShareOptions()
     }
 }

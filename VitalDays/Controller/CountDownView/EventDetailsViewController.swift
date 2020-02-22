@@ -39,6 +39,24 @@ class EventDetailsViewController: UICollectionViewController{
         return btn
     }()
     
+    let blackView: UIView = {
+        let blackView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        blackView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        blackView.alpha = 1
+        return blackView
+    }()
+    
+    let shareOptionsView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .white
+        cv.clipsToBounds = true
+        cv.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        cv.layer.cornerRadius = 15
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        return cv
+    }()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -96,6 +114,19 @@ extension EventDetailsViewController{
         print("go back btn pressed!")
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @objc
+    fileprivate func handleBlackViewTap(){
+        if let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first{
+            UIView.animate(withDuration: 0.5) {
+                self.blackView.alpha = 0
+                self.shareOptionsView.frame = CGRect(x: 0,
+                                                     y: window.bounds.height,
+                                                     width: window.bounds.width,
+                                                     height: window.bounds.height * 0.4)
+            }
+        }
+    }
 }
 
 // MARK: - UICollectionView data source
@@ -106,6 +137,7 @@ extension EventDetailsViewController{
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! EventDetailsViewCell
+        cell.shareDelegate = self
         cell.event = events![indexPath.item]
         return cell
     }
@@ -123,5 +155,29 @@ extension EventDetailsViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: collectionView.bounds.width * 0.05, bottom: 0, right: collectionView.bounds.width * 0.05)
+    }
+}
+
+// MARK: - ShareEventDelegate
+extension EventDetailsViewController: ShareEventDelegate{
+    func presentShareOptions() {
+        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleBlackViewTap)))
+        
+        if let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first{
+            window.addSubviews(blackView, shareOptionsView)
+            
+            shareOptionsView.frame = CGRect(x: 0,
+                                            y: window.bounds.height,
+                                            width: window.bounds.width,
+                                            height: window.bounds.height * 0.4)
+            
+            UIView.animate(withDuration: 0.5) {
+                self.blackView.alpha = 1
+                self.shareOptionsView.frame = CGRect(x: 0,
+                                                     y: window.bounds.height * 0.6,
+                                                     width: window.bounds.width,
+                                                     height: window.bounds.height * 0.4)
+            }
+        }
     }
 }
