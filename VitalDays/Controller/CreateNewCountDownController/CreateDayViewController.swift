@@ -57,7 +57,8 @@ class CreateDayViewController: UICollectionViewController{
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
         navigationController?.navigationBar.topItem?.title = "Create the day"
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor:UIColor.white,
+                                                                   .font:UIFont.boldSystemFont(ofSize: 20)]
         
         // setup left bar button item
         let leftBtn = UIButton(type: .system)

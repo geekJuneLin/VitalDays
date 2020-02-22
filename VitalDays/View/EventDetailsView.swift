@@ -102,8 +102,8 @@ class EventDetailsView: UIView{
                           bottom: targetDateView.topAnchor,
                           bottomConstant: -10,
                           width: widthAnchor,
-                          widthValue: 1,
-                          heightValue: 1)
+                          widthValue: 0.9,
+                          heightValue: 0.8)
         
         targetDateView.anchors(centerX: centerXAnchor,
                                bottom: bottomAnchor,

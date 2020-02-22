@@ -350,7 +350,9 @@ extension DayCountdownCollectionViewController: UICollectionViewDelegateFlowLayo
         let eventDetailsVC = EventDetailsViewController(collectionViewLayout: layout)
         eventDetailsVC.events = countdownEvents
         eventDetailsVC.selectedIndex = indexPath
-        present(eventDetailsVC, animated: true, completion: nil)
+        let navigationVC = UINavigationController(rootViewController: eventDetailsVC)
+        navigationVC.modalPresentationStyle = .fullScreen
+        present(navigationVC, animated: true, completion: nil)
     }
 }
 

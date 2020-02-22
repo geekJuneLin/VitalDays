@@ -23,6 +23,22 @@ class EventDetailsViewController: UICollectionViewController{
         return view
     }()
     
+    let rightBtn: UIBarButtonItem = {
+        let img = UIImage(named: "edit")
+        let btn = UIBarButtonItem()
+        btn.image = img
+        btn.tintColor = .white
+        return btn
+    }()
+    
+    let leftBtn: UIBarButtonItem = {
+        let img = UIImage(named: "back")
+        let btn = UIBarButtonItem()
+        btn.image = img
+        btn.tintColor = .white
+        return btn
+    }()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -34,6 +50,7 @@ class EventDetailsViewController: UICollectionViewController{
         super.viewDidLoad()
         
         setupViews()
+        setupNavigationBar()
     }
     
     fileprivate func setupViews(){
@@ -45,6 +62,39 @@ class EventDetailsViewController: UICollectionViewController{
         collectionView.showsHorizontalScrollIndicator = false
         
         collectionView.register(EventDetailsViewCell.self, forCellWithReuseIdentifier: cellId)
+    }
+    
+    fileprivate func setupNavigationBar(){
+        // set translucent background
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
+        rightBtn.target = self
+        rightBtn.action = #selector(handleRightBtn)
+        navigationController?.navigationBar.topItem?.rightBarButtonItem = rightBtn
+        
+        leftBtn.target = self
+        leftBtn.action = #selector(handleLeftBtn)
+        navigationController?.navigationBar.topItem?.leftBarButtonItem = leftBtn
+        
+        navigationController?.navigationBar.topItem?.title = "Vital Days"
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor:UIColor.white,
+                                                                   .font:UIFont.boldSystemFont(ofSize: 20)]
+    }
+}
+
+// MARK: - other functions
+extension EventDetailsViewController{
+    @objc
+    fileprivate func handleRightBtn(){
+        print("edit btn pressed!")
+    }
+    
+    @objc
+    fileprivate func handleLeftBtn(){
+        print("go back btn pressed!")
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -64,7 +114,7 @@ extension EventDetailsViewController{
 // MARK: - UICollectionViewDelegateFlowLayout
 extension EventDetailsViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width * 0.9, height: collectionView.bounds.height * 0.9)
+        return CGSize(width: collectionView.bounds.width * 0.9, height: collectionView.bounds.height * 0.85)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
