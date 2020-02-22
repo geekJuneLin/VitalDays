@@ -342,6 +342,16 @@ extension DayCountdownCollectionViewController: UICollectionViewDelegateFlowLayo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 36, left: 0, bottom: 0, right: 0)
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.item)
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let eventDetailsVC = EventDetailsViewController(collectionViewLayout: layout)
+        eventDetailsVC.events = countdownEvents
+        eventDetailsVC.selectedIndex = indexPath
+        present(eventDetailsVC, animated: true, completion: nil)
+    }
 }
 
 // MARK: - customized presentation animation
