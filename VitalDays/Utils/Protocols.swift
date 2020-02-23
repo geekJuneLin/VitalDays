@@ -43,3 +43,7 @@ protocol PassTextFieldValueDelegate {
 protocol ShareEventDelegate{
     func presentShareOptions()
 }
+
+protocol DismissShareViewDelegate {
+    func dismissShareView()
+}

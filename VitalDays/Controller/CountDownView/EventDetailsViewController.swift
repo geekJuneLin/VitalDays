@@ -46,13 +46,9 @@ class EventDetailsViewController: UICollectionViewController{
         return blackView
     }()
     
-    let shareOptionsView: UICollectionView = {
+    let shareOptionsView: ShareOptionsView = {
         let layout = UICollectionViewFlowLayout()
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .white
-        cv.clipsToBounds = true
-        cv.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        cv.layer.cornerRadius = 15
+        let cv = ShareOptionsView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
     }()
@@ -171,6 +167,9 @@ extension EventDetailsViewController: ShareEventDelegate{
                                             width: window.bounds.width,
                                             height: window.bounds.height * 0.4)
             
+            // set dismiss delegate
+            shareOptionsView.dismissDelegate = self
+            
             UIView.animate(withDuration: 0.5) {
                 self.blackView.alpha = 1
                 self.shareOptionsView.frame = CGRect(x: 0,
@@ -179,5 +178,11 @@ extension EventDetailsViewController: ShareEventDelegate{
                                                      height: window.bounds.height * 0.4)
             }
         }
+    }
+}
+
+extension EventDetailsViewController: DismissShareViewDelegate{
+    func dismissShareView() {
+        self.handleBlackViewTap()
     }
 }

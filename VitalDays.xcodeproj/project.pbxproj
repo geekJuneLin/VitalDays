@@ -22,6 +22,9 @@
 		8E2110F323D84BFD00106569 /* UIColor+StaticColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F223D84BFD00106569 /* UIColor+StaticColors.swift */; };
 		8E2110F523D8546300106569 /* DayCountdownCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F423D8546300106569 /* DayCountdownCollectionViewController.swift */; };
 		8E2110F723D862D000106569 /* UIVIew+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F623D862D000106569 /* UIVIew+Autolayout.swift */; };
+		8E3147DA2401EFA8001733D3 /* ShareOptionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3147D92401EFA8001733D3 /* ShareOptionsViewCell.swift */; };
+		8E3147DC2401F30C001733D3 /* ShareOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3147DB2401F30C001733D3 /* ShareOptionsView.swift */; };
+		8E3147DE2401F6FB001733D3 /* ShareOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3147DD2401F6FB001733D3 /* ShareOptions.swift */; };
 		8E41C9A923F21795008E0519 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E41C9A823F21795008E0519 /* NotificationCenter.framework */; };
 		8E41C9AC23F21795008E0519 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E41C9AB23F21795008E0519 /* TodayViewController.swift */; };
 		8E41C9AF23F21795008E0519 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E41C9AD23F21795008E0519 /* MainInterface.storyboard */; };
@@ -57,11 +60,11 @@
 		8E9D1FE623DDA61E002A2A2B /* UIApplication+currentKeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D1FE523DDA61E002A2A2B /* UIApplication+currentKeyWindow.swift */; };
 		8EC6675623E0436F003413E8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC6675523E0436F003413E8 /* LoginViewController.swift */; };
 		8EC6675823E049C1003413E8 /* UITextField+underline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC6675723E049C1003413E8 /* UITextField+underline.swift */; };
+		8EC896892401E9E6002053C1 /* Pods_VitalDays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A88B930083BB613292FBC02F /* Pods_VitalDays.framework */; };
 		8ED532AD23E13CE6001A5354 /* CreateDayTypeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED532AC23E13CE6001A5354 /* CreateDayTypeViewCell.swift */; };
 		8ED532B123E13D30001A5354 /* CreateDayRepeatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED532B023E13D30001A5354 /* CreateDayRepeatViewCell.swift */; };
 		8EE65E1C23E1249900DD9980 /* VDdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE65E1B23E1249900DD9980 /* VDdate.swift */; };
 		B9942C434C0083E9FEC6BC7C /* Pods_Vital_Days.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2741E692E9A0DFD0687D7D8B /* Pods_Vital_Days.framework */; };
-		CC51EFC6241CF311D92A486A /* Pods_VitalDays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A88B930083BB613292FBC02F /* Pods_VitalDays.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +113,9 @@
 		8E2110F223D84BFD00106569 /* UIColor+StaticColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+StaticColors.swift"; sourceTree = "<group>"; };
 		8E2110F423D8546300106569 /* DayCountdownCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCountdownCollectionViewController.swift; sourceTree = "<group>"; };
 		8E2110F623D862D000106569 /* UIVIew+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Autolayout.swift"; sourceTree = "<group>"; };
+		8E3147D92401EFA8001733D3 /* ShareOptionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareOptionsViewCell.swift; sourceTree = "<group>"; };
+		8E3147DB2401F30C001733D3 /* ShareOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareOptionsView.swift; sourceTree = "<group>"; };
+		8E3147DD2401F6FB001733D3 /* ShareOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShareOptions.swift; path = VitalDays/View/EventDetails/ShareOptions.swift; sourceTree = SOURCE_ROOT; };
 		8E41C9A723F21795008E0519 /* Vital Days.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Vital Days.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E41C9A823F21795008E0519 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		8E41C9AB23F21795008E0519 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -164,7 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC51EFC6241CF311D92A486A /* Pods_VitalDays.framework in Frameworks */,
+				8EC896892401E9E6002053C1 /* Pods_VitalDays.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,14 +269,13 @@
 		8E2110EE23D84B8A00106569 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8E3147D82401EF86001733D3 /* EventDetails */,
 				8E0C748823DE5C8800166D45 /* Calendar */,
 				8E9D1FE023DDA091002A2A2B /* CreateDayVCViewCell */,
 				8E97488823EB64B300D04129 /* UserInfo */,
 				8E0C748223DE438800166D45 /* CardView.swift */,
 				8E9D1FD723DD75D3002A2A2B /* SlideMenuTableViewCell.swift */,
 				8E6B767223D9259C00CC7355 /* CardViewCell.swift */,
-				8E86B12F2400A28F0042701F /* EventDetailsView.swift */,
-				8E86B1312400B3EE0042701F /* EventDetailsViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 				8EE65E1B23E1249900DD9980 /* VDdate.swift */,
 				8E71D2DD23E24FFA00F6F3B2 /* Event.swift */,
 				8E97488B23EB6B7600D04129 /* User.swift */,
+				8E3147DD2401F6FB001733D3 /* ShareOptions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -307,6 +313,17 @@
 				8EC6675723E049C1003413E8 /* UITextField+underline.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8E3147D82401EF86001733D3 /* EventDetails */ = {
+			isa = PBXGroup;
+			children = (
+				8E86B1312400B3EE0042701F /* EventDetailsViewCell.swift */,
+				8E86B12F2400A28F0042701F /* EventDetailsView.swift */,
+				8E3147D92401EFA8001733D3 /* ShareOptionsViewCell.swift */,
+				8E3147DB2401F30C001733D3 /* ShareOptionsView.swift */,
+			);
+			path = EventDetails;
 			sourceTree = "<group>";
 		};
 		8E41C9AA23F21795008E0519 /* Vital Days */ = {
@@ -582,6 +599,7 @@
 				8E9D1FE223DDA0B0002A2A2B /* CreateDayTopHeaderView.swift in Sources */,
 				8E6B767323D9259C00CC7355 /* CardViewCell.swift in Sources */,
 				8EE65E1C23E1249900DD9980 /* VDdate.swift in Sources */,
+				8E3147DC2401F30C001733D3 /* ShareOptionsView.swift in Sources */,
 				8EC6675623E0436F003413E8 /* LoginViewController.swift in Sources */,
 				8E97488A23EB64E300D04129 /* UserInfoViewCell.swift in Sources */,
 				8E9D1FD323DD1D3F002A2A2B /* Protocols.swift in Sources */,
@@ -590,10 +608,12 @@
 				8E9D1FD123DD1707002A2A2B /* SlideMenuViewController.swift in Sources */,
 				8E0C749023DE91B900166D45 /* CalendarDaysViewCell.swift in Sources */,
 				8E72A11B23EA244100B01541 /* UserInfoViewController.swift in Sources */,
+				8E3147DA2401EFA8001733D3 /* ShareOptionsViewCell.swift in Sources */,
 				8ED532AD23E13CE6001A5354 /* CreateDayTypeViewCell.swift in Sources */,
 				8E0C748723DE5C8400166D45 /* CalendarView.swift in Sources */,
 				8E6B766F23D9195400CC7355 /* CreateDayViewController.swift in Sources */,
 				8E0C748323DE438800166D45 /* CardView.swift in Sources */,
+				8E3147DE2401F6FB001733D3 /* ShareOptions.swift in Sources */,
 				8E9D1FE423DDA0BE002A2A2B /* CreateDayBottomViewCell.swift in Sources */,
 				8E72EE2523E78E1B00D7054A /* RegisterViewController.swift in Sources */,
 				8E86B12E2400A0590042701F /* EventDetailsViewController.swift in Sources */,
