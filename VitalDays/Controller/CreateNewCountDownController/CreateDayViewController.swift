@@ -14,6 +14,18 @@ class CreateDayViewController: UICollectionViewController{
     // delegates
     var saveVitalDayDelegate: SaveVitalDayDelegate?
     
+    // for editing VC
+    var event: Event?{
+        didSet{
+            if let event = event {
+                selectedType = event.noteType
+                selectedTargetDate = event.targetDate
+                noteTextFieldValue = event.note
+                daysLeft = event.leftDays
+            }
+        }
+    }
+    
     var typeItems = 0
     var isTypeSelectViewPresented = false
     var repeatItems = 0

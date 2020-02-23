@@ -257,6 +257,7 @@
 		8E2110ED23D84B8200106569 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8E3147DF24020445001733D3 /* EventDetails */,
 				8E72A11923EA1BF200B01541 /* Register & Login */,
 				8E9D1FDB23DD8020002A2A2B /* CountDownView */,
 				8E9D1FDA23DD8007002A2A2B /* MainContainerView */,
@@ -326,6 +327,14 @@
 			path = EventDetails;
 			sourceTree = "<group>";
 		};
+		8E3147DF24020445001733D3 /* EventDetails */ = {
+			isa = PBXGroup;
+			children = (
+				8E86B12D2400A0590042701F /* EventDetailsViewController.swift */,
+			);
+			path = EventDetails;
+			sourceTree = "<group>";
+		};
 		8E41C9AA23F21795008E0519 /* Vital Days */ = {
 			isa = PBXGroup;
 			children = (
@@ -388,7 +397,6 @@
 			isa = PBXGroup;
 			children = (
 				8E2110F423D8546300106569 /* DayCountdownCollectionViewController.swift */,
-				8E86B12D2400A0590042701F /* EventDetailsViewController.swift */,
 			);
 			path = CountDownView;
 			sourceTree = "<group>";

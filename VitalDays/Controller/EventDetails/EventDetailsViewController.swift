@@ -102,7 +102,14 @@ class EventDetailsViewController: UICollectionViewController{
 extension EventDetailsViewController{
     @objc
     fileprivate func handleRightBtn(){
-        print("edit btn pressed!")
+        print("edit btn pressed! current index: \(selectedIndex?.item)")
+        let editingVC = CreateDayViewController(collectionViewLayout: UICollectionViewFlowLayout())
+//        editingVC.saveVitalDayDelegate = self
+        editingVC.event = events![selectedIndex!.item]
+        let navigationVC = UINavigationController(rootViewController: editingVC)
+        navigationVC.modalPresentationStyle = .custom
+//        navigationVC.transitioningDelegate = self
+        present(navigationVC, animated: true, completion: nil)
     }
     
     @objc
@@ -152,6 +159,11 @@ extension EventDetailsViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: collectionView.bounds.width * 0.05, bottom: 0, right: collectionView.bounds.width * 0.05)
     }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetX = scrollView.contentOffset.x
+        selectedIndex = IndexPath(item: Int(offsetX / collectionView.bounds.width), section: 0)
+    }
 }
 
 // MARK: - ShareEventDelegate
@@ -181,6 +193,7 @@ extension EventDetailsViewController: ShareEventDelegate{
     }
 }
 
+// MARK: - dismiss share view deleagte
 extension EventDetailsViewController: DismissShareViewDelegate{
     func dismissShareView() {
         self.handleBlackViewTap()
