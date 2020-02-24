@@ -14,4 +14,5 @@ struct Event{
     var targetDate: String
     var leftDays: Int
     var initialDays: Int
+    var key: String?
 }

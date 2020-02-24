@@ -81,7 +81,8 @@ class TodayViewController: UIViewController {
                                                  noteType: value["noteType"] as! String,
                                                  targetDate: value["targetDate"] as! String,
                                                  leftDays: value["leftDays"] as! Int,
-                                                 initialDays: value["initialLeft"] as! Int))
+                                                 initialDays: value["initialLeft"] as! Int,
+                                                 key: (child as! DataSnapshot).key))
                     }
                 }
                 

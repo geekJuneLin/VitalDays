@@ -224,7 +224,8 @@ extension DayCountdownCollectionViewController{
                                                      noteType: value["noteType"] as? String ?? "",
                                                      targetDate: value["targetDate"] as? String ?? "",
                                                      leftDays: leftDays,
-                                                     initialDays: value["initialLeft"] as! Int))
+                                                     initialDays: value["initialLeft"] as! Int,
+                                                     key: (child as! DataSnapshot).key))
                     }
                 }
 

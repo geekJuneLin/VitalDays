@@ -81,7 +81,7 @@ extension ShareOptionsView: UICollectionViewDataSource{
             cancelBtn.setTitleColor(.black, for: .normal)
             cancelBtn.addTarget(self, action: #selector(handleCancelBtn), for: .touchUpInside)
             footer.addSubview(cancelBtn)
-            cancelBtn.centerInSuper()
+            cancelBtn.fillUpSuperView()
             return footer
         }else{
             return UICollectionReusableView()
@@ -104,12 +104,12 @@ extension ShareOptionsView: UICollectionViewDelegateFlowLayout{
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 10, bottom: 20, right: 10)
+        return UIEdgeInsets(top: 16, left: 0, bottom: 20, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         if section == 0{
-            return CGSize(width: collectionView.frame.size.width, height: 50)
+            return CGSize(width: collectionView.frame.size.width - 20, height: 50)
         }else{
             return .zero
         }

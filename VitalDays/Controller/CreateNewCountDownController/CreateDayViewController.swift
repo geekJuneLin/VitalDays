@@ -143,6 +143,18 @@ extension CreateDayViewController{
         // TODO: - save data locally
     }
     
+    fileprivate func updateEventOntoFirebase(_ event: Event){
+        print("key: \(event.key)")
+        if let uid = Auth.auth().currentUser?.uid{
+            ref.child("Events").child("\(uid)").child(event.key!).updateChildValues(["leftDays":event.leftDays,
+                                                                                     "note":event.note,
+                                                                                     "noteType":event.noteType,
+                                                                                     "targetDate":event.targetDate,
+                                                                                     "initialLeft":event.initialDays])
+        }
+        // TODO: - update data locally
+    }
+    
     fileprivate func checkFields() -> Bool{
         return selectedType != "选择类型" &&
         selectedRepeat != "选择循环提醒" &&
@@ -172,22 +184,40 @@ extension CreateDayViewController{
     @objc
     fileprivate func handleRightButton(){
         print("right button clicked!")
-        let event = Event(note: noteTextFieldValue,
-        noteType: selectedType,
-        targetDate: selectedTargetDate,
-        leftDays: daysLeft,
-        initialDays: daysLeft)
-        
-        // check if all the fields are filled
-        if checkFields(){
-            saveVitalDayDelegate?.saveVitalDay(event: event)
-            saveEventOntoFirebase(event)
+        if event == nil{
+            print("creating...")
+            
+            // check if all the fields are filled
+            if checkFields(){
+                let event = Event(note: noteTextFieldValue,
+                noteType: selectedType,
+                targetDate: selectedTargetDate,
+                leftDays: daysLeft,
+                initialDays: daysLeft)
+                
+                saveVitalDayDelegate?.saveVitalDay(event: event)
+                saveEventOntoFirebase(event)
+            }else{
+                Utils.shard.showError(title: "Fields not filled!", "Please make sure all the fields are filled", self)
+                return
+            }
+            
+            self.dismiss(animated: true, completion: nil)
         }else{
-            Utils.shard.showError(title: "Fields not filled!", "Please make sure all the fields are filled", self)
-            return
+            print("editing...")
+            
+            let editedEvent = Event(note: noteTextFieldValue,
+                          noteType: selectedType,
+                          targetDate: selectedTargetDate,
+                          leftDays: daysLeft,
+                          initialDays: event!.initialDays + daysLeft,
+                          key: event!.key)
+            
+            updateEventOntoFirebase(editedEvent)
+            
+            self.view.window?.rootViewController = ContainerViewController()
+            self.view.window?.makeKeyAndVisible()
         }
-        
-        self.dismiss(animated: true, completion: nil)
     }
     
     /// present the date picker view controller

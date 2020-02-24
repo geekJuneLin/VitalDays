@@ -14,7 +14,7 @@ class EventDetailsViewController: UICollectionViewController{
     
     var selectedIndex: IndexPath?
     
-    var events: [Event]? 
+    var events: [Event]?
     
     let eventView: EventDetailsView = {
         let view = EventDetailsView()
