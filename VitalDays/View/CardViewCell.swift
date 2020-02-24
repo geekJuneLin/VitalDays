@@ -18,10 +18,24 @@ class CardViewCell: UICollectionViewCell{
         }
     }
     
+    var deleteDelegate: DeleteDelegate?
+    
     let cardView: CardView = {
         let view = CardView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+    
+    let deleteBtn: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setImage(UIImage(named: "cross"), for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        btn.clipsToBounds = true
+        btn.layer.cornerRadius = 15
+        btn.tintColor = .black
+        btn.isHidden = true
+        return btn
     }()
     
     override init(frame: CGRect) {
@@ -52,7 +66,7 @@ class CardViewCell: UICollectionViewCell{
         self.layer.cornerRadius = 8
         self.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         
-        addSubview(cardView)
+        addSubviews(cardView, deleteBtn)
         
         cardView.anchors(centerX: centerXAnchor,
                          centerY: centerYAnchor,
@@ -60,5 +74,21 @@ class CardViewCell: UICollectionViewCell{
                          widthValue: 1,
                          height: heightAnchor,
                          heightValue: 1)
+        
+        deleteBtn.anchors(top: topAnchor,
+                          topConstant: 10,
+                          right: rightAnchor,
+                          rightConstant: -10,
+                          widthValue: 30,
+                          heightValue: 30)
+        
+        deleteBtn.addTarget(self, action: #selector(handleDeleteBtn), for: .touchUpInside)
+    }
+    
+    @objc
+    fileprivate func handleDeleteBtn(){
+        print("delete btn pressed!")
+        deleteBtn.isHidden = true
+        deleteDelegate?.deleteEvent(event: event!)
     }
 }

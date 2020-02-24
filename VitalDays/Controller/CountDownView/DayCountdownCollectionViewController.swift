@@ -269,8 +269,9 @@ extension DayCountdownCollectionViewController{
         let indexPath = collectionView.indexPathForItem(at: p)
         
         if let index = indexPath{
-            var cell = collectionView.cellForItem(at: index) as! CardViewCell
+            let cell = collectionView.cellForItem(at: index) as! CardViewCell
             cell.shake()
+            cell.deleteBtn.isHidden = !cell.deleteBtn.isHidden
             print("long pressed the \(index.item) item")
         }else{
             print("no cell found!")
@@ -325,6 +326,7 @@ extension DayCountdownCollectionViewController{
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CardViewCell
         cell.event = countdownEvents[indexPath.item]
+        cell.deleteDelegate = self
         return cell
     }
 }
@@ -365,7 +367,21 @@ extension DayCountdownCollectionViewController: UIViewControllerTransitioningDel
 }
 
 // MARK: - save vital days event delegate
-extension DayCountdownCollectionViewController: SaveVitalDayDelegate{
+extension DayCountdownCollectionViewController: SaveVitalDayDelegate, DeleteDelegate{
+    func deleteEvent(event: Event) {
+        print("deleting...\(event.key)")
+//        if let uid = Auth.auth().currentUser?.uid{
+            ref.child(event.key!).removeValue { (err, _) in
+                if let err = err{
+                    Utils.shard.showError(title: "Deleting with errors!", err.localizedDescription, self)
+                    return
+                }else{
+                    print("deleted successfully!")
+                }
+            }
+//        }
+    }
+    
     func saveVitalDay(event: Event) {
         print("save the event \(event)")
         noCountdownEventImg.isHidden = true

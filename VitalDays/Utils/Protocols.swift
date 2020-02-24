@@ -20,6 +20,10 @@ protocol SaveVitalDayDelegate {
     func saveVitalDay(event: Event)
 }
 
+protocol DeleteDelegate {
+    func deleteEvent(event: Event)
+}
+
 protocol TypeSelectedDelegate {
     func selectedType(type: String)
 }
