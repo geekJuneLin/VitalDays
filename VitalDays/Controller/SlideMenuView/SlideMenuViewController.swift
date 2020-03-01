@@ -166,7 +166,10 @@ extension SlideMenuViewController: UITableViewDelegate{
             // check if the user current signed in
             if Auth.auth().currentUser != nil{
                 print("My account: signed in")
-                present(UserInfoViewController(), animated: true, completion: nil)
+                let userInfoVC = UserInfoViewController()
+                let naviVC = UINavigationController(rootViewController: userInfoVC)
+                naviVC.modalPresentationStyle = .fullScreen
+                present(naviVC, animated: true, completion: nil)
             }else{
                 print("My account: not signed in")
                 present(LoginViewController(), animated: true, completion: nil)

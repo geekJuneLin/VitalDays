@@ -55,6 +55,14 @@ class UserInfoViewController: UIViewController{
         return btn
     }()
     
+    let dismissBtn: UIBarButtonItem = {
+       let img = UIImage(named: "back")
+        let btn = UIBarButtonItem()
+        btn.image = img
+        btn.tintColor = .white
+        return btn
+    }()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -73,6 +81,19 @@ class UserInfoViewController: UIViewController{
         user = User()
         setupViews()
         setupCollectionView()
+        setupNavigation()
+    }
+    
+    fileprivate func setupNavigation(){
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
+        
+        dismissBtn.target = self
+        dismissBtn.action = #selector(handleDimissBtn)
+        
+        navigationController?.navigationBar.topItem?.leftBarButtonItem = dismissBtn
     }
     
     fileprivate func addObservers(){
@@ -123,7 +144,14 @@ class UserInfoViewController: UIViewController{
     }
 }
 
+// MARK: - other functions
 extension UserInfoViewController{
+    
+    @objc
+    fileprivate func handleDimissBtn(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @objc
     fileprivate func handleSignOutBtn(){
         print("sign out btn pressed!")
