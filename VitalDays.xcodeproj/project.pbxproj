@@ -25,6 +25,8 @@
 		8E3147DA2401EFA8001733D3 /* ShareOptionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3147D92401EFA8001733D3 /* ShareOptionsViewCell.swift */; };
 		8E3147DC2401F30C001733D3 /* ShareOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3147DB2401F30C001733D3 /* ShareOptionsView.swift */; };
 		8E3147DE2401F6FB001733D3 /* ShareOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3147DD2401F6FB001733D3 /* ShareOptions.swift */; };
+		8E32D1EE240B866400ED1D58 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E32D1ED240B866400ED1D58 /* SettingsViewController.swift */; };
+		8E32D1F1240BB76400ED1D58 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E32D1F0240BB76400ED1D58 /* SettingTableViewCell.swift */; };
 		8E41C9A923F21795008E0519 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E41C9A823F21795008E0519 /* NotificationCenter.framework */; };
 		8E41C9AC23F21795008E0519 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E41C9AB23F21795008E0519 /* TodayViewController.swift */; };
 		8E41C9AF23F21795008E0519 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E41C9AD23F21795008E0519 /* MainInterface.storyboard */; };
@@ -116,6 +118,8 @@
 		8E3147D92401EFA8001733D3 /* ShareOptionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareOptionsViewCell.swift; sourceTree = "<group>"; };
 		8E3147DB2401F30C001733D3 /* ShareOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareOptionsView.swift; sourceTree = "<group>"; };
 		8E3147DD2401F6FB001733D3 /* ShareOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShareOptions.swift; path = VitalDays/View/EventDetails/ShareOptions.swift; sourceTree = SOURCE_ROOT; };
+		8E32D1ED240B866400ED1D58 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8E32D1F0240BB76400ED1D58 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		8E41C9A723F21795008E0519 /* Vital Days.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Vital Days.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E41C9A823F21795008E0519 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		8E41C9AB23F21795008E0519 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +274,7 @@
 		8E2110EE23D84B8A00106569 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8E32D1EF240BB74900ED1D58 /* Settings */,
 				8E3147D82401EF86001733D3 /* EventDetails */,
 				8E0C748823DE5C8800166D45 /* Calendar */,
 				8E9D1FE023DDA091002A2A2B /* CreateDayVCViewCell */,
@@ -335,6 +340,14 @@
 			path = EventDetails;
 			sourceTree = "<group>";
 		};
+		8E32D1EF240BB74900ED1D58 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				8E32D1F0240BB76400ED1D58 /* SettingTableViewCell.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		8E41C9AA23F21795008E0519 /* Vital Days */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +393,7 @@
 			children = (
 				8E9D1FD023DD1707002A2A2B /* SlideMenuViewController.swift */,
 				8E72A11A23EA244100B01541 /* UserInfoViewController.swift */,
+				8E32D1ED240B866400ED1D58 /* SettingsViewController.swift */,
 			);
 			path = SlideMenuView;
 			sourceTree = "<group>";
@@ -619,6 +633,7 @@
 				8E3147DA2401EFA8001733D3 /* ShareOptionsViewCell.swift in Sources */,
 				8ED532AD23E13CE6001A5354 /* CreateDayTypeViewCell.swift in Sources */,
 				8E0C748723DE5C8400166D45 /* CalendarView.swift in Sources */,
+				8E32D1EE240B866400ED1D58 /* SettingsViewController.swift in Sources */,
 				8E6B766F23D9195400CC7355 /* CreateDayViewController.swift in Sources */,
 				8E0C748323DE438800166D45 /* CardView.swift in Sources */,
 				8E3147DE2401F6FB001733D3 /* ShareOptions.swift in Sources */,
@@ -628,6 +643,7 @@
 				8E9D1FDD23DD8332002A2A2B /* PresentTransition.swift in Sources */,
 				8E72EE2923E7A67A00D7054A /* Utils.swift in Sources */,
 				8E86B1302400A28F0042701F /* EventDetailsView.swift in Sources */,
+				8E32D1F1240BB76400ED1D58 /* SettingTableViewCell.swift in Sources */,
 				8ED532B123E13D30001A5354 /* CreateDayRepeatViewCell.swift in Sources */,
 				8E9D1FE623DDA61E002A2A2B /* UIApplication+currentKeyWindow.swift in Sources */,
 				8E0C748C23DE78F200166D45 /* CalendarDays.swift in Sources */,

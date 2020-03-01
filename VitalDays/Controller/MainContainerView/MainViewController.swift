@@ -22,7 +22,7 @@ class MainViewController: UITabBarController {
     
     let homeTabItem: UITabBarItem = {
        let bar = UITabBarItem()
-        bar.title = "Home"
+        bar.title = "主页"
         let img = UIImage(named: "home")
         img?.withTintColor(.cardViewColor, renderingMode: .alwaysTemplate)
         bar.image = img
@@ -31,7 +31,7 @@ class MainViewController: UITabBarController {
     
     let shareTabItem: UITabBarItem = {
         let bar = UITabBarItem()
-        bar.title = "Share"
+        bar.title = "分享"
         let img = UIImage(named: "share")
         img?.withTintColor(.cardViewColor, renderingMode: .alwaysTemplate)
         bar.image = img

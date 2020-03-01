@@ -161,6 +161,7 @@ extension SlideMenuViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // present user info VC
         if indexPath.item == 0 {
             // check if the user current signed in
             if Auth.auth().currentUser != nil{
@@ -170,6 +171,20 @@ extension SlideMenuViewController: UITableViewDelegate{
                 print("My account: not signed in")
                 present(LoginViewController(), animated: true, completion: nil)
             }
+        }
+        
+        // present more info VC
+        if indexPath.item == 1 {
+            print("present more info VC")
+        }
+        
+        // present settings VC
+        if indexPath.item == 2 {
+            print("present settings VC")
+            let settingsVC = SettingsViewController(style: .grouped)
+            let naviVC = UINavigationController(rootViewController: settingsVC)
+            naviVC.modalPresentationStyle = .fullScreen
+            self.present(naviVC, animated: true, completion: nil)
         }
     }
 }
