@@ -22,6 +22,7 @@
 		8E2110F323D84BFD00106569 /* UIColor+StaticColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F223D84BFD00106569 /* UIColor+StaticColors.swift */; };
 		8E2110F523D8546300106569 /* DayCountdownCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F423D8546300106569 /* DayCountdownCollectionViewController.swift */; };
 		8E2110F723D862D000106569 /* UIVIew+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2110F623D862D000106569 /* UIVIew+Autolayout.swift */; };
+		8E2E65CF240D20170049285C /* EventModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E2E65CD240D20170049285C /* EventModel.xcdatamodeld */; };
 		8E3147DA2401EFA8001733D3 /* ShareOptionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3147D92401EFA8001733D3 /* ShareOptionsViewCell.swift */; };
 		8E3147DC2401F30C001733D3 /* ShareOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3147DB2401F30C001733D3 /* ShareOptionsView.swift */; };
 		8E3147DE2401F6FB001733D3 /* ShareOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3147DD2401F6FB001733D3 /* ShareOptions.swift */; };
@@ -115,6 +116,7 @@
 		8E2110F223D84BFD00106569 /* UIColor+StaticColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+StaticColors.swift"; sourceTree = "<group>"; };
 		8E2110F423D8546300106569 /* DayCountdownCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCountdownCollectionViewController.swift; sourceTree = "<group>"; };
 		8E2110F623D862D000106569 /* UIVIew+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Autolayout.swift"; sourceTree = "<group>"; };
+		8E2E65CE240D20170049285C /* EventModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventModel.xcdatamodel; sourceTree = "<group>"; };
 		8E3147D92401EFA8001733D3 /* ShareOptionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareOptionsViewCell.swift; sourceTree = "<group>"; };
 		8E3147DB2401F30C001733D3 /* ShareOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareOptionsView.swift; sourceTree = "<group>"; };
 		8E3147DD2401F6FB001733D3 /* ShareOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShareOptions.swift; path = VitalDays/View/EventDetails/ShareOptions.swift; sourceTree = SOURCE_ROOT; };
@@ -293,6 +295,7 @@
 				8E71D2DD23E24FFA00F6F3B2 /* Event.swift */,
 				8E97488B23EB6B7600D04129 /* User.swift */,
 				8E3147DD2401F6FB001733D3 /* ShareOptions.swift */,
+				8E2E65CD240D20170049285C /* EventModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				8E9D1FE423DDA0BE002A2A2B /* CreateDayBottomViewCell.swift in Sources */,
 				8E72EE2523E78E1B00D7054A /* RegisterViewController.swift in Sources */,
 				8E86B12E2400A0590042701F /* EventDetailsViewController.swift in Sources */,
+				8E2E65CF240D20170049285C /* EventModel.xcdatamodeld in Sources */,
 				8E9D1FDD23DD8332002A2A2B /* PresentTransition.swift in Sources */,
 				8E72EE2923E7A67A00D7054A /* Utils.swift in Sources */,
 				8E86B1302400A28F0042701F /* EventDetailsView.swift in Sources */,
@@ -931,6 +935,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8E2E65CD240D20170049285C /* EventModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8E2E65CE240D20170049285C /* EventModel.xcdatamodel */,
+			);
+			currentVersion = 8E2E65CE240D20170049285C /* EventModel.xcdatamodel */;
+			path = EventModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8E2110CE23D849BA00106569 /* Project object */;
 }

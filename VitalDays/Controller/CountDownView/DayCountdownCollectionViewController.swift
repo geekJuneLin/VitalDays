@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 import Firebase
 import UserNotifications
 
@@ -70,6 +71,9 @@ class DayCountdownCollectionViewController: UICollectionViewController{
         super.viewWillAppear(animated)
         
         addObserverForRetrievingData()
+        
+        // TODO: - load data from core data
+        loadData()
     }
     
     override func viewDidLoad() {
@@ -85,6 +89,17 @@ class DayCountdownCollectionViewController: UICollectionViewController{
 
 // MARK: - other functions
 extension DayCountdownCollectionViewController{
+    
+    fileprivate func loadData(){
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let request: NSFetchRequest<EventModel> = EventModel.fetchRequest()
+        do{
+            let event = try context.fetch(request)
+            print("event: \(event.description)")
+        }catch{
+            print("fetch data with errors \(error)")
+        }
+    }
     
     /// create the notification in terms of the countdown event
     /// - Parameters:

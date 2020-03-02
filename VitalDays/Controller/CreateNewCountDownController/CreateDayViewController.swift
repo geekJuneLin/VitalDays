@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import CoreData
 import Firebase
 
 class CreateDayViewController: UICollectionViewController{
     
     // delegates
     var saveVitalDayDelegate: SaveVitalDayDelegate?
+    
+    // core data
+    lazy var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     // for editing VC
     var event: Event?{
@@ -139,8 +143,27 @@ extension CreateDayViewController{
                                                                  "noteType":event.noteType,
                                                                  "targetDate":event.targetDate,
                                                                  "initialLeft":event.initialDays])
+        }else{
+            // TODO: - save data locally
+            saveToLocal(event)
         }
-        // TODO: - save data locally
+    }
+    
+    fileprivate func saveToLocal(_ event: Event){
+        
+        let eventModel = EventModel(context: context)
+        eventModel.note = event.note
+        eventModel.noteType = event.noteType
+        eventModel.targetDate = event.targetDate
+        eventModel.leftDays = Int32(event.leftDays)
+        eventModel.initialDays = Int32(event.initialDays)
+        
+        do{
+            try context.save()
+            print("save locally successfully")
+        }catch{
+            print("save context with errors \(error)")
+        }
     }
     
     fileprivate func updateEventOntoFirebase(_ event: Event){
