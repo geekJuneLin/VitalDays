@@ -35,8 +35,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         let mainVC = ContainerViewController()
                         window.rootViewController = mainVC
                     }else{
-                        let signInVC = LoginViewController()
-                        window.rootViewController = signInVC
+                        
+                        let signedInAnonymous = UserDefaults.standard.bool(forKey: "signedInAnonymous")
+                        if signedInAnonymous{
+                            let mainVC = ContainerViewController()
+                            window.rootViewController = mainVC
+                        }else{
+                            let signInVC = LoginViewController()
+                            window.rootViewController = signInVC
+                        }
                     }
                 })
             }else{

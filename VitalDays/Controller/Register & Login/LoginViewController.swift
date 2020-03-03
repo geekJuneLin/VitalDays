@@ -285,6 +285,9 @@ extension LoginViewController{
     fileprivate func continueWithoutAccount(){
         print("continue btn pressed!")
         
+        let signedInAnonymous = UserDefaults.standard
+        signedInAnonymous.set(true, forKey: "signedInAnonymous")
+        
         self.view.window?.rootViewController = ContainerViewController()
         self.view.window?.makeKeyAndVisible()
     }

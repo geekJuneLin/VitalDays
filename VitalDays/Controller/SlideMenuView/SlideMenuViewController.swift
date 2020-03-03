@@ -172,7 +172,9 @@ extension SlideMenuViewController: UITableViewDelegate{
                 present(naviVC, animated: true, completion: nil)
             }else{
                 print("My account: not signed in")
-                present(LoginViewController(), animated: true, completion: nil)
+                let registerVC = UIStoryboard(name: "RegisterViewControllerStoryboard", bundle: nil)
+                let vc = registerVC.instantiateViewController(withIdentifier: "RegisterVC")
+                present(vc, animated: true, completion: nil)
             }
         }
         
