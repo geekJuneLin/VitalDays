@@ -17,6 +17,7 @@ class CreateDayViewController: UICollectionViewController{
     
     // core data
     lazy var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var editingIndex: Int?
     
     // for editing VC
     var event: Event?{
@@ -144,7 +145,7 @@ extension CreateDayViewController{
                                                                  "targetDate":event.targetDate,
                                                                  "initialLeft":event.initialDays])
         }else{
-            // TODO: - save data locally
+            // save data locally
             saveToLocal(event)
         }
     }
@@ -166,6 +167,21 @@ extension CreateDayViewController{
         }
     }
     
+    fileprivate func updateLocally(event: Event){
+        let request: NSFetchRequest<EventModel> = EventModel.fetchRequest()
+        do{
+            let eventModels = try context.fetch(request)
+            eventModels[editingIndex!].note = event.note
+            eventModels[editingIndex!].noteType = event.noteType
+            eventModels[editingIndex!].targetDate = event.targetDate
+            eventModels[editingIndex!].initialDays = Int32(event.initialDays)
+            eventModels[editingIndex!].leftDays = Int32(event.leftDays)
+            try context.save()
+        }catch{
+            print("fetch data with errors \(error)")
+        }
+    }
+    
     fileprivate func updateEventOntoFirebase(_ event: Event){
         print("key: \(event.key)")
         if let uid = Auth.auth().currentUser?.uid{
@@ -174,8 +190,11 @@ extension CreateDayViewController{
                                                                                      "noteType":event.noteType,
                                                                                      "targetDate":event.targetDate,
                                                                                      "initialLeft":event.initialDays])
+        }else{
+            // update data locally
+            updateLocally(event: event)
         }
-        // TODO: - update data locally
+        
     }
     
     fileprivate func checkFields() -> Bool{

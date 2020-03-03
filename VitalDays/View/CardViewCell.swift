@@ -18,6 +18,8 @@ class CardViewCell: UICollectionViewCell{
         }
     }
     
+    var selectedIndex: Int?
+    
     var deleteDelegate: DeleteDelegate?
     
     let cardView: CardView = {
@@ -89,6 +91,6 @@ class CardViewCell: UICollectionViewCell{
     fileprivate func handleDeleteBtn(){
         print("delete btn pressed!")
         deleteBtn.isHidden = true
-        deleteDelegate?.deleteEvent(event: event!)
+        deleteDelegate?.deleteEvent(event: event!, index: selectedIndex!)
     }
 }

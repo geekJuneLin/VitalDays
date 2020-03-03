@@ -23,6 +23,10 @@ class DayCountdownCollectionViewController: UICollectionViewController{
     // firebase
     var ref = Database.database().reference()
     
+    // coredata
+    lazy var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    lazy var eventModels = [EventModel]()
+    
     let leftButton: UIBarButtonItem = {
         let img = UIImage(named: "menu")
         let btn = UIBarButtonItem()
@@ -71,9 +75,6 @@ class DayCountdownCollectionViewController: UICollectionViewController{
         super.viewWillAppear(animated)
         
         addObserverForRetrievingData()
-        
-        // TODO: - load data from core data
-        loadData()
     }
     
     override func viewDidLoad() {
@@ -91,11 +92,29 @@ class DayCountdownCollectionViewController: UICollectionViewController{
 extension DayCountdownCollectionViewController{
     
     fileprivate func loadData(){
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let request: NSFetchRequest<EventModel> = EventModel.fetchRequest()
         do{
-            let event = try context.fetch(request)
-            print("event: \(event.description)")
+            eventModels = try context.fetch(request)
+            try eventModels.forEach { (event) in
+                
+                let leftDays = self.recalculateLeftDays(targetDate: event.targetDate!)
+                
+                if leftDays != event.leftDays {
+                    // update leftdays locally
+                    event.leftDays = Int32(leftDays)
+                    try context.save()
+                }
+                
+                if eventModels.count != countdownEvents.count{
+                    countdownEvents.append(Event(note: event.note!,
+                    noteType: event.noteType!,
+                    targetDate: event.targetDate!,
+                    leftDays: Int(event.leftDays),
+                    initialDays: Int(event.initialDays)))
+                }
+            }
+            
+            reloadData()
         }catch{
             print("fetch data with errors \(error)")
         }
@@ -250,6 +269,8 @@ extension DayCountdownCollectionViewController{
             }
         }else{
             print("couldn't get the uid")
+            // TODO: - load data from core data
+            loadData()
         }
     }
     
@@ -268,6 +289,14 @@ extension DayCountdownCollectionViewController{
     ///   - childPath: the child path to update the value
     fileprivate func updateOntoDB(leftDays: Int, childPath: String){
         ref.child(childPath).updateChildValues(["leftDays": leftDays])
+    }
+    
+    fileprivate func reloadData(){
+        if countdownEvents.count > 0{
+            noCountdownEventImg.isHidden = true
+            noCountdownEventLbl.isHidden = true
+        }
+        collectionView.reloadData()
     }
 }
 
@@ -341,6 +370,7 @@ extension DayCountdownCollectionViewController{
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CardViewCell
         cell.event = countdownEvents[indexPath.item]
+        cell.selectedIndex = indexPath.item
         cell.deleteDelegate = self
         return cell
     }
@@ -383,10 +413,10 @@ extension DayCountdownCollectionViewController: UIViewControllerTransitioningDel
 
 // MARK: - save vital days event delegate
 extension DayCountdownCollectionViewController: SaveVitalDayDelegate, DeleteDelegate{
-    func deleteEvent(event: Event) {
+    func deleteEvent(event: Event, index: Int) {
         print("deleting...\(event.key)")
-//        if let uid = Auth.auth().currentUser?.uid{
-            ref.child(event.key!).removeValue { (err, _) in
+        if let key = event.key{
+            ref.child(key).removeValue { (err, _) in
                 if let err = err{
                     Utils.shard.showError(title: "Deleting with errors!", err.localizedDescription, self)
                     return
@@ -394,15 +424,26 @@ extension DayCountdownCollectionViewController: SaveVitalDayDelegate, DeleteDele
                     print("deleted successfully!")
                 }
             }
-//        }
+        }else{
+            // delete the event saved locally
+            countdownEvents.remove(at: index)
+            context.delete(eventModels[index])
+            collectionView.reloadData()
+            do{
+                try context.save()
+            }catch{
+                print("saving data with errors \(error)")
+            }
+        }
     }
     
     func saveVitalDay(event: Event) {
         print("save the event \(event)")
-        noCountdownEventImg.isHidden = true
-        noCountdownEventLbl.isHidden = true
+//        noCountdownEventImg.isHidden = true
+//        noCountdownEventLbl.isHidden = true
         countdownEvents.append(event)
-        collectionView.reloadData()
+        reloadData()
+//        collectionView.reloadData()
     }
 }
 

@@ -104,11 +104,10 @@ extension EventDetailsViewController{
     fileprivate func handleRightBtn(){
         print("edit btn pressed! current index: \(selectedIndex?.item)")
         let editingVC = CreateDayViewController(collectionViewLayout: UICollectionViewFlowLayout())
-//        editingVC.saveVitalDayDelegate = self
         editingVC.event = events![selectedIndex!.item]
+        editingVC.editingIndex = selectedIndex!.item
         let navigationVC = UINavigationController(rootViewController: editingVC)
         navigationVC.modalPresentationStyle = .custom
-//        navigationVC.transitioningDelegate = self
         present(navigationVC, animated: true, completion: nil)
     }
     

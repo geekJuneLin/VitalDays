@@ -21,7 +21,7 @@ protocol SaveVitalDayDelegate {
 }
 
 protocol DeleteDelegate {
-    func deleteEvent(event: Event)
+    func deleteEvent(event: Event, index: Int)
 }
 
 protocol TypeSelectedDelegate {
